@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+
+% graphicx package, useful for including eps and pdf graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+
+% text layout
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in, includefoot, heightrounded]{geometry}
+\geometry{textwidth=17cm} % 15.25cm for single-space, 16.25cm for double-space
+\geometry{textheight=22.5cm} % 22cm for single-space, 22.5cm for double-space
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+\newcommand{\VeryLongSignatureLine}{\rule{12cm}{0.25mm}}
+\newcommand{\LongSignatureLine}{\rule{9cm}{0.25mm}}
+\newcommand{\ShortSignatureLine}{\rule{7cm}{0.25mm}}
+\newcommand{\DateLine}{\rule{3cm}{0.25mm}}
+
+% helps to keep figures from being orphaned on a page by themselves
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+
+% bold the 'Figure #' in the caption and separate it with a period
+% Captions will be left justified
+\usepackage[labelfont=bf,labelsep=period,font=small]{caption}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+\setlength{\headheight}{67pt}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\includegraphics{logo}}
+\rhead{\includegraphics{contact}}
+
+\begin{document}
+
+\textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
+
+\textbf{Participant Name: \LongSignatureLine}
+
+\textbf{Specimen identifier: \LongSignatureLine}
+
+\textbf{Date Sample Submitted: \ShortSignatureLine}
+
+\textbf{Date Sample Tested: \ShortSignatureLine}
+
+\textbf{Date results provided: Date \DateLine}
+
+\textbf{Specimen Type:} Midnasal, self-collected
+
+\textbf{\VeryLongSignatureLine}
+
+\textbf{Result of SARS-CoV-2 (COVID-19) Qual PCR}
+
+(ONLY ONE PROVIDED: Not detected / SARS-CoV-2 Detected (positive) / Inconclusive / Unable to be tested
+
+\PageLine
+
+\textbf{Please Note:}
+
+\begin{itemize}
+\item
+
+  \textbf{The type of sample and testing used in this project is
+  conducted as part of a public health surveillance program in
+  partnership with King County and other agencies.} The testing you have
+  received is not a substitute for receiving personal medical care by a
+  healthcare provider.
+
+\item
+
+  \textbf{Specimen Chain of Custody:} the specimen tested was
+  self-collected, self-labeled, and submitted to SCAN by mail or
+  delivery service. It was not collected, labeled, and transported by a
+  licensed healthcare professional. This may impact test results and
+  false negative results cannot be excluded. Follow-up clinical testing
+  may be warranted.
+
+\item
+
+  \textbf{Specimen collection device:} the mid turbinate swab is not an
+  FDA/CDC Emergency Use Authorization (EUA) approved specimen type.
+  Therefore, not detected/negative results may not exclude SARS-CoV-2
+  infection.
+
+\item
+
+  \textbf{``Positive'' results may be verified by the Washington State
+  Department of Health}. This result should be discussed with your
+  healthcare provider if you have questions.
+
+\item{
+  \textbf{If your test says ``Not detected'' it means that SARS-CoV-2
+    was not detected in our laboratory.}
+
+  No test is perfect and there is a small chance that you do have the
+  SARS-CoV-2 virus that causes COVID-19 with a negative test. This test
+  does not use the standard way of collecting specimens by a health care
+  provider, and the sample was sent by mail, not collected and transported
+  in a healthcare setting. Regardless of your test result, it's best to
+  stay home when you feel sick, and avoid contact with other people. If
+  you have other health problems or are very sick or are worried about
+  your illness, you should contact your healthcare provider. If your
+  symptoms persist, you should discuss getting another test for COVID-19
+  with your health care provider.
+}
+
+\item
+
+  \textbf{If your test says ``Inconclusive''} it means that our
+  laboratory test results for the SARS-CoV-2 target are not certain.
+
+  No test is perfect and there is a chance that an inconclusive result
+  could mean that you do have the SARS-CoV-2 virus that causes COVID-19.
+  This test does not use the standard way of collecting specimens by a
+  health care provider, and the sample was sent by mail, not collected and
+  transported in a healthcare setting. Regardless of your test result,
+  it's best to stay home when you feel sick, and avoid contact with other
+  people. If you have other health problems or are very sick or are
+  worried about your illness, you should contact your healthcare provider.
+  If your symptoms persist, you should discuss getting another test for
+  COVID-19 with your health care provider.
+
+\item
+
+  \textbf{If your test says ``Unable to be tested''} it means that there
+  was either not enough of the specimen or there was an error in the
+  test process.
+
+  Since testing was unable to be performed, there is a chance that you do
+  have the SARS-CoV-2 virus that causes COVID-19. This test does not use
+  the standard way of collecting specimens by a health care provider, and
+  the sample was sent by mail, not collected and transported in a
+  healthcare setting. Regardless of your test result, it's best to stay
+  home when you feel sick, and avoid contact with other people. If you
+  have other health problems or are very sick or are worried about your
+  illness, you should contact your healthcare provider. If your symptoms
+  persist, you should discuss getting another test for COVID-19 with your
+  health care provider.
+
+\end{itemize}
+
+\begin{itemize}
+\item
+
+  \textbf{Positive tests (shown as ``DETECTED'' or ``Virus Detected'')
+  will be reported to the appropriate state and county Health Department
+  by the testing facility.} You DO NOT need to report these results
+  yourself. Public Health may follow up with you if your test is
+  positive for novel coronavirus to ask you about your illness and
+  people you may have come in contact with.
+
+\item
+
+  \textbf{You can print out or email these test results to your health
+  care provider}
+
+\end{itemize}
+
+\textbf{Methodology of SARS-CoV-2 (COVID-19) Qual PCR:}
+
+This assay is designed to detect SARS-CoV-2 using reverse-transcription
+PCR. This assay relies on amplification of the viral genome segments
+Orf1B and S with an internal human RNaseP amplification control. This
+test was developed and its performance characteristics determined by the
+University of Washington's Northwest Genomics Center. This laboratory
+developed test is approved by Washington Department of Health under
+emergency use authorization, but has not been approved by FDA. This
+laboratory is certified under the Clinical Laboratory Improvement
+Amendments (CLIA) as qualified to perform high complexity clinical
+laboratory testing.
+
+For further provider information, please see these links provided by the
+Washington State Department of Health:
+
+\begin{itemize}
+\item
+
+  \href{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{\textbf{{Patients
+  with confirmed or suspected COVID-19}}}
+
+\item
+
+  \href{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{\textbf{{Patients
+  who were exposed to a confirmed COVID-19 case}}}
+
+\item
+
+  \href{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{\textbf{{Unexposed
+  patients with COVID-19 symptoms}}}
+
+\end{itemize}
+
+\textbf{Additional resources are available at the} Washington State
+Department of Health \textbf{and CDC websites: }
+
+\begin{itemize}
+\item
+
+  \href{https://www.doh.wa.gov}{\textbf{{https://www.doh.wa.gov/}}}
+
+\item
+
+  \href{https://www.cdc.gov/coronavirus/2019-ncov/index.html}{\textbf{{https://www.cdc.gov/coronavirus/2019-ncov/index.html}}}
+
+\end{itemize}
+
+\end{document}
