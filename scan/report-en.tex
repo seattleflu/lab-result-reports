@@ -1,8 +1,8 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 
-% graphicx package, useful for including eps and pdf graphics
+% graphicx package, useful for including eps, pdf, and raster graphics
 \usepackage{graphicx}
-\DeclareGraphicsExtensions{.png,.png,.jpg}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
 
 % basic packages
 \usepackage{fancyhdr}
@@ -15,57 +15,72 @@
 \usepackage{booktabs}
 \usepackage{makecell}
 \usepackage{multirow}
+\usepackage{pbox}
 
-% text layout
-\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in, includefoot, heightrounded]{geometry}
-\geometry{textwidth=17cm} % 15.25cm for single-space, 16.25cm for double-space
-\geometry{textheight=22.5cm} % 22cm for single-space, 22.5cm for double-space
+% fonts
+\usepackage{fontspec}
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
 
-\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
-\newcommand{\VeryLongSignatureLine}{\rule{12cm}{0.25mm}}
-\newcommand{\LongSignatureLine}{\rule{9cm}{0.25mm}}
-\newcommand{\ShortSignatureLine}{\rule{7cm}{0.25mm}}
-\newcommand{\DateLine}{\rule{3cm}{0.25mm}}
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
 
-% helps to keep figures from being orphaned on a page by themselves
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\textfraction}{0.1}
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
 
-% bold the 'Figure #' in the caption and separate it with a period
-% Captions will be left justified
-\usepackage[labelfont=bf,labelsep=period,font=small]{caption}
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
 
-% cite package, to clean up citations in the main text. Do not remove.
-\usepackage{cite}
-
-\setlength{\headheight}{67pt}
+\setlength{\headheight}{1.1in}
 \pagestyle{fancy}
 \fancyhf{}
 
-\lhead{\includegraphics{logo}}
-\rhead{\includegraphics{contact}}
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Test Performed By}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\newcommand{\link}[2]{\href{#1}{#2}\footnote{#1}}
 
 \begin{document}
 
+\begin{center}
+\Large
 \textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
+\end{center}
 
-\textbf{Participant Name: \LongSignatureLine}
+\bigskip
+\textbf{Participant Name: …}
 
-\textbf{Specimen identifier: \LongSignatureLine}
+\textbf{Participant Date of Birth: …}
 
-\textbf{Date Sample Submitted: \ShortSignatureLine}
+\textbf{Specimen Identifier: …}
 
-\textbf{Date Sample Tested: \ShortSignatureLine}
+\textbf{Date Sample Submitted: …}
 
-\textbf{Date results provided: Date \DateLine}
+\textbf{Date Sample Tested: …}
 
-\textbf{Specimen Type:} Midnasal, self-collected
+\textbf{Date Results Provided: …}
 
-\textbf{\VeryLongSignatureLine}
+\textbf{Specimen Type:} …
+
+\PageLine
 
 \textbf{Result of SARS-CoV-2 (COVID-19) Qual PCR}
 
-(ONLY ONE PROVIDED: Not detected / SARS-CoV-2 Detected (positive) / Inconclusive / Unable to be tested
+…
 
 \PageLine
 
@@ -82,7 +97,7 @@
 
 \item
 
-  \textbf{Specimen Chain of Custody:} the specimen tested was
+  \textbf{Specimen Chain of Custody:} The specimen tested was
   self-collected, self-labeled, and submitted to SCAN by mail or
   delivery service. It was not collected, labeled, and transported by a
   licensed healthcare professional. This may impact test results and
@@ -91,7 +106,7 @@
 
 \item
 
-  \textbf{Specimen collection device:} the mid turbinate swab is not an
+  \textbf{Specimen collection device:} The mid-turbinate swab is not an
   FDA/CDC Emergency Use Authorization (EUA) approved specimen type.
   Therefore, not detected/negative results may not exclude SARS-CoV-2
   infection.
@@ -151,9 +166,6 @@
   persist, you should discuss getting another test for COVID-19 with your
   health care provider.
 
-\end{itemize}
-
-\begin{itemize}
 \item
 
   \textbf{Positive tests (shown as ``DETECTED'' or ``Virus Detected'')
@@ -166,10 +178,11 @@
 \item
 
   \textbf{You can print out or email these test results to your health
-  care provider}
+  care provider.}
 
 \end{itemize}
 
+\bigskip
 \textbf{Methodology of SARS-CoV-2 (COVID-19) Qual PCR:}
 
 This assay is designed to detect SARS-CoV-2 using reverse-transcription
@@ -189,32 +202,31 @@ Washington State Department of Health:
 \begin{itemize}
 \item
 
-  \href{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{\textbf{{Patients
-  with confirmed or suspected COVID-19}}}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{Patients with confirmed or suspected COVID-19}
 
 \item
 
-  \href{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{\textbf{{Patients
-  who were exposed to a confirmed COVID-19 case}}}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{Patients
+  who were exposed to a confirmed COVID-19 case}
 
 \item
 
-  \href{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{\textbf{{Unexposed
-  patients with COVID-19 symptoms}}}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{Unexposed
+  patients with COVID-19 symptoms}
 
 \end{itemize}
 
-\textbf{Additional resources are available at the} Washington State
-Department of Health \textbf{and CDC websites: }
+Additional resources are available at the Washington State Department of Health
+and CDC websites:
 
 \begin{itemize}
 \item
 
-  \href{https://www.doh.wa.gov}{\textbf{{https://www.doh.wa.gov/}}}
+  \url{https://www.doh.wa.gov}
 
 \item
 
-  \href{https://www.cdc.gov/coronavirus/2019-ncov/index.html}{\textbf{{https://www.cdc.gov/coronavirus/2019-ncov/index.html}}}
+  \url{https://www.cdc.gov/coronavirus/2019-ncov/index.html}
 
 \end{itemize}
 
