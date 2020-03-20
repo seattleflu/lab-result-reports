@@ -1,0 +1,7 @@
+# During development and testing, these standard LaTeX droppings may appear.
+*.aux
+*.log
+*.out
+
+# Specific PDF outputs to exclude which might also appear.
+/scan/report-*.pdf
