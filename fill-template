@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""
+usage: fill-template <template.latex> [<key>=<value> …]
+       fill-template --help
+
+Fill a LaTeX document templated with Jinja2 and render to PDF.
+
+Template parameters are given after the input filename as key=value pairs,
+which are interpolated via \VAR{key} constructs in LaTeX.  Other templating is
+possible, refer to <https://pythonhosted.org/latex/>.
+
+The rendered PDF is sent to stdout.
+"""
+from jinja2 import FileSystemLoader
+from latex.build import PdfLatexBuilder
+from latex.jinja2 import make_env
+from pathlib import Path
+from sys import argv, exit, stdout, stderr
+
+
+# XeLaTeX has the best Unicode support of the various LaTeX engines, which is
+# important since we'll be preparing reports in 12 languages.
+xelatex = PdfLatexBuilder("xelatex")
+assert xelatex.is_available(), "xelatex is not available"
+
+
+def main(args):
+    if not args or args[0] in {"-h", "--help"}:
+        print(__doc__.strip(), file = stderr)
+        return 0
+
+    template_path = Path(args[0])
+    params = dict(kv.split("=", 1) for kv in args[1:])
+
+    assert template_path.exists()
+
+    render(template_path, params).save_to(stdout.buffer)
+    return 0
+
+
+def render(template_path, params):
+    jinja = make_env(loader = FileSystemLoader("."))
+    template = jinja.get_template(str(template_path))
+
+    # Allow the template to reference files relative to itself.  The empty
+    # string includes the default locations, as described in `man tex`.
+    texinputs = [str(template_path.resolve().parent), ""]
+
+    return xelatex.build_pdf(template.render(params), texinputs = texinputs)
+
+
+if __name__ == "__main__":
+    exit(main(argv[1:]) or 0)
