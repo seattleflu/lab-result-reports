@@ -17,8 +17,9 @@ RUN tlmgr install --usertree $(kpsewhich -var-value TEXMFLOCAL) droid
 
 WORKDIR /src
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+COPY Pipfile Pipfile.lock ./
+RUN pip install --no-cache-dir pipenv
+RUN pipenv install --system
 
 COPY . ./
 

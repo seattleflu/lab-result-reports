@@ -1,4 +1,0 @@
-click
-jinja2
-latex
-pandas
