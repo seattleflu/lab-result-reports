@@ -85,11 +85,15 @@ assert xelatex.is_available(), "xelatex is not available"
            "syntax to produce a unique path for each input row.",
     required = True)
 
+@click.option("--filter", "filter_query",
+    metavar = "<condition>",
+    help = "A Pandas DataFrame query string for filtering the parameter table")
+
 @click.pass_context
 
-def __main__(ctx, *, template_path, params_file, output_path):
+def __main__(ctx, *, template_path, params_file, output_path, filter_query):
     render_pdf = renderer(template_path)
-    param_table = read_params(params_file)
+    param_table = read_params(params_file, filter_query)
 
     error_count = 0
 
@@ -129,11 +133,13 @@ def renderer(template_path):
     return render_pdf
 
 
-def read_params(file):
-    return (
-        pandas
-            .read_csv(file, sep = None, dtype = "string", engine = "python")
-            .to_dict("records"))
+def read_params(file, filter_query):
+    params = pandas.read_csv(file, sep = None, dtype = "string", engine = "python")
+
+    if filter_query:
+        params.query(filter_query, inplace = True)
+
+    return params.to_dict("records")
 
 
 if __name__ == "__main__":
