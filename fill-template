@@ -35,8 +35,10 @@ will produce two files:
 """
 import click
 import logging
+import os
 import pandas
 from datetime import date
+from itertools import cycle
 from jinja2 import FileSystemLoader
 from multiprocessing import Pool
 from latex.build import PdfLatexBuilder
@@ -89,29 +91,50 @@ assert xelatex.is_available(), "xelatex is not available"
     metavar = "<condition>",
     help = "A Pandas DataFrame query string for filtering the parameter table")
 
+@click.option("--workers", "worker_count",
+    metavar = "<n>",
+    help = "Number of parallel worker processes to start for PDF rendering",
+    show_default = True,
+    type = int,
+    # Number of CPUs available to this process; see doc for os.cpu_count()
+    default = len(os.sched_getaffinity(0)))
+
 @click.pass_context
 
-def __main__(ctx, *, template_path, params_file, output_path, filter_query):
-    render_pdf = renderer(template_path)
+def __main__(ctx, *, template_path, params_file, output_path, filter_query, worker_count):
     param_table = read_params(params_file, filter_query)
 
-    error_count = 0
+    with Pool(worker_count) as workers:
+        log.debug(f"Started pool of n={worker_count:,} workers")
 
-    for param_row in param_table:
-        with open(output_path.format(**param_row), "wb") as output_file:
-            try:
-                log.info(f"Generating {output_file.name}")
-                render_pdf(param_row, output_file)
-            except:
-                log.exception(f"Error generating {output_file.name}")
-                error_count += 1
+        results = workers.starmap(
+            render, zip(
+                cycle([str(template_path)]),
+                cycle([output_path]),
+                param_table ))
 
-    if error_count:
-        log.error(f"Some errors were encountered (n={error_count}) during processing.")
+        errors = [
+            output_file
+                for output_file, successful in results
+                 if not successful ]
+
+    if errors:
+        log.error(f"Errors were encountered (n={len(errors)}) during processing of: {errors!r}")
         ctx.exit(1)
 
 
-def renderer(template_path):
+def render(template_path, output_path, param_row):
+    with open(output_path.format(**param_row), "wb") as output_file:
+        try:
+            log.info(f"Generating {output_file.name}")
+            pdf_renderer(template_path)(param_row, output_file)
+            return output_file.name, True
+        except:
+            log.exception(f"Error generating {output_file.name}")
+            return output_file.name, False
+
+
+def pdf_renderer(template_path):
     template_dir = dirname(template_path)
 
     jinja = make_env(loader = FileSystemLoader(template_dir))
