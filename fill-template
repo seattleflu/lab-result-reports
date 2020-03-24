@@ -11,6 +11,7 @@ possible, refer to <https://pythonhosted.org/latex/>.
 
 The rendered PDF is sent to stdout.
 """
+from datetime import date
 from jinja2 import FileSystemLoader
 from latex.build import PdfLatexBuilder
 from latex.jinja2 import make_env
@@ -45,6 +46,9 @@ def render(template_path, params):
     # Allow the template to reference files relative to itself.  The empty
     # string includes the default locations, as described in `man tex`.
     texinputs = [str(template_path.resolve().parent), ""]
+
+    # Convenience globals useful for reports.
+    params.setdefault("current_date", str(date.today()))
 
     return xelatex.build_pdf(template.render(params), texinputs = texinputs)
 

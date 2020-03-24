@@ -65,12 +65,12 @@
 \bigskip
 
 \begin{description}[font=\normalfont,align=left,labelwidth=12em]
-\item [Participant Name] \textbf{…}
-\item [Participant Date of Birth] \textbf{…}
-\item [Specimen Identifier] \textbf{…}
-\item [Date Sample Submitted] \textbf{…}
-\item [Date Sample Tested] \textbf{…}
-\item [Date Results Provided] \textbf{…}
+\item [Participant Name] \textbf{\VAR{pat_name|e}}
+\item [Participant Date of Birth] \textbf{\VAR{birth_date|e}}
+\item [Specimen Identifier] \textbf{\VAR{qrcode|e}}
+\item [Date Sample Submitted] \textbf{\VAR{collect_ts|e}}
+\item [Date Sample Tested] \textbf{\VAR{test_date|e}}
+\item [Date Results Provided] \textbf{\VAR{current_date|e}}
 \item [Specimen Type] Midnasal, self-collected
 \end{description}
 
@@ -78,7 +78,17 @@
 
 Result of SARS-CoV-2 (COVID-19) Qual PCR
 
-\textbf{…}
+%- if status_code == "negative"
+\textbf{Not detected}\\
+%- elif status_code == "positive"
+\textbf{SARS-CoV-2 Detected (positive)}\\
+%- elif status_code == "inconclusive"
+\textbf{Inconclusive}\\
+%- elif status_code == "never-tested"
+\textbf{Unable to be tested}\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
 
 \PageLine
 
