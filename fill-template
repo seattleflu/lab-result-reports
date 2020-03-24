@@ -1,22 +1,59 @@
 #!/usr/bin/env python3
 """
-usage: fill-template <template.latex> [<key>=<value> …]
-       fill-template --help
+Fill a LaTeX document templated with Jinja2 and render to PDF for every row in
+an input table.
 
-Fill a LaTeX document templated with Jinja2 and render to PDF.
+Template parameters are read from the CSV/TSV file specified with --params and
+are interpolated via \VAR{column_name} constructs in LaTeX.  Other templating
+is possible, refer to <https://pythonhosted.org/latex/>.
 
-Template parameters are given after the input filename as key=value pairs,
-which are interpolated via \VAR{key} constructs in LaTeX.  Other templating is
-possible, refer to <https://pythonhosted.org/latex/>.
+The rendered PDFs are saved to file paths specified by --output, which should
+be a Python f-string making use of the template parameters to construct a
+unique filename for every row of input data.
 
-The rendered PDF is sent to stdout.
+For example, given a TSV that looks like this:
+
+\b
+    barcode	birth_date	pat_name
+    AAAAAAAA	1966-05-09	Kermit the Frog
+    BBBBBBBB	1969-07-21      Bert
+
+running:
+
+\b
+    generate-reports \\
+        --template scan/report-en.tex \\
+        --params sesame-results.tsv \\
+        --output '{barcode}-{birth_date}-en.pdf'
+
+will produce two files:
+
+\b
+    AAAAAAAA-1966-05-09-en.pdf
+    BBBBBBBB-1969-07-21-en.pdf
+
 """
+import click
+import logging
+import pandas
 from datetime import date
 from jinja2 import FileSystemLoader
+from multiprocessing import Pool
 from latex.build import PdfLatexBuilder
 from latex.jinja2 import make_env
-from pathlib import Path
-from sys import argv, exit, stdout, stderr
+from os.path import basename, dirname
+from sys import stdin, stderr
+
+
+logging.basicConfig(
+    level = logging.DEBUG,
+    format = "[%(asctime)s] %(levelname)-8s %(message)s",
+    datefmt = "%Y-%m-%d %H:%M:%S%z",
+    stream = stderr)
+
+logging.captureWarnings(True)
+
+log = logging.getLogger(__name__)
 
 
 # XeLaTeX has the best Unicode support of the various LaTeX engines, which is
@@ -25,33 +62,79 @@ xelatex = PdfLatexBuilder("xelatex")
 assert xelatex.is_available(), "xelatex is not available"
 
 
-def main(args):
-    if not args or args[0] in {"-h", "--help"}:
-        print(__doc__.strip(), file = stderr)
-        return 0
+@click.command("fill-template", help = __doc__, no_args_is_help = True)
 
-    template_path = Path(args[0])
-    params = dict(kv.split("=", 1) for kv in args[1:])
+@click.option("--template", "template_path",
+    metavar = "<report.tex>",
+    help = "Path to a LaTeX document templated with Jinja2; "
+           "syntax described at <https://pythonhosted.org/latex/>",
+    type = click.Path(exists = True, dir_okay = False, resolve_path = True),
+    required = True)
 
-    assert template_path.exists()
+@click.option("--params", "params_file",
+    metavar = "<results.csv>",
+    help = "Path to a table (CSV or TSV) of template parameter values; "
+           "each row produces one output file. "
+           "Default is stdin.",
+    type = click.File("r"),
+    default = stdin)
 
-    render(template_path, params).save_to(stdout.buffer)
-    return 0
+@click.option("--output", "output_path",
+    metavar = "<path.pdf>",
+    help = "Path to which PDFs are written; should use Python f-string "
+           "syntax to produce a unique path for each input row.",
+    required = True)
+
+@click.pass_context
+
+def __main__(ctx, *, template_path, params_file, output_path):
+    render_pdf = renderer(template_path)
+    param_table = read_params(params_file)
+
+    error_count = 0
+
+    for param_row in param_table:
+        with open(output_path.format(**param_row), "wb") as output_file:
+            try:
+                log.info(f"Generating {output_file.name}")
+                render_pdf(param_row, output_file)
+            except:
+                log.exception(f"Error generating {output_file.name}")
+                error_count += 1
+
+    if error_count:
+        log.error(f"Some errors were encountered (n={error_count}) during processing.")
+        ctx.exit(1)
 
 
-def render(template_path, params):
-    jinja = make_env(loader = FileSystemLoader("."))
-    template = jinja.get_template(str(template_path))
+def renderer(template_path):
+    template_dir = dirname(template_path)
+
+    jinja = make_env(loader = FileSystemLoader(template_dir))
+    template = jinja.get_template(basename(template_path))
 
     # Allow the template to reference files relative to itself.  The empty
     # string includes the default locations, as described in `man tex`.
-    texinputs = [str(template_path.resolve().parent), ""]
+    texinputs = [template_dir, ""]
 
-    # Convenience globals useful for reports.
-    params.setdefault("current_date", str(date.today()))
+    def render_pdf(params, output_file):
+        # Convenience globals useful for reports.
+        params.setdefault("current_date", str(date.today()))
 
-    return xelatex.build_pdf(template.render(params), texinputs = texinputs)
+        return (
+            xelatex
+                .build_pdf(template.render(params), texinputs = texinputs)
+                .save_to(output_file))
+
+    return render_pdf
+
+
+def read_params(file):
+    return (
+        pandas
+            .read_csv(file, sep = None, dtype = "string", engine = "python")
+            .to_dict("records"))
 
 
 if __name__ == "__main__":
-    exit(main(argv[1:]) or 0)
+    __main__()
