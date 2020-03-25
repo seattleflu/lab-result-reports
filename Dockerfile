@@ -23,4 +23,6 @@ RUN pipenv install --system
 
 COPY . ./
 
+ENV PATH /src:$PATH
+
 CMD ["/bin/bash"]
