@@ -34,6 +34,7 @@ will produce two files:
 
 """
 import click
+import fsspec
 import logging
 import os
 import pandas
@@ -124,14 +125,16 @@ def __main__(ctx, *, template_path, params_file, output_path, filter_query, work
 
 
 def render(template_path, output_path, param_row):
-    with open(output_path.format(**param_row), "wb") as output_file:
+    output_name = output_path.format(**param_row)
+
+    with fsspec.open(output_name, "wb") as output_file:
         try:
-            log.info(f"Generating {output_file.name}")
+            log.info(f"Generating {output_name}")
             pdf_renderer(template_path)(param_row, output_file)
-            return output_file.name, True
+            return output_name, True
         except:
-            log.exception(f"Error generating {output_file.name}")
-            return output_file.name, False
+            log.exception(f"Error generating {output_name}")
+            return output_name, False
 
 
 def pdf_renderer(template_path):

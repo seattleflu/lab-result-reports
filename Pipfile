@@ -10,6 +10,8 @@ latex = "*"
 Jinja2 = "*"
 click = "*"
 pandas = "*"
+fsspec = "*"
+s3fs = "*"
 
 [requires]
 python_version = "3.7"
