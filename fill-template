@@ -163,8 +163,14 @@ def pdf_renderer(template_path):
 def read_params(file, filter_query):
     params = pandas.read_csv(file, sep = None, dtype = "string", engine = "python")
 
+    row_count = len(params)
+    log.info(f"Loaded {row_count:,} parameter rows")
+
     if filter_query:
         params.query(filter_query, inplace = True)
+
+        filtered_row_count = row_count - len(params)
+        log.info(f"Filtered out {filtered_row_count:,} parameter rows where {filter_query}")
 
     return params.to_dict("records")
 
