@@ -49,7 +49,7 @@ from sys import stdin, stderr
 
 
 logging.basicConfig(
-    level = logging.DEBUG,
+    level = logging.ERROR,
     format = "[%(asctime)s] %(levelname)-8s %(message)s",
     datefmt = "%Y-%m-%d %H:%M:%S%z",
     stream = stderr)
@@ -57,6 +57,7 @@ logging.basicConfig(
 logging.captureWarnings(True)
 
 log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
 
 
 # XeLaTeX has the best Unicode support of the various LaTeX engines, which is
