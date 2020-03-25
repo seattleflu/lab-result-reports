@@ -24,7 +24,7 @@ To build the image:
 
 To use it to run `fill-template`, for example:
 
-    docker run --rm lab-result-reports ./fill-template scan/report-en.tex > report.pdf
+    docker run --rm lab-result-reports ./fill-template …
 
 Note that the image is entirely self-contained and includes a copy of this
 repository; the `./fill-template` and `scan/report-en.tex` above refer to those
@@ -34,6 +34,6 @@ If you're using the image during development of the templates or code, make
 sure to run `make docker` after every change to update the image.  You can also
 overlay your local, active source dir into the container at `/src`:
 
-    docker run --rm -v $PWD:/src lab-result-reports ./fill-template scan/report-en.tex > report.pdf
+    docker run --rm -v $PWD:/src lab-result-reports ./fill-template …
 
 The image is not yet pushed to Docker Hub.
