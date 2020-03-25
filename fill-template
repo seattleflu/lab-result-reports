@@ -75,13 +75,12 @@ assert xelatex.is_available(), "xelatex is not available"
     type = click.Path(exists = True, dir_okay = False, resolve_path = True),
     required = True)
 
-@click.option("--params", "params_file",
+@click.option("--params", "params_path",
     metavar = "<results.csv>",
     help = "Path to a table (CSV or TSV) of template parameter values; "
            "each row produces one output file. "
            "Default is stdin.",
-    type = click.File("r"),
-    default = stdin)
+    default = "-")
 
 @click.option("--output", "output_path",
     metavar = "<path.pdf>",
@@ -103,8 +102,12 @@ assert xelatex.is_available(), "xelatex is not available"
 
 @click.pass_context
 
-def __main__(ctx, *, template_path, params_file, output_path, filter_query, worker_count):
-    param_table = read_params(params_file, filter_query)
+def __main__(ctx, *, template_path, params_path, output_path, filter_query, worker_count):
+    if params_path == "-":
+        params_path = "/dev/stdin"
+
+    with fsspec.open(params_path) as file:
+        param_table = read_params(file, filter_query)
 
     with Pool(worker_count) as workers:
         log.debug(f"Started pool of n={worker_count:,} workers")
