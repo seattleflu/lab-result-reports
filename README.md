@@ -42,3 +42,6 @@ This ensures the local image is up-to-date and your local git repository is
 clean before pushing the image and tagging the current commit (`HEAD`) in git
 with `build-N`.  _N_ is _M_ + 1, where _M_ is the number of the previous git
 build tag.  The Docker images are tagged both `latest` and `build-N`.
+
+To see an example of the image and `fill-template` in use, see
+<https://github.com/seattleflu/backoffice/tree/master/bin/scan-return-of-results/generate-pdfs>.
