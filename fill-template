@@ -106,11 +106,11 @@ def __main__(ctx, *, template_path, params_path, output_path, filter_query, work
     if params_path == "-":
         params_path = "/dev/stdin"
 
-    with fsspec.open(params_path) as file:
-        param_table = read_params(file, filter_query)
-
     with Pool(worker_count) as workers:
         log.debug(f"Started pool of n={worker_count:,} workers")
+
+        with fsspec.open(params_path) as file:
+            param_table = read_params(file, filter_query)
 
         results = workers.starmap(
             render, zip(
