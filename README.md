@@ -13,12 +13,10 @@ You can install the Python dependencies with Pipenv:
 
     pipenv sync
 
-Since TeX Live has a somewhat onerous installation process, a Docker image may
-be built containing all the dependencies required to run the report generation.
+Since TeX Live has a somewhat onerous installation process, a Docker image
+exists containing all the dependencies required to run the report generation.
 
-To build the image:
-
-    make
+    docker image pull seattleflu/lab-result-reports
 
 To use it to run `fill-template`, for example:
 
@@ -28,11 +26,16 @@ Note that the image is entirely self-contained and includes a copy of this
 repository; the `fill-template` and `scan/report-en.tex` above refer to those
 "baked into" image.
 
-If you're using the image during development of the templates or code, make
-sure to run `make` after every change to update the image.  You can also
-overlay your local, active source dir into the container at `/src`:
+If you're using the image during development of the templates or code, be sure
+to rebuild the image locally (see below) after every change you make.
+Alternatively, you can overlay your local, active source dir into the container
+at `/src`:
 
     docker run --rm -v $PWD:/src seattleflu/lab-result-reports fill-template …
+
+To build a new image locally:
+
+    make
 
 To push a new image build to Docker Hub:
 
