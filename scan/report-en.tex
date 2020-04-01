@@ -69,7 +69,12 @@
 \item [Participant Date of Birth] \textbf{\VAR{birth_date|e}}
 \item [Specimen Identifier] \textbf{\VAR{qrcode|e}}
 \item [Date Sample Submitted] \textbf{\VAR{collect_ts|e}}
-\item [Date Results Provided] \textbf{\VAR{result_ts|e}}
+\item [Date Results Provided]
+  %- if status_code == "never-tested"
+  \textbf{Never tested}
+  %- else
+  \textbf{\VAR{result_ts|e}}
+  %- endif
 \item [Specimen Type] Midnasal, self-collected
 \end{description}
 
