@@ -17,6 +17,7 @@
 \usepackage{multirow}
 \usepackage{pbox}
 \usepackage{enumitem}
+\usepackage{xeCJK}
 
 % fonts
 \usepackage{fontspec}
@@ -59,177 +60,146 @@
 
 \begin{center}
 \Large
-\textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
+\textbf{NWGC SARS-CoV-2 (COVID-19) PCR 定性化验报告}
 \end{center}
 
 \bigskip
 
-\begin{description}[font=\normalfont,align=left,labelwidth=12em]
-\item [Participant Name] \textbf{\VAR{pat_name|e}}
-\item [Participant Date of Birth] \textbf{\VAR{birth_date|e}}
-\item [Specimen Identifier] \textbf{\VAR{qrcode|e}}
-\item [Date Sample Submitted] \textbf{\VAR{collect_ts|e}}
-\item [Date Results Provided]
+\begin{description}[font=\normalfont,align=left,labelwidth=8em]
+\item [参与者姓名] \textbf{\VAR{pat_name|e}}
+\item [出生日期] \textbf{\VAR{birth_date|e}}
+\item [样本标识符] \textbf{\VAR{qrcode|e}}
+\item [样本提交日期] \textbf{\VAR{collect_ts|e}}
+\item [结果提供日期]
   %- if status_code == "never-tested"
   \textbf{Never tested}
   %- else
   \textbf{\VAR{result_ts|e}}
   %- endif
-\item [Specimen Type] Midnasal, self-collected
+\item [样本类型] 鼻腔中部，自我采样
 \end{description}
 
 \PageLine
 
-Result of SARS-CoV-2 (COVID-19) Qual PCR
+SARS-CoV-2 (COVID-19) PCR（Polymerase Chain Reaction，聚合酶链反应）定性结果
 
 %- if status_code == "negative"
-\textbf{Not detected}\\
+\textbf{未检测到}\\
 %- elif status_code == "positive"
-\textbf{SARS-CoV-2 Detected (positive)}\\
+\textbf{检测到 SARS-CoV-2（阳性）}\\
 %- elif status_code == "inconclusive"
-\textbf{Inconclusive}\\
+\textbf{无定论}\\
 %- elif status_code == "never-tested"
-\textbf{Unable to be tested}\\
+\textbf{无法检测}\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
 
 \PageLine
 
-Please Note:
+请注意：
 
 \begin{itemize}
 \item
 
-  \textbf{The type of sample and testing used in this project is
-  conducted as part of a public health surveillance program in
-  partnership with King County and other agencies.} The testing you have
-  received is not a substitute for receiving personal medical care by a
-  healthcare provider.
+  \textbf{此项目中所使用的样本和检测的类型，是金县及其他机构合作开展的公共卫生监测计划中的一部分。}
+  您所接受的检测，并不能替代由医疗保健提供者提供的个人医疗护理。
 
 \item
 
-  \textbf{Specimen Chain of Custody:} The specimen tested was
-  self-collected, self-labeled, and submitted to SCAN by mail or
-  delivery service. It was not collected, labeled, and transported by a
-  licensed healthcare professional. This may impact test results and
-  false negative results cannot be excluded. Follow-up clinical testing
-  may be warranted.
+  \textbf{样本监管链：} 所检测的样本采用自我采集、自我贴标签的形式，并通过邮寄或配送服务提交给
+  SCAN。其并非由持照医疗保健专业人员采集、贴标签和运输。这可能会影响检测结果，
+  且无法排除假阴性的结果。后续的临床检测将更具保障。
 
 \item
 
-  \textbf{Specimen collection device:} The mid-turbinate swab is not an
-  FDA/CDC Emergency Use Authorization (EUA) approved specimen type.
-  Therefore, not detected/negative results may not exclude SARS-CoV-2
-  infection.
+  \textbf{样本采集装置：} 中鼻甲骨拭子并不是FDA/CDC Emergency Use Authorization (EUA)
+  （食品药品监督管理局/疾病控制和预防中心紧急使用授权）批准的样本类型。因此，
+  未检测到/阴性结果可能无法排除 SARS-CoV-2 感染。
 
 \item
 
-  \textbf{``Positive'' results may be verified by the Washington State
-  Department of Health}. This result should be discussed with your
-  healthcare provider if you have questions.
+  \textbf{Washington State Department of Health（华盛顿州卫生部）可能会对``阳性''结果进行验证。}
+  如果您有任何疑问，应当与您的医疗保健提供者讨论此结果。
 
 \item{
-  \textbf{If your test says ``Not detected'' it means that SARS-CoV-2
-    was not detected in our laboratory.}
+  \textbf{如果您的检测结果显示``未检测到''，这意味着未在我们的化验中检测到 SARS-CoV-2。}
 
-  No test is perfect and there is a small chance that you do have the
-  SARS-CoV-2 virus that causes COVID-19 with a negative test. This test
-  does not use the standard way of collecting specimens by a health care
-  provider, and the sample was sent by mail or delivery service, not collected and transported
-  in a healthcare setting. Regardless of your test result, it's best to
-  stay home when you feel sick, and avoid contact with other people. If
-  you have other health problems or are very sick or are worried about
-  your illness, you should contact your healthcare provider. If your
-  symptoms persist, you should discuss getting another test for COVID-19
-  with your health care provider.
+  任何检测都不完美，您仍有较小的概率实际携带有 SARS-CoV-2 病毒但 COVID-19 检测结果为阴性。
+  此检测并不采用由医疗保健提供者采集样本的标准方法，且样本是通过邮寄或配送服务提交的，
+  而不是在医疗保健设施中采集和运送的。 无论您的检测结果如何，当您感觉身体不适时，
+  最好的做法是待在家中并避免与其他人接触。如果您有其他健康问题，或是病情较重，
+  或是对您的疾病感到担忧，您应当联系您的医疗保健提供者。 如果您的症状持续，
+  您应当与您的医疗保健提供者讨论接受另一项 COVID-19 检测。
 }
 
 \item
 
-  \textbf{If your test says ``Inconclusive''} it means that our
-  laboratory test results for the SARS-CoV-2 target are not certain.
+  \textbf{如果您的检测结果显示``无定论''，} 这意味着我们实验室的 SARS-CoV-2
+  靶向检测结果不确定。
 
-  No test is perfect and there is a chance that an inconclusive result
-  could mean that you do have the SARS-CoV-2 virus that causes COVID-19.
-  This test does not use the standard way of collecting specimens by a
-  health care provider, and the sample was sent by mail or delivery service, not collected and
-  transported in a healthcare setting. Regardless of your test result,
-  it's best to stay home when you feel sick, and avoid contact with other
-  people. If you have other health problems or are very sick or are
-  worried about your illness, you should contact your healthcare provider.
-  If your symptoms persist, you should discuss getting another test for
-  COVID-19 with your health care provider.
+  任何检测都不完美，无定论的结果仍有概率意味着您实际携带有导致 COVID-19 的 SARS-CoV-2 病毒。
+  此检测并不采用由医疗保健提供者采集样本的标准方法，且样本是通过邮寄或配送服务提交的，
+  而不是在医疗保健设施中采集和运送的。 无论您的检测结果如何，当您感觉身体不适时，
+  最好的做法是待在家中并避免与其他人接触。如果您有其他健康问题，或是病情较重，
+  或是对您的疾病感到担忧，您应当联系您的医疗保健提供者。 如果您的症状持续，
+  您应当与您的医疗保健提供者讨论接受另一项 COVID-19 检测。
 
 \item
 
-  \textbf{If your test says ``Unable to be tested''} it means that there
-  was either not enough of the specimen or there was an error in the
-  test process.
+  \textbf{如果您的检测结果显示``无法检测''，} 这意味着样本不足或是检测流程中出现了错误。
 
-  Since testing was unable to be performed, there is a chance that you do
-  have the SARS-CoV-2 virus that causes COVID-19. This test does not use
-  the standard way of collecting specimens by a health care provider, and
-  the sample was sent by mail or delivery service, not collected and transported in a
-  healthcare setting. Regardless of your test result, it's best to stay
-  home when you feel sick, and avoid contact with other people. If you
-  have other health problems or are very sick or are worried about your
-  illness, you should contact your healthcare provider. If your symptoms
-  persist, you should discuss getting another test for COVID-19 with your
-  health care provider.
+  由于检测无法进行，您仍有概率实际携带有导致 COVID-19 的 SARS-CoV-2 病毒。
+  此检测并不采用由医疗保健提供者采集样本的标准方法，且样本是通过邮寄或配送服务提交的，
+  而不是在医疗保健设施中采集和运送的。 无论您的检测结果如何，当您感觉身体不适时，
+  最好的做法是待在家中并避免与其他人接触。如果您有其他健康问题，或是病情较重，
+  或是对您的疾病感到担忧，您应当联系您的医疗保健提供者。 如果您的症状持续，
+  您应当与您的医疗保健提供者讨论接受另一项 COVID-19 检测。
 
 \item
 
-  \textbf{Positive tests (shown as ``DETECTED'' or ``Virus Detected'')
-  will be reported to the appropriate state and county Health Department
-  by the testing facility.} You DO NOT need to report these results
-  yourself. Public Health may follow up with you if your test is
-  positive for novel coronavirus to ask you about your illness and
-  people you may have come in contact with.
+  \textbf{阳性检测结果（显示为``检测到''或``检测到病毒''）将由检测结构报告给相关州和县卫生部。}
+  您无需自行上报这些结果。 如果您的检测结果显示新型冠状病毒呈阳性，公共卫生部门将跟进您的情况，
+  向您询问您的相关病况以及您可能接触的人。
 
 \item
 
-  \textbf{You can print out or email these test results to your health
-  care provider.}
+  \textbf{您可以将这些检测结果打印出来，或是通过电子邮件发给您的医疗保健提供者。}
 
 \end{itemize}
 
 \bigskip
-\textbf{Methodology of SARS-CoV-2 (COVID-19) Qual PCR:}
+\textbf{SARS-CoV-2 (COVID-19) PCR 定性化验方法：}
 
-This assay is designed to detect SARS-CoV-2 using reverse-transcription
-PCR.  This assay relies on amplification of the viral genome segments
-Orf1B and S with an internal human RNaseP amplification control.  This
-test was developed and its performance characteristics determined by the
-University of Washington's Northwest Genomics Center.  This laboratory
-developed test is validated and has been submitted to the US Food and
-Drug Administration for Emergency Use Authorization. The FDA's
-independent review of the test validation is pending. This laboratory is
-certified under the Clinical Laboratory Improvement Amendments (CLIA) as
-qualified to perform high complexity clinical laboratory testing.
+此化验旨在使用逆转录 PCR 来检测 SARS-CoV-2。此化验依靠的是扩增病毒基因组片段 Orf1B 和 S，
+并采用内部人体 RNaseP 扩增对照。 University of Washington’s Northwest Genomics
+Center（华盛顿大学西北基因组学中心）开发了这项检测并确定了其运行特性。
+这项由实验室开发的检测已通过验证并已提交至 US Food and Drug Administration
+（美国食品及药物管理局）以获取紧急使用授权。FDA 对于检测授权的独立审核为待处理状态。
+此实验室经Clinical Laboratory Improvement Amendments（CLIA，临床实验室改进修正案）
+认证为符合资格可进行高复杂度的临床实验室检测。
 
-For further provider information, please see these links provided by the
-Washington State Department of Health:
+如需获取更多服务提供者信息，请参见 Washington State Department of Health 提供的以下链接：
 
 \begin{itemize}
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{Patients with confirmed or suspected COVID-19}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{COVID-19
+  确诊或疑似患者}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{Patients
-  who were exposed to a confirmed COVID-19 case}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{曾接触
+  COVID-19 确诊病例的患者}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{Unexposed
-  patients with COVID-19 symptoms}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{有
+  COVID-19 症状的无接触患者}
 
 \end{itemize}
 
-Additional resources are available at the Washington State Department of Health
-and CDC websites:
+更多资源可在 Washington State Department of Health 和 CDC 网站上获取：
 
 \begin{itemize}
 \item
