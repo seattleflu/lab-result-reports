@@ -18,18 +18,6 @@
 \usepackage{pbox}
 \usepackage{enumitem}
 
-% fonts
-\usepackage{fontspec}
-\setmainfont{DroidSans}[
-  Extension   = .ttf,
-  UprightFont = *,
-  BoldFont    = *-Bold ]
-\setmonofont{DroidSansMono}[
-  Extension   = .ttf,
-  UprightFont = * ]
-
-\hypersetup{colorlinks,urlcolor=blue}
-\urlstyle{same}
 
 % page layout
 \usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
@@ -40,6 +28,26 @@
 \setlength{\headheight}{1.1in}
 \pagestyle{fancy}
 \fancyhf{}
+
+
+% fonts
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{urdu}
+\newfontfamily\urdufont[Script=Arabic,Language=Urdu,Scale=1.5]{Amiri}
+
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
 
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
@@ -57,9 +65,14 @@
 
 \begin{document}
 
+
 \begin{center}
 \Large
+<<<<<<< HEAD
 \textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
+=======
+\textbf{\texturdu{NWGC SARS-CoV-2 (COVID-19) Qual پولیمریز چین ری ایکشن (PCR) لیب رپورٹ}}
+>>>>>>> 6b46b0a... WIP: Urdu
 \end{center}
 
 \bigskip
@@ -96,7 +109,7 @@ Result of SARS-CoV-2 (COVID-19) Qual PCR
 
 \PageLine
 
-Please Note:
+Text before. \texturdu{ وہ کتاب ہے۔ میں جا رہا ہوں} Text after.
 
 \begin{itemize}
 \item

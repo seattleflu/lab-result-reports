@@ -10,6 +10,7 @@ RUN apt-get update && \
         texlive-xetex \
         texlive-fonts-recommended \
         texlive-lang-korean \
+        texlive-lang-arabic \
         wget \
         xzdec
 
