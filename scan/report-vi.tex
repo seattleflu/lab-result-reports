@@ -18,8 +18,19 @@
 \usepackage{pbox}
 \usepackage{enumitem}
 
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
 % fonts
 \usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{vietnamese}
+\setotherlanguage{english}
+
 \setmainfont{DroidSans}[
   Extension   = .ttf,
   UprightFont = *,
@@ -30,12 +41,6 @@
 
 \hypersetup{colorlinks,urlcolor=blue}
 \urlstyle{same}
-
-% page layout
-\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
-
-% Useful for seeing the layout as you tweak it.
-%\usepackage{showframe}
 
 \setlength{\headheight}{1.1in}
 \pagestyle{fancy}
@@ -59,177 +64,188 @@
 
 \begin{center}
 \Large
-\textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
+\textbf{Báo Cáo Xét Nghiệm SARS-CoV-2 (COVID-19) Bằng Phản Ứng Chuỗi Polymerase
+(Polymerase Chain Reaction, PCR) Định Tính Của NWGC}
 \end{center}
 
 \bigskip
 
-\begin{description}[font=\normalfont,align=left,labelwidth=12em]
-\item [Participant Name] \textbf{\VAR{pat_name|e}}
-\item [Participant Date of Birth] \textbf{\VAR{birth_date|e}}
-\item [Specimen Identifier] \textbf{\VAR{qrcode|e}}
-\item [Date Sample Submitted] \textbf{\VAR{collect_ts|e}}
-\item [Date Results Provided]
+\begin{description}[font=\normalfont,align=left,labelwidth=14em]
+\item [Tên Người Tham Gia] \textbf{\VAR{pat_name|e}}
+\item [Ngày sinh] \textbf{\VAR{birth_date|e}}
+\item [Mã định danh mẫu bệnh phẩm] \textbf{\VAR{qrcode|e}}
+\item [Ngày Gửi Mẫu] \textbf{\VAR{collect_ts|e}}
+\item [Ngày cung cấp kết quả]
   %- if status_code == "never-tested"
   \textbf{Never tested}
   %- else
   \textbf{\VAR{result_ts|e}}
   %- endif
-\item [Specimen Type] Midnasal, self-collected
+\item [Loại Mẫu Bệnh Phẩm] Cuốn mũi giữa, tự lấy mẫu
 \end{description}
 
 \PageLine
 
-Result of SARS-CoV-2 (COVID-19) Qual PCR
+Kết Quả Xét Nghiệm SARS-CoV-2 (COVID-19) Bằng PCR Định Tính
 
 %- if status_code == "negative"
-\textbf{Not detected}\\
+\textbf{Không phát hiện}\\
 %- elif status_code == "positive"
-\textbf{SARS-CoV-2 Detected (positive)}\\
+\textbf{Phát Hiện SARS-CoV-2  (dương tính)}\\
 %- elif status_code == "inconclusive"
-\textbf{Inconclusive}\\
+\textbf{Chưa có kết luận}\\
 %- elif status_code == "never-tested"
-\textbf{Unable to be tested}\\
+\textbf{Không xét nghiệm được}\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
 
 \PageLine
 
-Please Note:
+Xin Lưu Ý:
 
 \begin{itemize}
 \item
 
-  \textbf{The type of sample and testing used in this project is
-  conducted as part of a public health surveillance program in
-  partnership with King County and other agencies.} The testing you have
-  received is not a substitute for receiving personal medical care by a
-  healthcare provider.
+  \textbf{Loại mẫu và xét nghiệm sử dụng trong dự án này được thực hiện như là
+  một phần của chương trình giám sát y tế công cộng, với sự hợp tác cùng Quận
+  King và các cơ quan khác.} Xét nghiệm mà quý vị đã nhận được không thể thay
+  thế cho việc nhận chăm sóc y tế cá nhân từ nhà cung cấp dịch vụ chăm sóc sức
+  khỏe.
 
 \item
 
-  \textbf{Specimen Chain of Custody:} The specimen tested was
-  self-collected, self-labeled, and submitted to SCAN by mail or
-  delivery service. It was not collected, labeled, and transported by a
-  licensed healthcare professional. This may impact test results and
-  false negative results cannot be excluded. Follow-up clinical testing
-  may be warranted.
+  \textbf{Chuỗi Kiểm Soát Mẫu Bệnh Phẩm:} mẫu bệnh phẩm xét nghiệm được tự lấy,
+  tự dán nhãn và gửi đến Mạng Lưới Đánh Giá Về Vi-rút Corona của Seattle
+  (Seattle Coronavirus Assessment Network - SCAN) qua đường bưu điện hoặc dịch
+  vụ giao hàng. Mẫu bệnh phẩm không phải do chuyên gia y tế được cấp phép tiến
+  hành thu thập, dán nhãn và vận chuyển. Điều này có thể ảnh hưởng đến kết quả
+  xét nghiệm và không loại trừ khả năng là kết quả âm tính giả. Có thể cho phép
+  xét nghiệm lâm sàng theo dõi tiếp.
 
 \item
 
-  \textbf{Specimen collection device:} The mid-turbinate swab is not an
-  FDA/CDC Emergency Use Authorization (EUA) approved specimen type.
-  Therefore, not detected/negative results may not exclude SARS-CoV-2
-  infection.
+  \textbf{Thiết bị lấy mẫu bệnh phẩm:} que phết dịch tiết ở cuốn mũi giữa không
+  phải là loại mẫu bệnh phẩm được phê duyệt theo Giấy Phép Sử Dụng Trong Trường
+  Hợp Khẩn Cấp (Emergency Use Authorization - EUA) của Cơ Quan Quản Lý Dược Phẩm
+  (Food and Drug Administration - FDA)/Trung Tâm Kiểm Soát và Phòng Ngừa Dịch
+  Bệnh (Centers for Disease Control and Prevention - CDC). Do đó, kết quả không
+  phát hiện/âm tính có thể sẽ không loại trừ khả năng nhiễm SARS-CoV-2.
 
 \item
 
-  \textbf{``Positive'' results may be verified by the Washington State
-  Department of Health}. This result should be discussed with your
-  healthcare provider if you have questions.
+  \textbf{Các kết quả ``dương tính'' có thể được Washington State Department of
+  Health xác thực}. Quý vị nên thảo luận với nhà cung cấp dịch vụ chăm sóc sức
+  khỏe của quý vị về kết quả này nếu quý vị có thắc mắc.
 
 \item{
-  \textbf{If your test says ``Not detected'' it means that SARS-CoV-2
-    was not detected in our laboratory.}
+  \textbf{Nếu xét nghiệm của quý vị cho ra kết quả là ``Không phát hiện'' thì
+  điều đó có nghĩa là không phát hiện SARS-CoV-2 trong phòng xét nghiệm của
+  chúng tôi.}
 
-  No test is perfect and there is a small chance that you do have the
-  SARS-CoV-2 virus that causes COVID-19 with a negative test. This test
-  does not use the standard way of collecting specimens by a health care
-  provider, and the sample was sent by mail or delivery service, not collected and transported
-  in a healthcare setting. Regardless of your test result, it's best to
-  stay home when you feel sick, and avoid contact with other people. If
-  you have other health problems or are very sick or are worried about
-  your illness, you should contact your healthcare provider. If your
-  symptoms persist, you should discuss getting another test for COVID-19
-  with your health care provider.
+  Không có xét nghiệm nào là chính xác tuyệt đối và vẫn có khả năng nhỏ là quý
+  vị bị nhiễm vi-rút SARS-CoV-2 gây ra COVID-19 dù kết quả âm tính. Xét nghiệm
+  này không sử dụng cách lấy mẫu bệnh phẩm thông thường từ nhà cung cấp dịch vụ
+  chăm sóc sức khỏe. Mẫu bệnh phẩm này được gửi qua đường bưu điện hoặc dịch vụ
+  giao hàng, chứ không được lấy và vận chuyển trong môi trường y tế. Bất kể kết
+  quả xét nghiệm của quý vị ra sao thì tốt nhất quý vị nên ở nhà khi bị bệnh và
+  tránh tiếp xúc với người khác. Nếu quý vị gặp các vấn đề sức khỏe khác hoặc bị
+  bệnh nặng hay lo lắng về bệnh tình của mình thì quý vị nên liên hệ với nhà
+  cung cấp dịch vụ chăm sóc sức khỏe của quý vị. Nếu các triệu chứng vẫn kéo dài
+  thì quý vị nên trao đổi với nhà cung cấp dịch vụ chăm sóc sức khỏe về việc
+  thực hiện xét nghiệm COVID-19 khác.
 }
 
 \item
 
-  \textbf{If your test says ``Inconclusive''} it means that our
-  laboratory test results for the SARS-CoV-2 target are not certain.
+  \textbf{Nếu xét nghiệm của quý vị cho ra kết quả là ``Chưa có kết luận''} thì
+  điều đó có nghĩa là kết quả xét nghiệm SARS-CoV-2 trong phòng xét nghiệm của
+  chúng tôi không chắc chắn.
 
-  No test is perfect and there is a chance that an inconclusive result
-  could mean that you do have the SARS-CoV-2 virus that causes COVID-19.
-  This test does not use the standard way of collecting specimens by a
-  health care provider, and the sample was sent by mail or delivery service, not collected and
-  transported in a healthcare setting. Regardless of your test result,
-  it's best to stay home when you feel sick, and avoid contact with other
-  people. If you have other health problems or are very sick or are
-  worried about your illness, you should contact your healthcare provider.
-  If your symptoms persist, you should discuss getting another test for
-  COVID-19 with your health care provider.
-
-\item
-
-  \textbf{If your test says ``Unable to be tested''} it means that there
-  was either not enough of the specimen or there was an error in the
-  test process.
-
-  Since testing was unable to be performed, there is a chance that you do
-  have the SARS-CoV-2 virus that causes COVID-19. This test does not use
-  the standard way of collecting specimens by a health care provider, and
-  the sample was sent by mail or delivery service, not collected and transported in a
-  healthcare setting. Regardless of your test result, it's best to stay
-  home when you feel sick, and avoid contact with other people. If you
-  have other health problems or are very sick or are worried about your
-  illness, you should contact your healthcare provider. If your symptoms
-  persist, you should discuss getting another test for COVID-19 with your
-  health care provider.
+  Không có xét nghiệm nào là chính xác tuyệt đối và vẫn có khả năng rằng kết quả
+  chưa có kết luận có thể đồng nghĩa với việc quý vị bị nhiễm vi-rút SARS-CoV-2
+  gây ra COVID-19. Xét nghiệm này không sử dụng cách lấy mẫu bệnh phẩm chuẩn từ
+  nhà cung cấp dịch vụ chăm sóc sức khỏe. Mẫu bệnh phẩm này được gửi qua đường
+  bưu điện hoặc dịch vụ giao hàng, chứ không được lấy và vận chuyển trong môi
+  trường chăm sóc sức khỏe. Bất kể kết quả xét nghiệm của quý vị ra sao thì tốt
+  nhất quý vị nên ở nhà khi bị bệnh và tránh tiếp xúc với người khác. Nếu quý vị
+  gặp các vấn đề sức khỏe khác hoặc bị bệnh nặng hay lo lắng về bệnh tình của
+  mình thì quý vị nên liên hệ với nhà cung cấp dịch vụ chăm sóc sức khỏe của quý
+  vị. Nếu các triệu chứng vẫn kéo dài thì quý vị nên trao đổi với nhà cung cấp
+  dịch vụ chăm sóc sức khỏe về việc thực hiện xét nghiệm COVID-19 khác.
 
 \item
 
-  \textbf{Positive tests (shown as ``DETECTED'' or ``Virus Detected'')
-  will be reported to the appropriate state and county Health Department
-  by the testing facility.} You DO NOT need to report these results
-  yourself. Public Health may follow up with you if your test is
-  positive for novel coronavirus to ask you about your illness and
-  people you may have come in contact with.
+  \textbf{Nếu xét nghiệm của quý vị cho ra kết quả là ``Không xét nghiệm được''}
+  thì điều đó có nghĩa hoặc không đủ mẫu bệnh phẩm, hoặc đã xảy ra sai sót trong
+  quá trình xét nghiệm.
+
+  Do không thể thực hiện xét nghiệm nên có khả năng là quý vị bị nhiễm vi-rút
+  SARS-CoV-2 gây ra COVID-19. Xét nghiệm này không sử dụng cách lấy mẫu bệnh
+  phẩm thông thường từ nhà cung cấp dịch vụ chăm sóc sức khỏe. Mẫu bệnh phẩm này
+  được gửi qua đường bưu điện hoặc dịch vụ giao hàng, chứ không được lấy và vận
+  chuyển trong môi trường y tế. Bất kể kết quả xét nghiệm của quý vị ra sao thì
+  tốt nhất quý vị nên ở nhà khi bị bệnh và tránh tiếp xúc với người khác. Nếu
+  quý vị gặp các vấn đề sức khỏe khác hoặc bị bệnh nặng hay lo lắng về bệnh tình
+  của mình thì quý vị nên liên hệ với nhà cung cấp dịch vụ chăm sóc sức khỏe của
+  quý vị. Nếu các triệu chứng vẫn kéo dài thì quý vị nên trao đổi với nhà cung
+  cấp dịch vụ chăm sóc sức khỏe về việc thực hiện xét nghiệm COVID-19 khác.
 
 \item
 
-  \textbf{You can print out or email these test results to your health
-  care provider.}
+  \textbf{Các xét nghiệm dương tính (cho thấy kết quả là ``PHÁT HIỆN'' hoặc
+  ``Phát Hiện Vi-rút'') sẽ được cơ sở xét nghiệm báo cáo lên Sở Y Tế cấp tiểu
+  bang và quận có thẩm quyền.} Quý vị KHÔNG cần phải tự báo cáo những kết quả
+  này. Sở Y Tế Công Cộng có thể liên hệ với quý vị để thu thập thêm thông tin
+  về bệnh tình và những người có thể đã tiếp xúc với quý vị nếu kết quả xét
+  nghiệm chủng vi-rút corona mới là dương tính.
+
+\item
+
+  \textbf{Quý vị có thể in ra hoặc gửi kết quả xét nghiệm này cho nhà cung cấp
+  dịch vụ chăm sóc sức khỏe của mình qua email.}
 
 \end{itemize}
 
 \bigskip
-\textbf{Methodology of SARS-CoV-2 (COVID-19) Qual PCR:}
+\textbf{Phương Pháp Xét Nghiệm SARS-CoV-2 (COVID-19) Bằng PCR Định Tính:}
 
-This assay is designed to detect SARS-CoV-2 using reverse-transcription
-PCR.  This assay relies on amplification of the viral genome segments
-Orf1B and S with an internal human RNaseP amplification control.  This
-test was developed and its performance characteristics determined by the
-University of Washington's Northwest Genomics Center.  This laboratory
-developed test is validated and has been submitted to the US Food and
-Drug Administration for Emergency Use Authorization. The FDA's
-independent review of the test validation is pending. This laboratory is
-certified under the Clinical Laboratory Improvement Amendments (CLIA) as
-qualified to perform high complexity clinical laboratory testing.
+Xét nghiệm này được tạo ra nhằm phát hiện SARS-CoV-2 bằng phương pháp PCR phiên
+mã ngược. Xét nghiệm này phụ thuộc vào quá trình khuếch đại các đoạn gen vi-rút
+Orf1B và S, trong đó bao gồm việc kiểm soát khuếch đại gen chứng nội RNaseP của
+con người. Xét nghiệm này đã được phát triển và Northwest Genomics Center trực
+thuộc University of Washington đã xác định được các đặc trưng về tính hiệu quả
+của xét nghiệm này. Xét nghiệm này do phòng thí nghiệm phát triển đã được xác
+nhận tính hợp lệ và gửi đến Food and Drug Administration của Hoa Kỳ để xin Giấy
+Phép Sử Dụng Trong Trường Hợp Khẩn Cấp. Đánh giá độc lập của FDA về việc xác
+nhận tính hợp lệ của xét nghiệm vẫn đang chờ phê duyệt. Phòng thí nghiệm này
+được chứng nhận là đủ tiêu chuẩn thực hiện xét nghiệm lâm sàng có độ phức tạp
+cao trong phòng thí nghiệm theo Các Quy Định Sửa Đổi Cải Tiến Phòng Thí Nghiệm
+Lâm Sàng (Clinical Laboratory Improvement Amendments - CLIA).
 
-For further provider information, please see these links provided by the
-Washington State Department of Health:
+Để biết thêm thông tin về nhà cung cấp, vui lòng xem các đường dẫn này do
+Washington State Department of Health cung cấp:
 
 \begin{itemize}
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{Patients with confirmed or suspected COVID-19}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{Bệnh
+  nhân được xác nhận nhiễm hoặc nghi nhiễm COVID-19}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{Patients
-  who were exposed to a confirmed COVID-19 case}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{Bệnh
+  nhân đã phơi nhiễm với ca được xác nhận nhiễm COVID-19}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{Unexposed
-  patients with COVID-19 symptoms}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{Bệnh
+  nhân không phơi nhiễm nhưng có các triệu chứng nhiễm COVID-19}
 
 \end{itemize}
 
-Additional resources are available at the Washington State Department of Health
-and CDC websites:
+Các nguồn thông tin khác hiện có sẵn trên trang web của Washington State
+Department of Health và CDC:
 
 \begin{itemize}
 \item
