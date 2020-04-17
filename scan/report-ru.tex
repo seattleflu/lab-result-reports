@@ -18,8 +18,24 @@
 \usepackage{pbox}
 \usepackage{enumitem}
 
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
 % fonts
 \usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\newfontfamily\cyrillicfont{DroidSans.ttf}
+
 \setmainfont{DroidSans}[
   Extension   = .ttf,
   UprightFont = *,
@@ -31,15 +47,6 @@
 \hypersetup{colorlinks,urlcolor=blue}
 \urlstyle{same}
 
-% page layout
-\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
-
-% Useful for seeing the layout as you tweak it.
-%\usepackage{showframe}
-
-\setlength{\headheight}{1.1in}
-\pagestyle{fancy}
-\fancyhf{}
 
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
@@ -59,7 +66,7 @@
 
 \begin{center}
 \Large
-\textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
+\textbf{NWGC SARS-CoV-2 (COVID-19) Привет мир}
 \end{center}
 
 \bigskip
