@@ -11,6 +11,7 @@ RUN apt-get update && \
         texlive-fonts-recommended \
         texlive-lang-korean \
         texlive-lang-arabic \
+        fonts-sil-abyssinica \
         wget \
         xzdec
 
