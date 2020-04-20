@@ -1,5 +1,5 @@
 # Newer Debian releases (e.g. "buster") include a version of tlmgr that doesn't
- # work well.  It doesn't matter that "slim" is from 2017, it works fine.
+# work well.  It doesn't matter that "stretch" is from 2017, it works fine.
 FROM python:3.7-slim-stretch
 
 # Execute subsequent RUN statements with bash for handy modern shell features.
