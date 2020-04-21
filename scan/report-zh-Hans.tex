@@ -1,0 +1,215 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+\usepackage{xeCJK}
+
+% fonts
+\usepackage{fontspec}
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{测试由以下实验室执行：}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\newcommand{\link}[2]{\href{#1}{#2}\footnote{#1}}
+
+\begin{document}
+
+\begin{center}
+\Large
+\textbf{NWGC SARS-CoV-2 (COVID-19) PCR 定性化验报告}
+\end{center}
+
+\bigskip
+
+\begin{description}[font=\normalfont,align=left,labelwidth=8em]
+\item [参与者姓名] \textbf{\VAR{pat_name|e}}
+\item [出生日期] \textbf{\VAR{birth_date|e}}
+\item [样本标识符] \textbf{\VAR{qrcode|e}}
+\item [样本提交日期] \textbf{\VAR{collect_ts|e}}
+\item [结果提供日期]
+  %- if status_code == "never-tested"
+  \textbf{Never tested}
+  %- else
+  \textbf{\VAR{result_ts|e}}
+  %- endif
+\item [样本类型] 鼻腔中部，自我采样
+\end{description}
+
+\PageLine
+
+SARS-CoV-2 (COVID-19) PCR（Polymerase Chain Reaction，聚合酶链反应）定性结果
+
+%- if status_code == "negative"
+\textbf{未检测到}\\
+%- elif status_code == "positive"
+\textbf{检测到 SARS-CoV-2（阳性）}\\
+%- elif status_code == "inconclusive"
+\textbf{无定论}\\
+%- elif status_code == "never-tested"
+\textbf{无法检测}\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+
+请注意：
+
+\begin{itemize}
+\item
+
+  \textbf{此项目中所使用的样本和检测的类型，是金县及其他机构合作开展的公共卫生监测计划中的一部分。}
+  您所接受的检测，并不能替代由医疗保健提供者提供的个人医疗护理。
+
+\item
+
+  \textbf{样本监管链：} 所检测的样本采用自我采集、自我贴标签的形式，并通过邮寄或配送服务提交给
+  SCAN。其并非由持照医疗保健专业人员采集、贴标签和运输。这可能会影响检测结果，
+  且无法排除假阴性的结果。后续的临床检测将更具保障。
+
+\item
+
+  \textbf{样本采集装置：} 中鼻甲骨拭子并不是FDA/CDC Emergency Use Authorization (EUA)
+  （食品药品监督管理局/疾病控制和预防中心紧急使用授权）批准的样本类型。因此，
+  未检测到/阴性结果可能无法排除 SARS-CoV-2 感染。
+
+\item
+
+  \textbf{Washington State Department of Health（华盛顿州卫生部）可能会对``阳性''结果进行验证。}
+  如果您有任何疑问，应当与您的医疗保健提供者讨论此结果。
+
+\item{
+  \textbf{如果您的检测结果显示``未检测到''，这意味着未在我们的化验中检测到 SARS-CoV-2。}
+
+  任何检测都不完美，您仍有较小的概率实际携带有 SARS-CoV-2 病毒但 COVID-19 检测结果为阴性。
+  此检测并不采用由医疗保健提供者采集样本的标准方法，且样本是通过邮寄或配送服务提交的，
+  而不是在医疗保健设施中采集和运送的。 无论您的检测结果如何，当您感觉身体不适时，
+  最好的做法是待在家中并避免与其他人接触。如果您有其他健康问题，或是病情较重，
+  或是对您的疾病感到担忧，您应当联系您的医疗保健提供者。 如果您的症状持续，
+  您应当与您的医疗保健提供者讨论接受另一项 COVID-19 检测。
+}
+
+\item
+
+  \textbf{如果您的检测结果显示``无定论''，} 这意味着我们实验室的 SARS-CoV-2
+  靶向检测结果不确定。
+
+  任何检测都不完美，无定论的结果仍有概率意味着您实际携带有导致 COVID-19 的 SARS-CoV-2 病毒。
+  此检测并不采用由医疗保健提供者采集样本的标准方法，且样本是通过邮寄或配送服务提交的，
+  而不是在医疗保健设施中采集和运送的。 无论您的检测结果如何，当您感觉身体不适时，
+  最好的做法是待在家中并避免与其他人接触。如果您有其他健康问题，或是病情较重，
+  或是对您的疾病感到担忧，您应当联系您的医疗保健提供者。 如果您的症状持续，
+  您应当与您的医疗保健提供者讨论接受另一项 COVID-19 检测。
+
+\item
+
+  \textbf{如果您的检测结果显示``无法检测''，} 这意味着样本不足或是检测流程中出现了错误。
+
+  由于检测无法进行，您仍有概率实际携带有导致 COVID-19 的 SARS-CoV-2 病毒。
+  此检测并不采用由医疗保健提供者采集样本的标准方法，且样本是通过邮寄或配送服务提交的，
+  而不是在医疗保健设施中采集和运送的。 无论您的检测结果如何，当您感觉身体不适时，
+  最好的做法是待在家中并避免与其他人接触。如果您有其他健康问题，或是病情较重，
+  或是对您的疾病感到担忧，您应当联系您的医疗保健提供者。 如果您的症状持续，
+  您应当与您的医疗保健提供者讨论接受另一项 COVID-19 检测。
+
+\item
+
+  \textbf{阳性检测结果（显示为``检测到''或``检测到病毒''）将由检测结构报告给相关州和县卫生部。}
+  您无需自行上报这些结果。 如果您的检测结果显示新型冠状病毒呈阳性，公共卫生部门将跟进您的情况，
+  向您询问您的相关病况以及您可能接触的人。
+
+\item
+
+  \textbf{您可以将这些检测结果打印出来，或是通过电子邮件发给您的医疗保健提供者。}
+
+\end{itemize}
+
+\bigskip
+\textbf{SARS-CoV-2 (COVID-19) PCR 定性化验方法：}
+
+此化验旨在使用逆转录 PCR 来检测 SARS-CoV-2。此化验依靠的是扩增病毒基因组片段 Orf1B 和 S，
+并采用内部人体 RNaseP 扩增对照。 University of Washington’s Northwest Genomics
+Center（华盛顿大学西北基因组学中心）开发了这项检测并确定了其运行特性。
+这项由实验室开发的检测已通过验证并已提交至 US Food and Drug Administration
+（美国食品及药物管理局）以获取紧急使用授权。FDA 对于检测授权的独立审核为待处理状态。
+此实验室经Clinical Laboratory Improvement Amendments（CLIA，临床实验室改进修正案）
+认证为符合资格可进行高复杂度的临床实验室检测。
+
+如需获取更多服务提供者信息，请参见 Washington State Department of Health 提供的以下链接：
+
+\begin{itemize}
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{COVID-19
+  确诊或疑似患者}
+
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{曾接触
+  COVID-19 确诊病例的患者}
+
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{有
+  COVID-19 症状的无接触患者}
+
+\end{itemize}
+
+更多资源可在 Washington State Department of Health 和 CDC 网站上获取：
+
+\begin{itemize}
+\item
+
+  \url{https://www.doh.wa.gov}
+
+\item
+
+  \url{https://www.cdc.gov/coronavirus/2019-ncov/index.html}
+
+\end{itemize}
+
+\end{document}

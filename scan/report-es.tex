@@ -1,0 +1,270 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% fonts
+\usepackage{fontspec}
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Prueba realizada por:}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\newcommand{\link}[2]{\href{#1}{#2}\footnote{#1}}
+
+\begin{document}
+
+\begin{center}
+\Large
+\textbf{Informe de laboratorio sobre la PCR cualitativa para el SARS-CoV-2
+(COVID-19) de NWGC}
+\end{center}
+
+\bigskip
+
+\begin{description}[font=\normalfont,align=left,labelwidth=18em]
+\item [Nombre del participante] \textbf{\VAR{pat_name|e}}
+\item [Fecha de nacimiento del participante] \textbf{\VAR{birth_date|e}}
+\item [Identificador de la muestra] \textbf{\VAR{qrcode|e}}
+\item [Fecha de entrega de la muestra] \textbf{\VAR{collect_ts|e}}
+\item [Fecha de entrega de los resultados]
+  %- if status_code == "never-tested"
+  \textbf{Never tested}
+  %- else
+  \textbf{\VAR{result_ts|e}}
+  %- endif
+\item [Tipo de muestra] Muestra recolectada por el participante, de la sección
+  media de la nariz
+\end{description}
+
+\PageLine
+
+Resultado de la PCR (Polymerase Chain Reaction, reacción en cadena de la
+polimerasa) cualitativa para el SARS-CoV-2 (Severe acute respiratory syndrome
+coronavirus 2, coronavirus 2 del síndrome respiratorio agudo grave) (COVID-19)
+
+%- if status_code == "negative"
+\textbf{No detectado}\\
+%- elif status_code == "positive"
+\textbf{SARS-CoV-2 detectado (positivo)}\\
+%- elif status_code == "inconclusive"
+\textbf{No concluyente}\\
+%- elif status_code == "never-tested"
+\textbf{No es posible analizar la muestra}\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+
+Tenga en cuenta lo siguiente:
+
+\begin{itemize}
+\item
+
+  \textbf{El tipo de muestra y análisis que se utilizan en este proyecto son
+  parte de un programa de vigilancia de la salud pública, que se realiza en
+  asociación con el condado de King y otros organismos.} El análisis que recibió
+  no reemplaza la atención médica personal que brindan los proveedores de
+  atención médica.
+
+\item
+
+  \textbf{Cadena de custodia de la muestra:} la muestra analizada fue
+  recolectada y etiquetada por el participante, y, luego, enviada a la SCAN por
+  medio de correo postal o un servicio de entregas. No fue recolectada,
+  etiquetada y transportada por un profesional de atención médica con licencia.
+  Esto puede afectar los resultados del análisis, y no se pueden excluir los
+  resultados falsos negativos. Podría justificarse la realización de análisis
+  clínicos de seguimiento.
+
+\item
+
+  \textbf{Dispositivo de recolección de la muestra:} el exudado de cornete medio
+  no es un tipo de muestra aprobada por medio de una EUA (Emergency Use
+  Authorization, autorización de uso de emergencia) de la Food and Drug
+  Administration (FDA, Administración de Alimentos y Medicamentos) o los Centers
+  for Disease Control and Prevention (CDC, Centros para el Control y la
+  Prevención de Enfermedades​). Por lo tanto, es posible que los resultados que
+  indican “no detectado” o “negativo” no excluyan una infección por SARS-CoV-2.
+
+\item
+
+  \textbf{El Washington State Department of Health (Departamento de Salud del
+  Estado de Washington) puede verificar los casos con resultado ``positivo''.}
+  Si tiene preguntas, debe hablar sobre este resultado con su proveedor de
+  atención médica.
+
+\item{
+  \textbf{Si el resultado del análisis indica ``no detectado'', esto significa
+  que no se detectó el SARS-CoV-2 en su muestra en nuestro laboratorio.}
+
+  Ningún análisis es perfecto, por lo que, aún con un resultado negativo, existe
+  una pequeña posibilidad de que usted tenga el virus SARS-CoV-2 que causa la
+  COVID-19. Para este análisis, no se utiliza la forma estándar de recolección
+  de muestras por medio de un proveedor de atención médica; en cambio, la
+  muestra se envió por correo postal o un servicio de entregas, en lugar de
+  recolectarse y transportarse en un entorno de atención médica.
+  Independientemente de los resultados que obtenga en el análisis, si se siente
+  enfermo, se recomienda que se quede en su casa y evite el contacto con otras
+  personas. Si tiene otros problemas de salud o está muy enfermo, o si siente
+  preocupación por su enfermedad, debe comunicarse con su proveedor de atención
+  médica. Si los síntomas persisten, debe hablar sobre la posibilidad de
+  realizarse otro análisis para detectar la COVID-19 con su proveedor de
+  atención médica.
+}
+
+\item
+
+  \textbf{Si el resultado del análisis indica ``no concluyente'',} esto
+  significa que los resultados del análisis realizado en nuestro laboratorio
+  para detectar el SARS-CoV-2 no son certeros.
+
+  Ningún análisis es perfecto, por lo que existe la posibilidad de que un
+  resultado no concluyente pueda significar que usted tiene el virus SARS-CoV-2
+  que causa la COVID-19. Para este análisis, no se utiliza la forma estándar de
+  recolección de muestras por medio de un proveedor de atención médica; en
+  cambio, la muestra se envió por correo postal o un servicio de entregas, en
+  lugar de recolectarse y transportarse en un entorno de atención médica.
+  Independientemente de los resultados que obtenga en el análisis, si se siente
+  enfermo, se recomienda que se quede en su casa y evite el contacto con otras
+  personas. Si tiene otros problemas de salud o está muy enfermo, o si siente
+  preocupación por su enfermedad, debe comunicarse con su proveedor de atención
+  médica. Si los síntomas persisten, debe hablar sobre la posibilidad de
+  realizarse otro análisis para detectar la COVID-19 con su proveedor de
+  atención médica.
+
+\item
+
+  \textbf{Si el resultado del análisis indica ``no es posible analizar la
+  muestra'',} esto significa que la cantidad de muestra no fue suficiente o que
+  se produjo un error durante el proceso del análisis.
+
+Dado que no fue posible realizar el análisis, existe la posibilidad de que usted
+ tenga el virus SARS-CoV-2 que causa la COVID-19. Para este análisis, no se
+ utiliza la forma estándar de recolección de muestras por medio de un proveedor
+ de atención médica; en cambio, la muestra se envió por correo postal o un
+ servicio de entregas, en lugar de recolectarse y transportarse en un entorno de
+ atención médica. Independientemente de los resultados que obtenga en el
+ análisis, si se siente enfermo, se recomienda que se quede en su casa y evite
+ el contacto con otras personas. Si tiene otros problemas de salud o está muy
+ enfermo, o si siente preocupación por su enfermedad, debe comunicarse con su
+ proveedor de atención médica. Si los síntomas persisten, debe hablar sobre la
+ posibilidad de realizarse otro análisis para detectar la COVID-19 con su
+ proveedor de atención médica.
+
+
+\item
+
+  \textbf{El centro en el que se realiza el análisis informará los casos en los
+  que los análisis arrojen resultados positivos (en los que se indique
+  ``DETECTADO'' o ``Virus detectado'') al departamento de Salud del condado o
+  estado correspondiente.} NO es necesario que informe estos resultados usted
+  mismo. Si el resultado de su análisis es positivo para el nuevo coronavirus,
+  cabe la posibilidad de que Salud Pública realice un seguimiento de su caso, y
+  le haga preguntas sobre su enfermedad y las personas con las que pudo haber
+  estado en contacto.
+
+\item
+
+  \textbf{Puede imprimir los resultados de su análisis o enviárselos por correo
+  electrónico a su proveedor de atención médica.}
+
+\end{itemize}
+
+\bigskip
+\textbf{Metodología de la PCR cualitativa para el SARS-CoV-2 (COVID-19):}
+
+Este análisis está diseñado para detectar el SARS-CoV-2 por medio de la PCR con
+transcripción inversa. El análisis se basa en la amplificación de los segmentos
+Orf1B y S del genoma viral con control interno sobre la amplificación de la
+ribonucleasa P (RNasa P) humana. El Northwest Genomics Center (NWGC) de la
+University of Washington desarrolló este análisis y determinó sus
+características de funcionamiento. El análisis desarrollado por este laboratorio
+está validado y fue presentado ante la Food and Drug Administration de los EE. 
+UU. para obtener la autorización de uso de emergencia. La evaluación
+independiente de la validación del análisis por parte de la FDA se encuentra
+pendiente. Este laboratorio cuenta con la certificación de las Clinical
+Laboratory Improvement Amendments (CLIA, enmiendas para la mejora de
+laboratorios clínicos) y está calificado para realizar análisis de laboratorio
+clínicos de alta complejidad.
+
+Para obtener más información acerca del proveedor, consulte los siguientes
+enlaces proporcionados por el Washington State Department of Health:
+
+\begin{itemize}
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositiveSPANISH.pdf}{Pacientes
+  con sospecha o confirmación de la COVID-19}
+
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed\_notSickYet\_ES.pdf}{Pacientes
+  que estuvieron expuestos a un caso confirmado de la COVID-19}
+
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDsickNotExposedSpanish.pdf}{Pacientes
+  que no estuvieron expuestos y que tienen síntomas de la COVID-19}
+
+\end{itemize}
+
+En los sitios web del Washington State Department of Health y de los CDC se
+ofrecen recursos adicionales:
+
+\begin{itemize}
+\item
+
+  \url{https://www.doh.wa.gov}
+
+\item
+
+  \url{https://www.cdc.gov/coronavirus/2019-ncov/index.html}
+
+\end{itemize}
+
+\end{document}

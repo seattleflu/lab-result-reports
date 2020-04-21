@@ -1,0 +1,261 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+% fonts
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{vietnamese}
+\setotherlanguage{english}
+
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Tên người thực hiện xét nghiệm:}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\newcommand{\link}[2]{\href{#1}{#2}\footnote{#1}}
+
+\begin{document}
+
+\begin{center}
+\Large
+\textbf{Báo Cáo Xét Nghiệm SARS-CoV-2 (COVID-19) Bằng Phản Ứng Chuỗi Polymerase
+(Polymerase Chain Reaction, PCR) Định Tính Của NWGC}
+\end{center}
+
+\bigskip
+
+\begin{description}[font=\normalfont,align=left,labelwidth=14em]
+\item [Tên Người Tham Gia] \textbf{\VAR{pat_name|e}}
+\item [Ngày sinh] \textbf{\VAR{birth_date|e}}
+\item [Mã định danh mẫu bệnh phẩm] \textbf{\VAR{qrcode|e}}
+\item [Ngày Gửi Mẫu] \textbf{\VAR{collect_ts|e}}
+\item [Ngày cung cấp kết quả]
+  %- if status_code == "never-tested"
+  \textbf{Never tested}
+  %- else
+  \textbf{\VAR{result_ts|e}}
+  %- endif
+\item [Loại Mẫu Bệnh Phẩm] Cuốn mũi giữa, tự lấy mẫu
+\end{description}
+
+\PageLine
+
+Kết Quả Xét Nghiệm SARS-CoV-2 (COVID-19) Bằng PCR Định Tính
+
+%- if status_code == "negative"
+\textbf{Không phát hiện}\\
+%- elif status_code == "positive"
+\textbf{Phát Hiện SARS-CoV-2  (dương tính)}\\
+%- elif status_code == "inconclusive"
+\textbf{Chưa có kết luận}\\
+%- elif status_code == "never-tested"
+\textbf{Không xét nghiệm được}\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+
+Xin Lưu Ý:
+
+\begin{itemize}
+\item
+
+  \textbf{Loại mẫu và xét nghiệm sử dụng trong dự án này được thực hiện như là
+  một phần của chương trình giám sát y tế công cộng, với sự hợp tác cùng Quận
+  King và các cơ quan khác.} Xét nghiệm mà quý vị đã nhận được không thể thay
+  thế cho việc nhận chăm sóc y tế cá nhân từ nhà cung cấp dịch vụ chăm sóc sức
+  khỏe.
+
+\item
+
+  \textbf{Chuỗi Kiểm Soát Mẫu Bệnh Phẩm:} mẫu bệnh phẩm xét nghiệm được tự lấy,
+  tự dán nhãn và gửi đến Mạng Lưới Đánh Giá Về Vi-rút Corona của Seattle
+  (Seattle Coronavirus Assessment Network - SCAN) qua đường bưu điện hoặc dịch
+  vụ giao hàng. Mẫu bệnh phẩm không phải do chuyên gia y tế được cấp phép tiến
+  hành thu thập, dán nhãn và vận chuyển. Điều này có thể ảnh hưởng đến kết quả
+  xét nghiệm và không loại trừ khả năng là kết quả âm tính giả. Có thể cho phép
+  xét nghiệm lâm sàng theo dõi tiếp.
+
+\item
+
+  \textbf{Thiết bị lấy mẫu bệnh phẩm:} que phết dịch tiết ở cuốn mũi giữa không
+  phải là loại mẫu bệnh phẩm được phê duyệt theo Giấy Phép Sử Dụng Trong Trường
+  Hợp Khẩn Cấp (Emergency Use Authorization - EUA) của Cơ Quan Quản Lý Dược Phẩm
+  (Food and Drug Administration - FDA)/Trung Tâm Kiểm Soát và Phòng Ngừa Dịch
+  Bệnh (Centers for Disease Control and Prevention - CDC). Do đó, kết quả không
+  phát hiện/âm tính có thể sẽ không loại trừ khả năng nhiễm SARS-CoV-2.
+
+\item
+
+  \textbf{Các kết quả ``dương tính'' có thể được Washington State Department of
+  Health xác thực}. Quý vị nên thảo luận với nhà cung cấp dịch vụ chăm sóc sức
+  khỏe của quý vị về kết quả này nếu quý vị có thắc mắc.
+
+\item{
+  \textbf{Nếu xét nghiệm của quý vị cho ra kết quả là ``Không phát hiện'' thì
+  điều đó có nghĩa là không phát hiện SARS-CoV-2 trong phòng xét nghiệm của
+  chúng tôi.}
+
+  Không có xét nghiệm nào là chính xác tuyệt đối và vẫn có khả năng nhỏ là quý
+  vị bị nhiễm vi-rút SARS-CoV-2 gây ra COVID-19 dù kết quả âm tính. Xét nghiệm
+  này không sử dụng cách lấy mẫu bệnh phẩm thông thường từ nhà cung cấp dịch vụ
+  chăm sóc sức khỏe. Mẫu bệnh phẩm này được gửi qua đường bưu điện hoặc dịch vụ
+  giao hàng, chứ không được lấy và vận chuyển trong môi trường y tế. Bất kể kết
+  quả xét nghiệm của quý vị ra sao thì tốt nhất quý vị nên ở nhà khi bị bệnh và
+  tránh tiếp xúc với người khác. Nếu quý vị gặp các vấn đề sức khỏe khác hoặc bị
+  bệnh nặng hay lo lắng về bệnh tình của mình thì quý vị nên liên hệ với nhà
+  cung cấp dịch vụ chăm sóc sức khỏe của quý vị. Nếu các triệu chứng vẫn kéo dài
+  thì quý vị nên trao đổi với nhà cung cấp dịch vụ chăm sóc sức khỏe về việc
+  thực hiện xét nghiệm COVID-19 khác.
+}
+
+\item
+
+  \textbf{Nếu xét nghiệm của quý vị cho ra kết quả là ``Chưa có kết luận''} thì
+  điều đó có nghĩa là kết quả xét nghiệm SARS-CoV-2 trong phòng xét nghiệm của
+  chúng tôi không chắc chắn.
+
+  Không có xét nghiệm nào là chính xác tuyệt đối và vẫn có khả năng rằng kết quả
+  chưa có kết luận có thể đồng nghĩa với việc quý vị bị nhiễm vi-rút SARS-CoV-2
+  gây ra COVID-19. Xét nghiệm này không sử dụng cách lấy mẫu bệnh phẩm chuẩn từ
+  nhà cung cấp dịch vụ chăm sóc sức khỏe. Mẫu bệnh phẩm này được gửi qua đường
+  bưu điện hoặc dịch vụ giao hàng, chứ không được lấy và vận chuyển trong môi
+  trường chăm sóc sức khỏe. Bất kể kết quả xét nghiệm của quý vị ra sao thì tốt
+  nhất quý vị nên ở nhà khi bị bệnh và tránh tiếp xúc với người khác. Nếu quý vị
+  gặp các vấn đề sức khỏe khác hoặc bị bệnh nặng hay lo lắng về bệnh tình của
+  mình thì quý vị nên liên hệ với nhà cung cấp dịch vụ chăm sóc sức khỏe của quý
+  vị. Nếu các triệu chứng vẫn kéo dài thì quý vị nên trao đổi với nhà cung cấp
+  dịch vụ chăm sóc sức khỏe về việc thực hiện xét nghiệm COVID-19 khác.
+
+\item
+
+  \textbf{Nếu xét nghiệm của quý vị cho ra kết quả là ``Không xét nghiệm được''}
+  thì điều đó có nghĩa hoặc không đủ mẫu bệnh phẩm, hoặc đã xảy ra sai sót trong
+  quá trình xét nghiệm.
+
+  Do không thể thực hiện xét nghiệm nên có khả năng là quý vị bị nhiễm vi-rút
+  SARS-CoV-2 gây ra COVID-19. Xét nghiệm này không sử dụng cách lấy mẫu bệnh
+  phẩm thông thường từ nhà cung cấp dịch vụ chăm sóc sức khỏe. Mẫu bệnh phẩm này
+  được gửi qua đường bưu điện hoặc dịch vụ giao hàng, chứ không được lấy và vận
+  chuyển trong môi trường y tế. Bất kể kết quả xét nghiệm của quý vị ra sao thì
+  tốt nhất quý vị nên ở nhà khi bị bệnh và tránh tiếp xúc với người khác. Nếu
+  quý vị gặp các vấn đề sức khỏe khác hoặc bị bệnh nặng hay lo lắng về bệnh tình
+  của mình thì quý vị nên liên hệ với nhà cung cấp dịch vụ chăm sóc sức khỏe của
+  quý vị. Nếu các triệu chứng vẫn kéo dài thì quý vị nên trao đổi với nhà cung
+  cấp dịch vụ chăm sóc sức khỏe về việc thực hiện xét nghiệm COVID-19 khác.
+
+\item
+
+  \textbf{Các xét nghiệm dương tính (cho thấy kết quả là ``PHÁT HIỆN'' hoặc
+  ``Phát Hiện Vi-rút'') sẽ được cơ sở xét nghiệm báo cáo lên Sở Y Tế cấp tiểu
+  bang và quận có thẩm quyền.} Quý vị KHÔNG cần phải tự báo cáo những kết quả
+  này. Sở Y Tế Công Cộng có thể liên hệ với quý vị để thu thập thêm thông tin
+  về bệnh tình và những người có thể đã tiếp xúc với quý vị nếu kết quả xét
+  nghiệm chủng vi-rút corona mới là dương tính.
+
+\item
+
+  \textbf{Quý vị có thể in ra hoặc gửi kết quả xét nghiệm này cho nhà cung cấp
+  dịch vụ chăm sóc sức khỏe của mình qua email.}
+
+\end{itemize}
+
+\bigskip
+\textbf{Phương Pháp Xét Nghiệm SARS-CoV-2 (COVID-19) Bằng PCR Định Tính:}
+
+Xét nghiệm này được tạo ra nhằm phát hiện SARS-CoV-2 bằng phương pháp PCR phiên
+mã ngược. Xét nghiệm này phụ thuộc vào quá trình khuếch đại các đoạn gen vi-rút
+Orf1B và S, trong đó bao gồm việc kiểm soát khuếch đại gen chứng nội RNaseP của
+con người. Xét nghiệm này đã được phát triển và Northwest Genomics Center trực
+thuộc University of Washington đã xác định được các đặc trưng về tính hiệu quả
+của xét nghiệm này. Xét nghiệm này do phòng thí nghiệm phát triển đã được xác
+nhận tính hợp lệ và gửi đến Food and Drug Administration của Hoa Kỳ để xin Giấy
+Phép Sử Dụng Trong Trường Hợp Khẩn Cấp. Đánh giá độc lập của FDA về việc xác
+nhận tính hợp lệ của xét nghiệm vẫn đang chờ phê duyệt. Phòng thí nghiệm này
+được chứng nhận là đủ tiêu chuẩn thực hiện xét nghiệm lâm sàng có độ phức tạp
+cao trong phòng thí nghiệm theo Các Quy Định Sửa Đổi Cải Tiến Phòng Thí Nghiệm
+Lâm Sàng (Clinical Laboratory Improvement Amendments - CLIA).
+
+Để biết thêm thông tin về nhà cung cấp, vui lòng xem các đường dẫn này do
+Washington State Department of Health cung cấp:
+
+\begin{itemize}
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositiveVIETNAMESE.pdf}{Bệnh
+  nhân được xác nhận nhiễm hoặc nghi nhiễm COVID-19}
+
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed\_notSickYet\_VI.pdf}{Bệnh
+  nhân đã phơi nhiễm với ca được xác nhận nhiễm COVID-19}
+
+\item
+
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDsickNotExposedVietnamese.pdf}{Bệnh
+  nhân không phơi nhiễm nhưng có các triệu chứng nhiễm COVID-19}
+
+\end{itemize}
+
+Các nguồn thông tin khác hiện có sẵn trên trang web của Washington State
+Department of Health và CDC:
+
+\begin{itemize}
+\item
+
+  \url{https://www.doh.wa.gov}
+
+\item
+
+  \url{https://www.cdc.gov/coronavirus/2019-ncov/index.html}
+
+\end{itemize}
+
+\end{document}
