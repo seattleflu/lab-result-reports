@@ -9,6 +9,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         texlive-xetex \
         texlive-fonts-recommended \
+        texlive-lang-korean \
+        texlive-lang-arabic \
+        fonts-sil-abyssinica \
         wget \
         xzdec
 
