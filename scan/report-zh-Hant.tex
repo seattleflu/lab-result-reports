@@ -17,6 +17,7 @@
 \usepackage{multirow}
 \usepackage{pbox}
 \usepackage{enumitem}
+\usepackage{xeCJK}
 
 % fonts
 \usepackage{fontspec}
@@ -27,6 +28,11 @@
 \setmonofont{DroidSansMono}[
   Extension   = .ttf,
   UprightFont = * ]
+\setCJKmainfont{NotoSansCJK}[
+  Extension   = .ttc,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  Language    = Chinese Traditional ]
 
 \hypersetup{colorlinks,urlcolor=blue}
 \urlstyle{same}
@@ -44,7 +50,7 @@
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
     \small
-    \textbf{Test Performed By}\\
+    \textbf{測試由以下實驗室執行：}\\
     Northwest Genomics Center\\
     University of Washington School of Medicine\\
     Genome Sciences Box 355065\\
@@ -59,177 +65,150 @@
 
 \begin{center}
 \Large
-\textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
+\textbf{NWGC SARS-CoV-2 (COVID-19) PCR（Polymerase Chain Reaction，聚合酶鏈反應）定性化驗報告}
 \end{center}
 
 \bigskip
 
-\begin{description}[font=\normalfont,align=left,labelwidth=12em]
-\item [Participant Name] \textbf{\VAR{pat_name|e}}
-\item [Participant Date of Birth] \textbf{\VAR{birth_date|e}}
-\item [Specimen Identifier] \textbf{\VAR{qrcode|e}}
-\item [Date Sample Submitted] \textbf{\VAR{collect_ts|e}}
-\item [Date Results Provided]
+\begin{description}[font=\normalfont,align=left,labelwidth=8em]
+\item [參與者姓名] \textbf{\VAR{pat_name|e}}
+\item [出生日期] \textbf{\VAR{birth_date|e}}
+\item [樣本標識符] \textbf{\VAR{qrcode|e}}
+\item [樣本提交日期] \textbf{\VAR{collect_ts|e}}
+\item [結果提供日期]
   %- if status_code == "never-tested"
-  \textbf{Never tested}
+  \textbf{沒有進行檢測}
   %- else
   \textbf{\VAR{result_ts|e}}
   %- endif
-\item [Specimen Type] Midnasal, self-collected
+\item [樣本類型]  鼻腔中部，自我採樣
 \end{description}
 
 \PageLine
 
-Result of SARS-CoV-2 (COVID-19) Qual PCR
+SARS-CoV-2 (COVID-19) PCR 定性結果
 
 %- if status_code == "negative"
-\textbf{Not detected}\\
+\textbf{未檢測到}\\
 %- elif status_code == "positive"
-\textbf{SARS-CoV-2 Detected (positive)}\\
+\textbf{檢測到 SARS-CoV-2（陽性）}\\
 %- elif status_code == "inconclusive"
-\textbf{Inconclusive}\\
+\textbf{無定論}\\
 %- elif status_code == "never-tested"
-\textbf{Unable to be tested}\\
+\textbf{無法檢測}\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
 
 \PageLine
 
-Please Note:
+請注意：
 
 \begin{itemize}
 \item
 
-  \textbf{The type of sample and testing used in this project is
-  conducted as part of a public health surveillance program in
-  partnership with King County and other agencies.} The testing you have
-  received is not a substitute for receiving personal medical care by a
-  healthcare provider.
+  \textbf{此專案中所使用的樣本和檢測的類型，
+  是與金縣及其他機構合作開展的公共衛生監察計劃中的一部分。} 您所接受的檢測，
+  並不能替代由醫療保健服務提供者提供的個人醫療護理。
 
 \item
 
-  \textbf{Specimen Chain of Custody:} The specimen tested was
-  self-collected, self-labeled, and submitted to SCAN by mail or
-  delivery service. It was not collected, labeled, and transported by a
-  licensed healthcare professional. This may impact test results and
-  false negative results cannot be excluded. Follow-up clinical testing
-  may be warranted.
+  \textbf{樣本監管鏈：} 所檢測的樣本採用自我採集、自我貼標籤的形式，
+  並透過郵寄或配送服務提交給西雅圖冠狀病毒評估網路 (Greater Seattle Coronavirus
+  Assessment Network, SCAN)。其並非由持照醫療保健專業人員採集、貼標籤和運輸的。
+  這可能會影響檢測結果，且無法排除假陰性的結果。可能需要進行後續臨床檢測。
 
 \item
 
-  \textbf{Specimen collection device:} The mid-turbinate swab is not an
-  FDA/CDC Emergency Use Authorization (EUA) approved specimen type.
-  Therefore, not detected/negative results may not exclude SARS-CoV-2
-  infection.
+  \textbf{樣本採集裝置：} 中鼻甲骨拭子並不是食品藥品監督管理局 (Food and Drug
+  Administration, FDA) /疾病控制和預防中心 (Centers for Disease Control and
+  Prevention) 應急使用授權 (Emergency Use Authorization, EUA) 批准的樣本類型。因此，
+  未檢測到/陰性結果不排除 SARS-CoV-2 感染。
 
 \item
 
-  \textbf{``Positive'' results may be verified by the Washington State
-  Department of Health}. This result should be discussed with your
-  healthcare provider if you have questions.
+  \textbf{華盛頓州衛生部可能會核實「陽性」結果。} 如果您有任何疑問，
+  應當與您的醫療保健服務提供者討論此結果。
 
 \item{
-  \textbf{If your test says ``Not detected'' it means that SARS-CoV-2
-    was not detected in our laboratory.}
+  \textbf{如果您的檢測結果顯示「未檢測到」，這意味著在我們的化驗中沒有檢測到 SARS-CoV-2。}
 
-  No test is perfect and there is a small chance that you do have the
-  SARS-CoV-2 virus that causes COVID-19 with a negative test. This test
-  does not use the standard way of collecting specimens by a health care
-  provider, and the sample was sent by mail or delivery service, not collected and transported
-  in a healthcare setting. Regardless of your test result, it's best to
-  stay home when you feel sick, and avoid contact with other people. If
-  you have other health problems or are very sick or are worried about
-  your illness, you should contact your healthcare provider. If your
-  symptoms persist, you should discuss getting another test for COVID-19
-  with your health care provider.
+  無一檢測是完美的。即使您的檢測結果為陰性，您仍有很小概率的確攜帶導致COVID-19的 SARS-CoV-2
+  病毒。 此檢測並不採用由醫療保健服務提供者採集樣本的標準方法，且樣本是透過郵寄或配送服務提交的，
+  而不是在醫療保健設施中採集和運送的。 無論您的檢測結果如何，當您感覺身體不適時，
+  最好的做法是待在家中並避免與其他人接觸。如果您有其他健康問題，或是病情較重，
+  或是對您的疾病感到擔憂，您應當聯絡您的醫療保健服務提供者。 如果您的症狀持續，
+  您應當與您的醫療保健服務提供者討論接受另一次 COVID-19 檢測。
 }
 
 \item
 
-  \textbf{If your test says ``Inconclusive''} it means that our
-  laboratory test results for the SARS-CoV-2 target are not certain.
+  \textbf{如果您的檢測結果顯示「無定論」，} 這意味著我們對SARS-CoV-2
+  目標的實驗室檢測結果不確定。
 
-  No test is perfect and there is a chance that an inconclusive result
-  could mean that you do have the SARS-CoV-2 virus that causes COVID-19.
-  This test does not use the standard way of collecting specimens by a
-  health care provider, and the sample was sent by mail or delivery service, not collected and
-  transported in a healthcare setting. Regardless of your test result,
-  it's best to stay home when you feel sick, and avoid contact with other
-  people. If you have other health problems or are very sick or are
-  worried about your illness, you should contact your healthcare provider.
-  If your symptoms persist, you should discuss getting another test for
-  COVID-19 with your health care provider.
+  無一檢測是完美的。無定論的結果仍有概率意味著您的確攜帶有導致 COVID-19 的 SARS-CoV-2 病毒。
+  此檢測並不採用由醫療保健服務提供者採集樣本的標準方法，且樣本是透過郵寄或配送服務提交的，
+  而不是在醫療保健設施中採集和運送的。 無論您的檢測結果如何，當您感覺身體不適時，
+  最好的做法是待在家中並避免與其他人接觸。如果您有其他健康問題，或是病情較重，
+  或是對您的疾病感到擔憂，您應當聯絡您的醫療保健服務提供者。 如果您的症狀持續，
+  您應當與您的醫療保健服務提供者討論接受另一次 COVID-19 檢測。
 
 \item
 
-  \textbf{If your test says ``Unable to be tested''} it means that there
-  was either not enough of the specimen or there was an error in the
-  test process.
+  \textbf{如果您的檢測結果顯示「無法檢測」，} 這意味著樣本不足或是檢測流程中出現了錯誤。
 
-  Since testing was unable to be performed, there is a chance that you do
-  have the SARS-CoV-2 virus that causes COVID-19. This test does not use
-  the standard way of collecting specimens by a health care provider, and
-  the sample was sent by mail or delivery service, not collected and transported in a
-  healthcare setting. Regardless of your test result, it's best to stay
-  home when you feel sick, and avoid contact with other people. If you
-  have other health problems or are very sick or are worried about your
-  illness, you should contact your healthcare provider. If your symptoms
-  persist, you should discuss getting another test for COVID-19 with your
-  health care provider.
+  由於檢測無法進行，您仍有可能攜帶有導致 COVID-19 的 SARS-CoV-2 病毒。
+  此檢測並不採用由醫療保健服務提供者採集樣本的標準方法，且樣本是透過郵寄或配送服務提交的，
+  而不是在醫療保健設施中採集和運送的。 無論您的檢測結果如何，當您感覺身體不適時，
+  最好的做法是待在家中並避免與其他人接觸。如果您有其他健康問題，或是病情較重，
+  或是對您的疾病感到擔憂，您應當聯絡您的醫療保健服務提供者。 如果您的症狀持續，
+  您應當與您的醫療保健服務提供者討論接受另一次 COVID-19 檢測。
 
 \item
 
-  \textbf{Positive tests (shown as ``DETECTED'' or ``Virus Detected'')
-  will be reported to the appropriate state and county Health Department
-  by the testing facility.} You DO NOT need to report these results
-  yourself. Public Health may follow up with you if your test is
-  positive for novel coronavirus to ask you about your illness and
-  people you may have come in contact with.
+  \textbf{陽性檢測結果（顯示為「檢測到」或「檢測到病毒」）
+  將由檢測結構報告給有關的州和縣衛生部門。} 您無需自行上報這些結果。
+  如果您的檢測結果顯示新型冠狀病毒呈陽性，公共衛生部門將跟進您的個案，
+  向您詢問您的相關病況以及您可能接觸的人。
 
 \item
 
-  \textbf{You can print out or email these test results to your health
-  care provider.}
+  \textbf{您可以將這些檢測結果列印出來，或是透過電郵傳給您的醫療保健服務提供者。}
 
 \end{itemize}
 
 \bigskip
-\textbf{Methodology of SARS-CoV-2 (COVID-19) Qual PCR:}
+\textbf{SARS-CoV-2 (COVID-19) PCR 定性化驗方法：}
 
-This assay is designed to detect SARS-CoV-2 using reverse-transcription
-PCR.  This assay relies on amplification of the viral genome segments
-Orf1B and S with an internal human RNaseP amplification control.  This
-test was developed and its performance characteristics determined by the
-University of Washington's Northwest Genomics Center.  This laboratory
-developed test is validated and has been submitted to the US Food and
-Drug Administration for Emergency Use Authorization. The FDA's
-independent review of the test validation is pending. This laboratory is
-certified under the Clinical Laboratory Improvement Amendments (CLIA) as
-qualified to perform high complexity clinical laboratory testing.
+此化驗旨在使用逆轉錄 PCR 來檢測 SARS-CoV-2。此化驗依靠的是擴增病毒基因組片段 Orf1B 和 S，
+並採用內部人體 RNaseP 擴增作爲對照。 華盛頓大學的西北基因組學中心 (Northwest Genomics
+Center) 開發了這項檢測並確定了其運行特性。
+這項由實驗室開發的檢測已通過驗證並已提交至美國食品藥品監督管理局 (Food and Drug
+Administration, FDA) 以獲取應急使用授權 (Emergency Use Authorization)。FDA
+對於檢測驗證的獨立審核為待處理狀態。此實驗室經臨床實驗 室改進修正案 (Clinical Laboratory
+Improvement Amendments, CLIA) 認證為符合資格可進行高複雜度的臨床實驗室檢測。
 
-For further provider information, please see these links provided by the
-Washington State Department of Health:
+如需獲取更多服務提供者資訊，請參見華盛頓州衛生部提供的以下連結：
 
 \begin{itemize}
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{Patients with confirmed or suspected COVID-19}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVID-SickExposed-ZH-Trd.pdf}{確診或疑似
+  COVID-19 的患者}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{Patients
-  who were exposed to a confirmed COVID-19 case}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{曾接觸
+  COVID-19 確診個案的患者}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{Unexposed
-  patients with COVID-19 symptoms}
+  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{有
+  COVID-19 症狀的無接觸患者}
 
 \end{itemize}
 
-Additional resources are available at the Washington State Department of Health
-and CDC websites:
+更多資源可在華盛頓州衛生部和 CDC 網站上獲取：
 
 \begin{itemize}
 \item
