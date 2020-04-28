@@ -13,6 +13,12 @@ publish: image
 		exit 1; \
 	fi
 	
+	@echo "Checking that branch is up-to-date with origin"
+	@if [[ $$(git rev-parse HEAD) != $$(git rev-parse HEAD@{u}) ]]; then \
+		echo Error: Branch is not up-to-date with origin; \
+		exit 1; \
+	fi
+	
 	@echo "Tagging build-$(BUILD)"
 	@git tag build-$(BUILD) -m "build #$(BUILD)"
 	
