@@ -20,7 +20,5 @@ publish: image
 	docker image push $(IMAGE):latest
 	docker image push $(IMAGE):build-$(BUILD)
 	
-	@echo "Remember to run:"
-	@echo
-	@echo "    git push origin master tag build-$(BUILD)"
-	@echo
+	@echo "Pushing build-$(BUILD) tag to git"
+	@git push origin tag build-$(BUILD)
