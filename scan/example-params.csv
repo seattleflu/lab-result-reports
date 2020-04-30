@@ -1,0 +1,7 @@
+qrcode,pat_name,birth_date,collect_ts,result_ts,status_code
+AAAAAAAA,Not-received Ned,2020-01-01,,,not-received
+BBBBBBBB,Pending Patrick,2020-01-01,2020-03-12,,pending
+CCCCCCCC,Never-tested Nellie,2020-01-01,2020-03-12,,never-tested
+DDDDDDDD,Negative Nancy,2020-01-01,2020-03-12,2020-03-14,negative
+EEEEEEEE,Inconclusive Ian,2020-01-01,2020-03-12,2020-03-14,inconclusive
+FFFFFFFF,Positive Pat,2020-01-01,2020-03-12,2020-03-14,positive
