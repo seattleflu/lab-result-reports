@@ -2,6 +2,16 @@ This repository contains document templates and supporting code for generating
 individualized official lab result reports for SARS-CoV-2 / hCoV-19 / COVID-19
 tests performed by Northwest Genomics Center.
 
+## Usage
+
+Example:
+
+    fill-template \
+        --template scan/report-en.tex \
+        --params scan/example-params.csv \
+        --filter 'status_code not in ["not-received", "pending"]' \
+        --output "{qrcode}.pdf"
+
 Requirements:
 
   * XeLaTeX
@@ -9,9 +19,20 @@ Requirements:
   * Droid package from TeX Live, if you don't have the full distribution
   * Python 3.6+ and various packages
 
+### via Pipenv
+
 You can install the Python dependencies with Pipenv:
 
     pipenv sync
+
+XeLaTeX and TeX Live must be installed separately, usually from your platform's
+package manager.  Alternatively, see how to run with Docker below.
+
+Then use Pipenv to run `fill-template` as above:
+
+    pipenv run ./fill-template …
+
+### via Docker
 
 Since TeX Live has a somewhat onerous installation process, a Docker image
 exists containing all the dependencies required to run the report generation.
