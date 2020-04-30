@@ -33,6 +33,10 @@ at `/src`:
 
     docker run --rm -v $PWD:/src seattleflu/lab-result-reports fill-template …
 
+The included `./devel/docker-run` takes care of this and a few other niceties:
+
+    ./devel/docker-run fill-template …
+
 To build a new image locally:
 
     make
