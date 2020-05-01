@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+: "${IMAGE:=seattleflu/lab-result-reports}"
+
+base="$(realpath "$(dirname "$0")/..")"
+
+exec docker run \
+    --rm \
+    --env=LOG_LEVEL \
+    --user "$(id -u):$(id -g)" \
+    --mount type=bind,src="$base",dst=/src \
+        seattleflu/lab-result-reports \
+            "$@"
