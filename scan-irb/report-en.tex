@@ -57,188 +57,187 @@
 
 \begin{document}
 
-\begin{center}
-\Large
-\textbf{NWGC SARS-CoV-2 (COVID-19) Qual PCR Lab Report}
-\end{center}
-
-\bigskip
-
 \begin{description}[font=\normalfont,align=left,labelwidth=12em]
-\item [Participant Name] \textbf{\VAR{pat_name|e}}
-\item [Participant Date of Birth] \textbf{\VAR{birth_date|e}}
-\item [Specimen Identifier] \textbf{\VAR{qrcode|e}}
-\item [Date Sample Submitted] \textbf{\VAR{collect_ts|e}}
-\item [Date Results Provided]
+\item [\textbf{First and Last Name}] \VAR{pat_name|e}
+\item [\textbf{Date of Birth}] \VAR{birth_date|e}
+\item [\textbf{Specimen}] Midnasal, self-collected
+\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
+\item [\textbf{Collection Date}] \VAR{collect_ts|e}
+\item [\textbf{Report Date}]
   %- if status_code == "never-tested"
-  \textbf{Never tested}
+  Never tested
   %- else
-  \textbf{\VAR{result_ts|e}}
+  \VAR{result_ts|e}
   %- endif
-\item [Specimen Type] Midnasal, self-collected
 \end{description}
 
 \PageLine
 
-Result of SARS-CoV-2 (COVID-19) Qual PCR
+\begin{center}
+\Large
+\textbf{RESEARCH RESULT - You are encouraged to share this result with your
+  health care provider.}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{About This Test:}}
+
+\begin{itemize}
+\item
+
+  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
+  SARS-CoV-2. This research test looks for the virus in the sample that was
+  collected from your nose to decide if you have COVID-19. The technical term
+  for this kind of test is “reverse-transcription polymerase chain reaction,” or
+  “RT-PCR” for short.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Important Reminders}}
+
+Before looking at your research test result, you should review the following:
+
+\begin{itemize}
+\item
+
+  The \textbf{type of sample} that you collected and \textbf{the testing in the
+  lab} are part of a \textbf{research study} and this report describes your
+  \textbf{research test result.}
+
+\item
+
+  You collected this sample and labeled it by yourself (or for someone else) and
+  returned it to the lab via a delivery service. It was not collected, labeled,
+  or transported by a licensed healthcare professional like a nurse or doctor.
+  This may impact your test result, and a healthcare provider may want to test
+  you again.
+
+\item
+
+  Being part of this \textbf{research study} does not take the place of your
+  normal medical care. If you are feeling very sick or are concerned about your
+  test result, you should contact a doctor or healthcare provider.
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
 
 %- if status_code == "negative"
-\textbf{Not detected}\\
+Not Detected (Negative)\\
 %- elif status_code == "positive"
-\textbf{SARS-CoV-2 Detected (positive)}\\
+Detected (positive)\\
 %- elif status_code == "inconclusive"
-\textbf{Inconclusive}\\
+Inconclusive\\
 %- elif status_code == "never-tested"
-\textbf{Unable to be tested}\\
+Unable to be tested\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
 
 \PageLine
+\bigskip
 
-Please Note:
+\large \underline{\textbf{Understanding Your Result}}
+
+This list gives all of the results that your test may show and describes what
+each of these results means. You can print out or email this \textbf{research
+test result} to share with your doctor or healthcare provider
+
+Regardless of your test result, you should stay home and avoid being around
+other people if you are feeling sick. \textbf{If your symptoms continue, you are
+very sick or worried about your illness, or have questions about your research
+test result, you should contact a doctor or healthcare provider.}
 
 \begin{itemize}
-\item
 
-  \textbf{The type of sample and testing used in this project is
-  conducted as part of a public health surveillance program in
-  partnership with King County and other agencies.} The testing you have
-  received is not a substitute for receiving personal medical care by a
-  healthcare provider.
 
 \item
 
-  \textbf{Specimen Chain of Custody:} The specimen tested was
-  self-collected, self-labeled, and submitted to SCAN by mail or
-  delivery service. It was not collected, labeled, and transported by a
-  licensed healthcare professional. This may impact test results and
-  false negative results cannot be excluded. Follow-up clinical testing
-  may be warranted.
+  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
+  virus that causes COVID-19 in the sample that you sent to us. No test is
+  perfect, and there is a small chance that you could have the virus even though
+  your test is negative.
 
 \item
 
-  \textbf{Specimen collection device:} The mid-turbinate swab is not an
-  FDA/CDC Emergency Use Authorization (EUA) approved specimen type.
-  Therefore, not detected/negative results may not exclude SARS-CoV-2
-  infection.
+  \textbf{If your test says ``Detected (Positive)''}, it means our
+  lab found the virus that causes COVID-19 in the sample that you sent us. You
+  should stay home and avoid being around other people, especially if you are
+  feeling sick.
+
+  Your result will be shared with the Washington State and local health
+  departments. You do \textbf{not} need to report these results yourself. The
+  health department may call you to ask questions about your illness and people
+  you may have been around while you were sick.
 
 \item
 
-  \textbf{``Positive'' results may be verified by the Washington State
-  Department of Health}. This result should be discussed with your
-  healthcare provider if you have questions.
-
-\item{
-  \textbf{If your test says ``Not detected'' it means that SARS-CoV-2
-    was not detected in our laboratory.}
-
-  No test is perfect and there is a small chance that you do have the
-  SARS-CoV-2 virus that causes COVID-19 with a negative test. This test
-  does not use the standard way of collecting specimens by a health care
-  provider, and the sample was sent by mail or delivery service, not collected and transported
-  in a healthcare setting. Regardless of your test result, it's best to
-  stay home when you feel sick, and avoid contact with other people. If
-  you have other health problems or are very sick or are worried about
-  your illness, you should contact your healthcare provider. If your
-  symptoms persist, you should discuss getting another test for COVID-19
-  with your health care provider.
-}
+  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
+  of your test result. No test is perfect, and an inconclusive result happens
+  when we find a small amount of SARS-CoV-2 in your sample, but not enough for
+  us to say that you have COVID-19.
 
 \item
 
-  \textbf{If your test says ``Inconclusive''} it means that our
-  laboratory test results for the SARS-CoV-2 target are not certain.
-
-  No test is perfect and there is a chance that an inconclusive result
-  could mean that you do have the SARS-CoV-2 virus that causes COVID-19.
-  This test does not use the standard way of collecting specimens by a
-  health care provider, and the sample was sent by mail or delivery service, not collected and
-  transported in a healthcare setting. Regardless of your test result,
-  it's best to stay home when you feel sick, and avoid contact with other
-  people. If you have other health problems or are very sick or are
-  worried about your illness, you should contact your healthcare provider.
-  If your symptoms persist, you should discuss getting another test for
-  COVID-19 with your health care provider.
-
-\item
-
-  \textbf{If your test says ``Unable to be tested''} it means that there
-  was either not enough of the specimen or there was an error in the
-  test process.
-
-  Since testing was unable to be performed, there is a chance that you do
-  have the SARS-CoV-2 virus that causes COVID-19. This test does not use
-  the standard way of collecting specimens by a health care provider, and
-  the sample was sent by mail or delivery service, not collected and transported in a
-  healthcare setting. Regardless of your test result, it's best to stay
-  home when you feel sick, and avoid contact with other people. If you
-  have other health problems or are very sick or are worried about your
-  illness, you should contact your healthcare provider. If your symptoms
-  persist, you should discuss getting another test for COVID-19 with your
-  health care provider.
-
-\item
-
-  \textbf{Positive tests (shown as ``DETECTED'' or ``Virus Detected'')
-  will be reported to the appropriate state and county Health Department
-  by the testing facility.} You DO NOT need to report these results
-  yourself. Public Health may follow up with you if your test is
-  positive for novel coronavirus to ask you about your illness and
-  people you may have come in contact with.
-
-\item
-
-  \textbf{You can print out or email these test results to your health
-  care provider.}
+  \textbf{If your test says ``Unable to be tested''}, it means there was either
+  not enough material on your sample for us to test, or there was an error when
+  we ran the test. Since we are not able to test your sample, we could not find
+  whether or not you have the virus that causes COVID-19.
 
 \end{itemize}
 
 \bigskip
-\textbf{Methodology of SARS-CoV-2 (COVID-19) Qual PCR:}
 
-This assay is designed to detect SARS-CoV-2 using reverse-transcription
-PCR.  This assay relies on amplification of the viral genome segments
-Orf1B and S with an internal human RNaseP amplification control.  This
-test was developed and its performance characteristics determined by the
-University of Washington's Northwest Genomics Center.  This laboratory
-developed test is validated and has been submitted to the US Food and
-Drug Administration for Emergency Use Authorization. The FDA's
-independent review of the test validation is pending. This laboratory is
-certified under the Clinical Laboratory Improvement Amendments (CLIA) as
-qualified to perform high complexity clinical laboratory testing.
+\large \underline{\textbf{Resources}}
 
-For further provider information, please see these links provided by the
-Washington State Department of Health:
+If you would like more information on COVID-19, please review these resources
+from public health partners:
 
 \begin{itemize}
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDcasepositive.pdf}{Patients with confirmed or suspected COVID-19}
+  \link{http://www.kingcounty.gov/covid}{Public Health Seattle and King County}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDexposed.pdf}{Patients
-  who were exposed to a confirmed COVID-19 case}
+  \link{http://www.doh.wa.gov/Emergencies/Coronavirus}{Washington State
+  Department of Health}
 
 \item
 
-  \link{https://www.doh.wa.gov/Portals/1/Documents/1600/coronavirus/COVIDconcerned.pdf}{Unexposed
-  patients with COVID-19 symptoms}
+  \link{http://www.cdc.gov/coronavirus/2019-ncov/index.html}{U.S. Centers for
+  Disease Control and Prevention (CDC)}
 
 \end{itemize}
 
-Additional resources are available at the Washington State Department of Health
-and CDC websites:
+If you would like to speak to someone on the phone, please call one of the
+following:
 
 \begin{itemize}
-\item
-
-  \url{https://www.doh.wa.gov}
 
 \item
 
-  \url{https://www.cdc.gov/coronavirus/2019-ncov/index.html}
+  \textbf{Medical questions related to COVID-19:} Contact the King County Call
+  Center between 8AM and 7PM at \textbf{206-477-3977}
+
+\item
+
+  \textbf{Non-medical questions about COVID-19, including compliance and
+  business-related issues:} Contact the King County COVID-19 Business and
+  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
+  \textbf{206-296-1608}
+
+\item
+
+  \textbf{General questions about COVID-19 in Washington State:} Contact the
+  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
+  \textbf{1-800-525-0127}
 
 \end{itemize}
 
