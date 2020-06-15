@@ -1,0 +1,277 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% fonts
+\usepackage{fontspec}
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Test Performed By}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+
+\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\item [\textbf{\VAR{pat_name|e}}]
+\item [\textbf{Date of Birth}] \VAR{birth_date|e}
+\item [\textbf{Specimen}] Midnasal, self-collected
+\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
+\item [\textbf{Collection Date}] \VAR{collect_ts|e}
+\item [\textbf{Report Date}]
+  %- if status_code == "never-tested"
+  Never tested
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\PageLine
+
+\begin{center}
+\Large
+\textbf{RESEARCH RESULT - You are encouraged to share this result with your
+  health care provider.}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{About This Test:}}
+
+\begin{itemize}
+\item
+
+  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
+  SARS-CoV-2. This research test looks for the virus in the sample that was
+  collected from your nose to decide if you have COVID-19. The technical term
+  for this kind of test is “reverse-transcription polymerase chain reaction,” or
+  “RT-PCR” for short.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Important Reminders}}
+
+Before looking at your research test result, you should review the following:
+
+\begin{itemize}
+\item
+
+  The \textbf{type of sample} that you collected and \textbf{the testing in the
+  lab} are part of a \textbf{research study} and this report describes your
+  \textbf{research test result.}
+
+\item
+
+  You collected this sample and labeled it by yourself (or for someone else) and
+  returned it to the lab via a delivery service. It was not collected, labeled,
+  or transported by a licensed healthcare professional like a nurse or doctor.
+  This may impact your test result, and a healthcare provider may want to test
+  you again.
+
+\item
+
+  Being part of this \textbf{research study} does not take the place of your
+  normal medical care. If you are feeling very sick or are concerned about your
+  test result, you should contact a doctor or healthcare provider.
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+
+%- if status_code == "negative"
+Not Detected (Negative)\\
+%- elif status_code == "positive"
+Detected (positive)\\
+%- elif status_code == "inconclusive"
+Inconclusive\\
+%- elif status_code == "never-tested"
+Unable to be tested\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{Understanding Your Result}}
+
+This list gives all of the results that your test may show and describes what
+each of these results means. You can print out or email this \textbf{research
+test result} to share with your doctor or healthcare provider
+
+Regardless of your test result, you should stay home and avoid being around
+other people if you are feeling sick. \textbf{If your symptoms continue, you are
+very sick or worried about your illness, or have questions about your research
+test result, you should contact a doctor or healthcare provider.}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
+  virus that causes COVID-19 in the sample that you sent to us. No test is
+  perfect, and there is a small chance that you could have the virus even though
+  your test is negative.
+
+\item
+
+  \textbf{If your test says ``Detected (Positive)''}, it means our
+  lab found the virus that causes COVID-19 in the sample that you sent us. You
+  should stay home and avoid being around other people, especially if you are
+  feeling sick.
+
+  Your result will be shared with the Washington State and local health
+  departments. You do \textbf{not} need to report these results yourself. The
+  health department may call you to ask questions about your illness and people
+  you may have been around while you were sick.
+
+\item
+
+  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
+  of your test result. No test is perfect, and an inconclusive result happens
+  when we find a small amount of SARS-CoV-2 in your sample, but not enough for
+  us to say that you have COVID-19.
+
+\item
+
+  \textbf{If your test says ``Unable to be tested''}, it means there was either
+  not enough material on your sample for us to test, or there was an error when
+  we ran the test. Since we are not able to test your sample, we could not find
+  whether or not you have the virus that causes COVID-19.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Resources}}
+
+If you would like more information on COVID-19, please review these resources
+from public health partners:
+
+\begin{itemize}
+\item
+  Public Health Seattle and King County\\
+  \url{http://www.kingcounty.gov/covid}
+
+\item
+
+  Washington State Department of Health\\
+  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+
+\item
+  U.S. Centers for Disease Control and Prevention (CDC)\\
+  \url{http://www.cdc.gov/coronavirus/2019-ncov/index.html}
+
+\end{itemize}
+
+If you would like to speak to someone on the phone, please call one of the
+following:
+
+\begin{itemize}
+
+\item
+
+  \textbf{Medical questions related to COVID-19:} Contact the King County Call
+  Center between 8AM and 7PM at \textbf{206-477-3977}
+
+\item
+
+  \textbf{Non-medical questions about COVID-19, including compliance and
+  business-related issues:} Contact the King County COVID-19 Business and
+  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
+  \textbf{206-296-1608}
+
+\item
+
+  \textbf{General questions about COVID-19 in Washington State:} Contact the
+  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
+  \textbf{1-800-525-0127}
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Methods and Limitations}}
+
+\textbf{Methods}\\
+This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
+assay uses amplification of the virus segments ORf1B and S and also detects a
+human RnaseP amplification control. This test was developed and its performance
+characteristics determined by the University of Washington’s Northwest Genomics
+Center. This laboratory is licensed by the WA Department of Health Medical
+Testing Site as qualified to perform high complexity clinical laboratory
+testing.
+
+\textbf{Limitations}
+
+\begin{itemize}
+
+\item
+
+  These results are provided as part of a research study.
+
+\item
+
+  You collected this sample and labeled it by yourself (or for someone else) and
+  returned it to the lab via a delivery service. It was not collected, labeled,
+  or transported by a healthcare professional like a nurse or doctor. This may
+  impact your test result, and a healthcare provider may want to test you again.
+
+\item
+
+  Because this report is based on data from a research study, your results may
+  not be able to diagnose COVID-19, the disease caused by an infection with
+  SARS-CoV-2.
+
+\end{itemize}
+
+\end{document}
