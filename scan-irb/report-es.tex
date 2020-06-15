@@ -44,7 +44,7 @@
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
     \small
-    \textbf{Test Performed By}\\
+    \textbf{Prueba realizada por}\\
     Northwest Genomics Center\\
     University of Washington School of Medicine\\
     Genome Sciences Box 355065\\
@@ -55,15 +55,15 @@
 
 \begin{document}
 
-\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\begin{description}[font=\normalfont,align=left,labelwidth=18em]
 \item [\textbf{\VAR{pat_name|e}}]
-\item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Specimen}] Midnasal, self-collected
-\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
-\item [\textbf{Collection Date}] \VAR{collect_ts|e}
-\item [\textbf{Report Date}]
+\item [\textbf{Fecha de nacimiento}] \VAR{birth_date|e}
+\item [\textbf{Muestra}] hisopado nasal del cornete medio, extraída por el paciente
+\item [\textbf{Código de barras de la extracción}] \VAR{qrcode|e}
+\item [\textbf{Fecha de la extracción}] \VAR{collect_ts|e}
+\item [\textbf{Fecha del informe}]
   %- if status_code == "never-tested"
-  Never tested
+  Nunca probado
   %- else
   \VAR{result_ts|e}
   %- endif
@@ -73,67 +73,69 @@
 
 \begin{center}
 \Large
-\textbf{RESEARCH RESULT - You are encouraged to share this result with your
-  health care provider.}
+\textbf{RESULTADO DE LA INVESTIGACIÓN: le recomendamos que informe este
+  resultado al proveedor de atención médica.}
 \end{center}
 
 \bigskip
 
-\large \underline{\textbf{About This Test:}}
+\large \underline{\textbf{Acerca de esta prueba}}
 
 \begin{itemize}
 \item
 
-  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
-  SARS-CoV-2. This research test looks for the virus in the sample that was
-  collected from your nose to decide if you have COVID-19. The technical term
-  for this kind of test is “reverse-transcription polymerase chain reaction,” or
-  “RT-PCR” for short.
+  COVID-19 es una \textbf{enfermedad} provocada por un \textbf{virus} denominado
+  SARS-CoV-2. Esta prueba de investigación detecta el virus en la muestra que se
+  extrajo de la nariz para determinar si tiene COVID-19. El término técnico para
+  este tipo de prueba es ``reacción en cadena de la polimerasa con transcripción
+  inversa'', o ``RT-PCR'' para abreviar.
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Important Reminders}}
+\large \underline{\textbf{Recordatorios importantes}}
 
-Before looking at your research test result, you should review the following:
+Antes de consultar el resultado de la prueba de investigación, debe considerar
+lo siguiente:
 
 \begin{itemize}
 \item
 
-  The \textbf{type of sample} that you collected and \textbf{the testing in the
-  lab} are part of a \textbf{research study} and this report describes your
-  \textbf{research test result.}
+  El \textbf{tipo de muestra} que extrajo y \textbf{las pruebas en el
+  laboratorio} forman parte de un \textbf{estudio de investigación} y este
+  informe describe el resultado de la \textbf{prueba de investigación}.
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a licensed healthcare professional like a nurse or doctor.
-  This may impact your test result, and a healthcare provider may want to test
-  you again.
+  Extrajo esta muestra y la etiquetó usted mismo (o para otra persona) y la
+  devolvió al laboratorio mediante un servicio de entrega. No la extrajo,
+  etiquetó o transportó un profesional de la salud con licencia, como un
+  enfermero o médico. Esto podrá afectar el resultado de la prueba, y es posible
+  que un proveedor de atención médica desee volver a realizarla.
 
 \item
 
-  Being part of this \textbf{research study} does not take the place of your
-  normal medical care. If you are feeling very sick or are concerned about your
-  test result, you should contact a doctor or healthcare provider.
+  Participar en el estudio de investigación no reemplaza la atención médica
+  habitual. Si se siente muy mal o está preocupado por el resultado de la
+  prueba, se debe comunicar con el médico o proveedor de atención médica.
 
 \end{itemize}
 
 \bigskip
 \PageLine
 
-\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+\large \underline{\textbf{Resultado de la prueba de investigación del SARS-CoV-2
+  (COVID-19)}}
 
 %- if status_code == "negative"
-Not Detected (Negative)\\
+No se detectó (negativo)\\
 %- elif status_code == "positive"
-Detected (positive)\\
+Se detectó (positivo)\\
 %- elif status_code == "inconclusive"
-Inconclusive\\
+No concluyente\\
 %- elif status_code == "never-tested"
-Unable to be tested\\
+No se pudo analizar\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
@@ -141,136 +143,149 @@ Unable to be tested\\
 \PageLine
 \bigskip
 
-\large \underline{\textbf{Understanding Your Result}}
+\large \underline{\textbf{Entender el resultado}}
 
-This list gives all of the results that your test may show and describes what
-each of these results means. You can print out or email this \textbf{research
-test result} to share with your doctor or healthcare provider
+Esta tabla proporciona todos los resultados que la prueba puede revelar y
+describe lo que significa cada uno de ellos. Puede imprimir o enviar por correo
+electrónico el resultado de esta \textbf{prueba de investigación} para
+informárselo al médico o proveedor de atención médica.
 
-Regardless of your test result, you should stay home and avoid being around
-other people if you are feeling sick. \textbf{If your symptoms continue, you are
-very sick or worried about your illness, or have questions about your research
-test result, you should contact a doctor or healthcare provider.}
+Sin importar el resultado de la prueba, debe quedarse en su casa y evitar estar
+cerca de otras personas si se siente mal. \textbf{Si sus síntomas continúan, se
+siente muy mal, está preocupado por la enfermedad o tiene preguntas sobre el
+resultado de la prueba de investigación, debe comunicarse con el médico o
+proveedor de atención médica.}
 
 \begin{itemize}
 
 
 \item
 
-  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
-  virus that causes COVID-19 in the sample that you sent to us. No test is
-  perfect, and there is a small chance that you could have the virus even though
-  your test is negative.
+  \textbf{Si la prueba indica ``No se detectó (negativo)''}, significa que nuestro
+  laboratorio no encontró el virus que provoca la COVID-19 en la muestra que nos
+  envió. Las pruebas no son perfectas, y existe una pequeña posibilidad de que
+  tenga el virus a pesar de que el resultado de la prueba haya sido negativo.
+
 
 \item
 
-  \textbf{If your test says ``Detected (Positive)''}, it means our
-  lab found the virus that causes COVID-19 in the sample that you sent us. You
-  should stay home and avoid being around other people, especially if you are
-  feeling sick.
+  \textbf{Si la prueba indica ``Se detectó (positivo)''}, significa que nuestro
+  laboratorio encontró el virus que provoca la COVID-19 en la muestra que nos
+  envió. Debe quedarse en su casa y evitar estar cerca de otras personas, sobre
+  todo si se siente mal.
 
-  Your result will be shared with the Washington State and local health
-  departments. You do \textbf{not} need to report these results yourself. The
-  health department may call you to ask questions about your illness and people
-  you may have been around while you were sick.
+  El resultado se compartirá con el Estado de Washington y los departamentos de
+  salud locales. \textbf{No} es necesario que usted informe estos resultados. El
+  departamento de salud puede llamarlo para hacerle preguntas sobre la
+  enfermedad y las personas con las que pudo haber estado mientras estuvo
+  enfermo.
 
-\item
-
-  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
-  of your test result. No test is perfect, and an inconclusive result happens
-  when we find a small amount of SARS-CoV-2 in your sample, but not enough for
-  us to say that you have COVID-19.
 
 \item
 
-  \textbf{If your test says ``Unable to be tested''}, it means there was either
-  not enough material on your sample for us to test, or there was an error when
-  we ran the test. Since we are not able to test your sample, we could not find
-  whether or not you have the virus that causes COVID-19.
+  \textbf{Si la prueba indica ``No concluyente''}, significa que nuestro
+  laboratorio no está seguro del resultado de la prueba. Las pruebas no son
+  perfectas, y el resultado no concluyente ocurre cuando encontramos una pequeña
+  cantidad de SARS-CoV-2 en la muestra, pero no lo suficiente como para que
+  podamos afirmar que tiene COVID-19.
+
+
+\item
+
+  \textbf{Si la prueba indica ``No se pudo analizar''}, significa que no había
+  suficiente contenido en la muestra como para que la pudiéramos examinar, o se
+  produjo un error cuando realizamos la prueba. Como no logramos analizar la
+  muestra, no pudimos determinar si tiene o no el virus que provoca la COVID-19.
+
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Resources}}
+\large \underline{\textbf{Recursos}}
 
-If you would like more information on COVID-19, please review these resources
-from public health partners:
+Si desea obtener más información sobre la COVID-19, consulte estos recursos de
+los organismos de salud pública:
 
 \begin{itemize}
 \item
-  Public Health Seattle and King County\\
-  \url{http://www.kingcounty.gov/covid}
+  Public Health \textemdash Seattle \& King County (Salud Pública \textemdash Seattle y el Condado de King)\\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/spanish.aspx}
 
 \item
 
-  Washington State Department of Health\\
-  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+  Washington State Department of Health (Departamento de Salud del Estado de Washington)\\
+  \url{www.doh.wa.gov/Emergencies/NovelCoronavirusOutbreak2020COVID19/CoronavirusSpanish}
 
 \item
-  U.S. Centers for Disease Control and Prevention (CDC)\\
-  \url{http://www.cdc.gov/coronavirus/2019-ncov/index.html}
+  U.S. Centers for Disease Control and Prevention (CDC, Centros para el Control
+  y la Prevención de Enfermedades de los Estados Unidos)\\
+  \url{https://espanol.cdc.gov/coronavirus/2019-ncov/index.html}
 
 \end{itemize}
 
-If you would like to speak to someone on the phone, please call one of the
-following:
+Si desea hablar con alguien, llame a uno de los siguientes números:
 
 \begin{itemize}
 
 \item
 
-  \textbf{Medical questions related to COVID-19:} Contact the King County Call
-  Center between 8AM and 7PM at \textbf{206-477-3977}
+  \textbf{Para realizar consultas médicas sobre la COVID-19:} comuníquese con el
+  King County Call Center (Centro de Atención del Condado de King), entre las
+  8:00 a. m. y las 7:00 p. m., llamando al \textbf{206-477-3977}
 
 \item
 
-  \textbf{Non-medical questions about COVID-19, including compliance and
-  business-related issues:} Contact the King County COVID-19 Business and
-  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
+  \textbf{Para realizar consultas no médicas sobre la COVID-19, lo que incluye
+  asuntos relacionados con el cumplimiento y los negocios:} comuníquese con la
+  King County COVID-19 Business and Community Information Line (línea de
+  información comunitaria y comercial sobre la COVID-19 del Condado de King), de
+  lunes a viernes entre las 8:30 a. m. y las 4:30 p. m., llamando al
   \textbf{206-296-1608}
 
 \item
 
-  \textbf{General questions about COVID-19 in Washington State:} Contact the
-  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
-  \textbf{1-800-525-0127}
+  \textbf{Para realizar consultas generales sobre la COVID-19 en el Estado de
+  Washington:} comuníquese con el Washington State Novel Coronavirus Call Center
+  (Centro de Atención del Estado de Washington para el Nuevo Coronavirus), entre
+  las 6:00 a. m. y las 10:00 p. m., llamando al \textbf{1-800-525-0127}
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Methods and Limitations}}
+\large \underline{\textbf{Métodos y limitaciones}}
 
-\textbf{Methods}\\
-This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
-assay uses amplification of the virus segments ORf1B and S and also detects a
-human RnaseP amplification control. This test was developed and its performance
-characteristics determined by the University of Washington’s Northwest Genomics
-Center. This laboratory is licensed by the WA Department of Health Medical
-Testing Site as qualified to perform high complexity clinical laboratory
-testing.
+\textbf{Métodos}\\
+Este ensayo se realiza para detectar SARs-CoV-2 utilizando la técnica PCR con
+transcripción inversa. Este ensayo utiliza la amplificación de los segmentos de
+virus ORf1B y S, y también detecta el control de amplificación de la RnaseP
+humana. El University of Washington’s Northwest Genomics Center desarrolló esta
+prueba y determinó sus características de rendimiento. Este laboratorio está
+autorizado por el WA Department of Health como centro de pruebas médicas para
+realizar pruebas de laboratorio clínico de alta complejidad.
 
-\textbf{Limitations}
+\textbf{Limitaciones}
 
 \begin{itemize}
 
 \item
 
-  These results are provided as part of a research study.
+  Se brindan estos resultados como parte de un estudio de investigación.
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a healthcare professional like a nurse or doctor. This may
-  impact your test result, and a healthcare provider may want to test you again.
+  Extrajo esta muestra y la etiquetó usted mismo (o para otra persona) y la
+  devolvió al laboratorio mediante un servicio de entrega. No la extrajo,
+  etiquetó o transportó un profesional de la salud, como un enfermero o médico.
+  Esto podrá afectar el resultado de la prueba, y es posible que un proveedor de
+  atención médica desee volver a realizarla.
 
 \item
 
-  Because this report is based on data from a research study, your results may
-  not be able to diagnose COVID-19, the disease caused by an infection with
-  SARS-CoV-2.
+  Como este informe se basa en datos de un estudio de investigación, es posible
+  que los resultados no puedan diagnosticar COVID-19, la enfermedad provocada
+  por la infección con el virus SARS-CoV-2.
 
 \end{itemize}
 
