@@ -18,8 +18,19 @@
 \usepackage{pbox}
 \usepackage{enumitem}
 
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
 % fonts
 \usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{vietnamese}
+\setotherlanguage{english}
+
 \setmainfont{DroidSans}[
   Extension   = .ttf,
   UprightFont = *,
@@ -31,12 +42,6 @@
 \hypersetup{colorlinks,urlcolor=blue}
 \urlstyle{same}
 
-% page layout
-\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
-
-% Useful for seeing the layout as you tweak it.
-%\usepackage{showframe}
-
 \setlength{\headheight}{1.1in}
 \pagestyle{fancy}
 \fancyhf{}
@@ -44,7 +49,7 @@
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
     \small
-    \textbf{Test Performed By}\\
+    \textbf{Xét Nghiệm Được Thực Hiện Bởi:}\\
     Northwest Genomics Center\\
     University of Washington School of Medicine\\
     Genome Sciences Box 355065\\
@@ -55,15 +60,15 @@
 
 \begin{document}
 
-\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\begin{description}[font=\normalfont,align=left,labelwidth=10em]
 \item [\textbf{\VAR{pat_name|e}}]
-\item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Specimen}] Midnasal, self-collected
-\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
-\item [\textbf{Collection Date}] \VAR{collect_ts|e}
-\item [\textbf{Report Date}]
+\item [\textbf{Ngày Sinh:}] \VAR{birth_date|e}
+\item [\textbf{Mẫu Bệnh Phẩm:}] Giữa mũi, tự lấy
+\item [\textbf{Mã Vạch Lấy Mẫu:}] \VAR{qrcode|e}
+\item [\textbf{Ngày Lấy Mẫu:}] \VAR{collect_ts|e}
+\item [\textbf{Ngày Báo Cáo:}]
   %- if status_code == "never-tested"
-  Never tested
+  không bao giờ xét nghiệm
   %- else
   \VAR{result_ts|e}
   %- endif
@@ -73,67 +78,71 @@
 
 \begin{center}
 \Large
-\textbf{RESEARCH RESULT - You are encouraged to share this result with your
-  health care provider.}
+\textbf{KẾT QUẢ NGHIÊN CỨU - Khuyến khích quý vị chia sẻ thông tin này với nhà
+  cung cấp dịch vụ chăm sóc sức khỏe của mình}
 \end{center}
 
 \bigskip
 
-\large \underline{\textbf{About This Test:}}
+\large \underline{\textbf{Giới Thiệu về Xét Nghiệm}}
 
 \begin{itemize}
 \item
 
-  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
-  SARS-CoV-2. This research test looks for the virus in the sample that was
-  collected from your nose to decide if you have COVID-19. The technical term
-  for this kind of test is “reverse-transcription polymerase chain reaction,” or
-  “RT-PCR” for short.
+  COVID-19 là \textbf{căn bệnh} do \textbf{vi-rút} SARS-CoV-2 gây ra. Xét nghiệm
+  mang tính nghiên cứu này tìm vi-rút trong mẫu bệnh phẩm được thu thập từ mũi
+  của quý vị để xác định liệu quý vị có mắc COVID-19 hay không. Thuật ngữ kỹ
+  thuật cho loại xét nghiệm này là ``phản ứng tổng hợp chuỗi phiên mã ngược''
+  hay ngắn gọn là ``RT-PCR''.
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Important Reminders}}
+\large \underline{\textbf{Nhắc Nhở Quan Trọng}}
 
-Before looking at your research test result, you should review the following:
+Trước khi xem kết quả xét nghiệm mang tính nghiên cứu của quý vị, quý vị nên xem
+xét những thông tin sau:
 
 \begin{itemize}
 \item
 
-  The \textbf{type of sample} that you collected and \textbf{the testing in the
-  lab} are part of a \textbf{research study} and this report describes your
-  \textbf{research test result.}
+  \textbf{Loại mẫu} mà quý vị thu thập và \textbf{xét nghiệm trong phòng thí
+  nghiệm này} là một phần trong \textbf{nghiên cứu} và báo cáo này mô tả
+  \textbf{kết quả xét nghiệm mang tính nghiên cứu} của quý vị.
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a licensed healthcare professional like a nurse or doctor.
-  This may impact your test result, and a healthcare provider may want to test
-  you again.
+  Quý vị đã tự lấy mẫu và dán nhãn cho bản thân mình (hoặc làm cho ai đó), sau
+  đó gửi lại cho phòng thí nghiệm qua dịch vụ giao hàng. Mẫu không được thu
+  thập, dán nhãn hoặc giao nhận bởi một chuyên gia chăm sóc sức khỏe được cấp
+  phép như y tá hoặc bác sĩ. Điều này có thể ảnh hưởng đến kết quả xét nghiệm
+  của quý vị và một nhà cung cấp dịch vụ chăm sóc sức khỏe có thể muốn xét
+  nghiệm lại cho quý vị.
 
 \item
 
-  Being part of this \textbf{research study} does not take the place of your
-  normal medical care. If you are feeling very sick or are concerned about your
-  test result, you should contact a doctor or healthcare provider.
+  Việc trở thành một phần trong \textbf{nghiên cứu} này không thay thế cho các
+  chăm sóc y tế thông thường của quý vị. Nếu quý vị cảm thấy ốm nặng hoặc lo
+  ngại về kết quả xét nghiệm của mình, quý vị nên liên hệ với một bác sĩ hoặc
+  nhà cung cấp dịch vụ chăm sóc sức khỏe.
 
 \end{itemize}
 
 \bigskip
 \PageLine
 
-\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+\large \underline{\textbf{Kết Quả Xét Nghiệm Mang Tính Nghiên Cứu SARS-CoV-2
+  (COVID-19) Của Quý Vị}}
 
 %- if status_code == "negative"
-Not Detected (Negative)\\
+Không Phát Hiện Thấy Vi-rút (Âm Tính)\\
 %- elif status_code == "positive"
-Detected (positive)\\
+Phát Hiện Thấy Vi-rút (Dương Tính)\\
 %- elif status_code == "inconclusive"
-Inconclusive\\
+Không Xác Định\\
 %- elif status_code == "never-tested"
-Unable to be tested\\
+Không Thể Xét Nghiệm\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
@@ -141,136 +150,146 @@ Unable to be tested\\
 \PageLine
 \bigskip
 
-\large \underline{\textbf{Understanding Your Result}}
+\large \underline{\textbf{Hiểu Kết Quả Của Quý Vị}}
 
-This list gives all of the results that your test may show and describes what
-each of these results means. You can print out or email this \textbf{research
-test result} to share with your doctor or healthcare provider
+Bảng này cho biết tất cả các kết quả mà xét nghiệm của quý vị có thể cho thấy và
+mô tả ý nghĩa của từng loại kết quả. Quý vị có thể in hoặc gửi email
+\textbf{kết quả xét nghiệm mang tính nghiên cứu này} cho bác sĩ hoặc nhà cung
+cấp dịch vụ chăm sóc sức khỏe của quý vị.
 
-Regardless of your test result, you should stay home and avoid being around
-other people if you are feeling sick. \textbf{If your symptoms continue, you are
-very sick or worried about your illness, or have questions about your research
-test result, you should contact a doctor or healthcare provider.}
+Bất kể kết quả của quý vị ra sao, quý vị nên ở nhà và tránh xa những người khác
+nếu quý vị cảm thấy ốm. \textbf{Nếu các triệu chứng của quý vị tiếp tục, quý vị
+cảm thấy ốm nặng hoặc lo lắng về bệnh tình của mình hay có câu hỏi về kết quả
+xét nghiệm mang tính nghiên cứu của quý vị, thì quý vị nên liên hệ với một bác
+sĩ hoặc nhà cung cấp dịch vụ chăm sóc sức khỏe.}
 
 \begin{itemize}
 
 
 \item
 
-  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
-  virus that causes COVID-19 in the sample that you sent to us. No test is
-  perfect, and there is a small chance that you could have the virus even though
-  your test is negative.
+  \textbf{Nếu xét nghiệm của quý vị là ``Không Phát Hiện Thấy (Âm Tính)''}, điều
+  đó có nghĩa là phòng thí nghiệm của chúng tôi không tìm thấy vi-rút gây ra
+  COVID-19 trong mẫu mà quý vị gửi cho chúng tôi. Không có xét nghiệm nào hoàn
+  hảo và vẫn có khả năng nhỏ là quý vị có thể nhiễm vi-rút này mặc dù kết quả
+  xét nghiệm của quý vị là âm tính.
 
 \item
 
-  \textbf{If your test says ``Detected (Positive)''}, it means our
-  lab found the virus that causes COVID-19 in the sample that you sent us. You
-  should stay home and avoid being around other people, especially if you are
-  feeling sick.
+  \textbf{Nếu xét nghiệm của quý vị là ``Phát Hiện Thấy (Dương Tính)''}, điều đó
+  có nghĩa là phòng thí nghiệm của chúng tôi tìm thấy vi-rút COVID-19 trong mẫu
+  mà quý vị gửi cho chúng tôi. Quý vị nên ở nhà và tránh xa những người khác,
+  đặc biệt nếu quý vị cảm thấy ốm.
 
-  Your result will be shared with the Washington State and local health
-  departments. You do \textbf{not} need to report these results yourself. The
-  health department may call you to ask questions about your illness and people
-  you may have been around while you were sick.
-
-\item
-
-  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
-  of your test result. No test is perfect, and an inconclusive result happens
-  when we find a small amount of SARS-CoV-2 in your sample, but not enough for
-  us to say that you have COVID-19.
+  Xét nghiệm của quý vị sẽ được chia sẻ với Tiểu Bang Washington và các cơ quan
+  y tế địa phương. Quý vị \textbf{không} cần tự báo cáo những kết quả đó. Cơ
+  quan y tế có thể gọi cho quý vị để hỏi về bệnh tình của quý vị và những người
+  ở gần quý vị trong thời gian quý vị bị ốm.
 
 \item
 
-  \textbf{If your test says ``Unable to be tested''}, it means there was either
-  not enough material on your sample for us to test, or there was an error when
-  we ran the test. Since we are not able to test your sample, we could not find
-  whether or not you have the virus that causes COVID-19.
+  \textbf{Nếu xét nghiệm của quý vị là ``Không Xác Định''}, điều đó có nghĩa là
+  phòng thí nghiệm của chúng tôi không chắc chắn về kết quả xét nghiệm của quý
+  vị. Không có xét nghiệm nào hoàn hảo và kết quả không xác định xảy ra khi
+  chúng tôi tìm thấy một số lượng nhỏ SARS-CoV-2 trong mẫu của quý vị, nhưng
+  không đủ để chúng tôi kết luận rằng quý vị nhiễm COVID-19.
+
+\item
+
+  \textbf{Nếu xét nghiệm của quý vị cho biết ``Không Thể Xét Nghiệm''}, điều đó
+  có nghĩa là không đủ vật liệu trong mẫu của quý vị để chúng tôi xét nghiệm
+  hoặc đã xảy ra lỗi khi chúng tôi thực hiện xét nghiệm. Do chúng tôi không thể
+  xét nghiệm mẫu của quý vị, chúng tôi không thể biết quý vị nhiễm hay không
+  nhiễm vi-rút gây ra COVID-19.
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Resources}}
+\large \underline{\textbf{Các Nguồn Lực}}
 
-If you would like more information on COVID-19, please review these resources
-from public health partners:
+Nếu quý vị muốn biết thêm thông tin về COVID-19, vui lòng xem các nguồn lực sau
+từ các đối tác y tế công cộng:
 
 \begin{itemize}
 \item
-  Public Health \textemdash Seattle \& King County\\
-  \url{http://www.kingcounty.gov/covid}
+  Public Health \textemdash Seattle \& King County (Cơ Quan Y Tế Cộng Đồng \textemdash Seattle \& Quận King): \\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/vietnamese.aspx}
 
 \item
 
-  Washington State Department of Health\\
-  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+  Washington State Department of Health (Sở Y Tế Tiểu Bang Washington):\\
+  \url{https://www.doh.wa.gov/Emergencies/NovelCoronavirusOutbreak2020COVID19/vietnamese}
 
 \item
-  U.S. Centers for Disease Control and Prevention (CDC)\\
-  \url{http://www.cdc.gov/coronavirus/2019-ncov/index.html}
+  U.S. Centers for Disease Control and Prevention (CDC, Trung Tâm Kiểm Soát và
+  Phòng Ngừa Dịch Bệnh Hoa Kỳ):\\
+  \url{https://vietnamese.cdc.gov/coronavirus/2019-ncov/index.html}
 
 \end{itemize}
 
-If you would like to speak to someone on the phone, please call one of the
-following:
+Nếu quý vị muốn trao đổi với ai đó qua điện thoại, vui lòng gọi đến một trong
+những số sau:
 
 \begin{itemize}
 
 \item
 
-  \textbf{Medical questions related to COVID-19:} Contact the King County Call
-  Center between 8AM and 7PM at \textbf{206-477-3977}
+  \textbf{Các câu hỏi y tế liên quan đến COVID-19:} Hãy liên hệ với King County
+  Call Center (Tổng Đài Quận King) từ 8 giờ sáng đến 7 giờ tối theo số
+  \textbf{206-477-3977}
 
 \item
 
-  \textbf{Non-medical questions about COVID-19, including compliance and
-  business-related issues:} Contact the King County COVID-19 Business and
-  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
-  \textbf{206-296-1608}
+  \textbf{Các câu hỏi không liên quan đến y tế về COVID-19, bao gồm các vấn đề
+  về tuân thủ và liên quan đến doanh nghiệp:} Hãy liên hệ với King County
+  COVID-19 Business and Community Information Line (Đường Dây Thông Tin Doanh
+  Nghiệp và Cộng Đồng trong COVID-19 của Quận King), từ 8 giờ 30 phút sáng đến 4
+  giờ 30 phút chiều, Thứ Hai - Thứ Sáu theo số \textbf{206-296-1608}
 
 \item
 
-  \textbf{General questions about COVID-19 in Washington State:} Contact the
-  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
+  \textbf{Các câu hỏi chung về COVID-19 tại Tiểu Bang Washington:} Hãy liên hệ
+  với Washington State Novel Coronavirus Call Center (Tổng Đài Vi-rút Corona
+  Chủng Mới của Tiểu Bang Washington) từ 6 giờ sáng đến 10 giờ tối theo số
   \textbf{1-800-525-0127}
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Methods and Limitations}}
+\large \underline{\textbf{Các Biện Pháp và Hạn Chế}}
 
-\textbf{Methods}\\
-This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
-assay uses amplification of the virus segments ORf1B and S and also detects a
-human RnaseP amplification control. This test was developed and its performance
-characteristics determined by the University of Washington’s Northwest Genomics
-Center. This laboratory is licensed by the WA Department of Health Medical
-Testing Site as qualified to perform high complexity clinical laboratory
-testing.
+\textbf{Biện Pháp}\\
+Xét nghiệm này được thực hiện để phát hiện SAR-CoV-2 bằng cách sử dụng PCR phiên
+mã ngược. Xét nghiệm này sử dụng kỹ thuật khuếch đại các phân đoạn vi-rút ORf1B
+và S cũng như phát hiện kiểm soát khuếch đại RnaseP ở người. Northwest Genomics
+Center của University of Washington đã phát triển và xác định các đặc tính hiệu
+suất của loại xét nghiệm này. Phòng thí nghiệm này được WA Department of Health
+Medical Testing Site (Sở Phụ Trách Cơ Sở Xét Nghiệm Y Tế Sức Khỏe) của WA cấp
+phép là đủ tiêu chuẩn để thực hiện các xét nghiệm lâm sàng có độ phức tạp cao.
 
-\textbf{Limitations}
+\textbf{Hạn Chế}
 
 \begin{itemize}
 
 \item
 
-  These results are provided as part of a research study.
+  Các kết quả này được cung cấp như một phần trong nghiên cứu.
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a healthcare professional like a nurse or doctor. This may
-  impact your test result, and a healthcare provider may want to test you again.
+  Quý vị đã tự lấy mẫu và dán nhãn cho bản thân mình (hoặc làm cho ai đó), sau
+  đó gửi lại cho phòng thí nghiệm qua dịch vụ giao hàng. Mẫu không được thu
+  thập, dán nhãn hoặc giao nhận bởi một chuyên gia chăm sóc sức khỏe như y tá
+  hoặc bác sĩ. Điều này có thể ảnh hưởng đến kết quả xét nghiệm của quý vị và
+  một nhà cung cấp dịch vụ chăm sóc sức khỏe có thể muốn xét nghiệm lại cho quý
+  vị.
 
 \item
 
-  Because this report is based on data from a research study, your results may
-  not be able to diagnose COVID-19, the disease caused by an infection with
-  SARS-CoV-2.
+  Vì báo cáo này dựa trên dữ liệu từ một nghiên cứu, kết quả của quý vị có thể
+  không chẩn đoán COVID-19, căn bệnh gây ra do nhiễm vi-rút SARS-CoV-2.
 
 \end{itemize}
 
