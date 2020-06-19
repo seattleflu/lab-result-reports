@@ -44,7 +44,7 @@
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
     \small
-    \textbf{Test Performed By}\\
+    \textbf{Ang Pagsusuri ay Isinagawa Ng:}\\
     Northwest Genomics Center\\
     University of Washington School of Medicine\\
     Genome Sciences Box 355065\\
@@ -57,13 +57,13 @@
 
 \begin{description}[font=\normalfont,align=left,labelwidth=12em]
 \item [\textbf{\VAR{pat_name|e}}]
-\item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Specimen}] Midnasal, self-collected
-\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
-\item [\textbf{Collection Date}] \VAR{collect_ts|e}
-\item [\textbf{Report Date}]
+\item [\textbf{Petsa ng Kapanganakan}] \VAR{birth_date|e}
+\item [\textbf{Specimen}] Gitnang Bahagi ng Ilong, sariling kinolekta
+\item [\textbf{Barcode ng Pagkolekta}] \VAR{qrcode|e}
+\item [\textbf{Petsa ng Pagkolekta}] \VAR{collect_ts|e}
+\item [\textbf{Petsa ng Ulat}]
   %- if status_code == "never-tested"
-  Never tested
+  Hindi pa nasubukan
   %- else
   \VAR{result_ts|e}
   %- endif
@@ -73,67 +73,70 @@
 
 \begin{center}
 \Large
-\textbf{RESEARCH RESULT - You are encouraged to share this result with your
-  health care provider.}
+\textbf{RESULTA NG PANANALIKSIK – Hinihikayat kang ibahagi ang resultang ito sa
+  iyong provider ng pangangalagang pangkalusugan}
 \end{center}
 
 \bigskip
 
-\large \underline{\textbf{About This Test:}}
+\large \underline{\textbf{Tungkol sa Pagsusuri na Ito}}
 
 \begin{itemize}
 \item
 
-  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
-  SARS-CoV-2. This research test looks for the virus in the sample that was
-  collected from your nose to decide if you have COVID-19. The technical term
-  for this kind of test is “reverse-transcription polymerase chain reaction,” or
-  “RT-PCR” for short.
+  Ang COVID-19 ay isang \textbf{sakit} na dulot ng \textbf{virus} na tinatawag
+  na SARS-CoV-2. Hinahanap ng pagsusuri ng pananaliksik na ito ang virus sa
+  sample na kinolekta mula sa iyong ilong para matukoy kung mayroon kang
+  COVID-19. Ang tekninal na katawagan para sa ganitong uri ng pagsusuri ay
+  ``reverse-transcription polymerase chain reaction,'' o ``RT-PCR'' kung
+  pinaikli.
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Important Reminders}}
+\large \underline{\textbf{Mahahalagang Paalala}}
 
-Before looking at your research test result, you should review the following:
+Bago tingnan ang resulta ng iyong pagsusuri ng pananaliksik, dapat mong suriin ang sumusunod:
 
 \begin{itemize}
 \item
 
-  The \textbf{type of sample} that you collected and \textbf{the testing in the
-  lab} are part of a \textbf{research study} and this report describes your
-  \textbf{research test result.}
+  Ang \textbf{uri ng sample} na kinolekta mo at ang \textbf{pagsusuri sa lab} ay
+  bahagi ng \textbf{pananaliksik na pag-aaral (research study)} at inilalarawan
+  ng ulat na ito ang iyong \textbf{resulta ng pagsusuri ng pananaliksik.}
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a licensed healthcare professional like a nurse or doctor.
-  This may impact your test result, and a healthcare provider may want to test
-  you again.
+  Kinolekta mo ang sample na ito at nilagyan mo (o para sa ibang tao) ito ng
+  label at ibinalik sa lab sa pamamagitan ng serbisyo sa pag-deliver. Hindi ito
+  kinolekta, nilagyan ng label, o ihinatid ng isang lisensiyadong propesyonal sa
+  kalusugan tulad ng nurse o doktor. Maaaring makaapekto ito sa resulta ng iyong
+  pagsusuri, at maaaring gusto kang muling ipasuri ng isang provider ng
+  pangangalagang pangkalusugan.
 
 \item
 
-  Being part of this \textbf{research study} does not take the place of your
-  normal medical care. If you are feeling very sick or are concerned about your
-  test result, you should contact a doctor or healthcare provider.
+  Hindi pamalit sa iyong normal na medikal na pangangalaga ang pagiging bahagi
+  ng \textbf{pananaliksik na pag-aaral} na ito. Kung sobrang masama ang iyong
+  pakiramdam o kaya ay nababahala ka sa resulta ng iyong pagsusuri, dapat kang
+  makipag-ugnayan sa doktor o provider ng pangangalagang pangkalusugan.
 
 \end{itemize}
 
 \bigskip
 \PageLine
 
-\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+\large \underline{\textbf{Ang Resulta ng Pagsusuri ng SARS-CoV-2 (COVID-19)}}
 
 %- if status_code == "negative"
-Not Detected (Negative)\\
+Walang Natukoy (Negatibo)\\
 %- elif status_code == "positive"
-Detected (positive)\\
+Natukoy (Positibo)\\
 %- elif status_code == "inconclusive"
-Inconclusive\\
+Hindi Tiyak\\
 %- elif status_code == "never-tested"
-Unable to be tested\\
+Hindi Nasuri\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
@@ -141,16 +144,20 @@ Unable to be tested\\
 \PageLine
 \bigskip
 
-\large \underline{\textbf{Understanding Your Result}}
+\large \underline{\textbf{Pag-intindi sa Iyong Resulta}}
 
-This list gives all of the results that your test may show and describes what
-each of these results means. You can print out or email this \textbf{research
-test result} to share with your doctor or healthcare provider
+Ipinapakita ng table na ito ang lahat ng mga resulta na maaaring ipakita ng
+iyong pagsusuri at inilalarawan nito kung ano ang ibig sabihin ng bawat isa sa
+mga resultang ito. Maaari mong i-print o i-email ang \textbf{resulta ng
+pagsusuri ng pananaliksik} na ito para ibahagi sa iyong doktor o provider ng
+pangangalagang pangkalusugan.
 
-Regardless of your test result, you should stay home and avoid being around
-other people if you are feeling sick. \textbf{If your symptoms continue, you are
-very sick or worried about your illness, or have questions about your research
-test result, you should contact a doctor or healthcare provider.}
+Anuman ang resulta ng iyong pagsusuri, dapat kang manatili sa bahay at dapat
+mong iwasang ang ibang tao kung masama ang iyong pakiramdam. \textbf{Kung
+nagpapatuloy ang mga sintomas mo, sobrang masama ang iyong pakiramdam o kaya ay
+nababahala ka sa resulta ng iyong pagsusuri, o mayroon kang mga tanong tungkol
+sa resulta ng pagsusuri ng pananaliksik, dapat kang makipag-ugnayan sa doktor o
+provider ng pangangalagang pangkalusugan.}
 
 \begin{itemize}
 
@@ -192,85 +199,95 @@ test result, you should contact a doctor or healthcare provider.}
 
 \bigskip
 
-\large \underline{\textbf{Resources}}
+\large \underline{\textbf{Mga Mapagkukunan}}
 
-If you would like more information on COVID-19, please review these resources
-from public health partners:
+Kung gusto mo ng higit pang impormasyon tungkol sa COVID-19, mangyaring tingnan
+ang mga mapagkukunang ito mula sa mga partner sa pampublikong kalusugan:
 
 \begin{itemize}
 \item
-  Public Health Seattle and King County\\
-  \url{http://www.kingcounty.gov/covid}
+  Public Health \textemdash Seattle \& King County (Pampublikong Kalusugan
+  \textemdash Seattle at King County): \\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/filipino.aspx}
 
 \item
 
-  Washington State Department of Health\\
+  Washington State Department of Health (Departamento ng Kalusugan ng Estado ng
+  Washington): \\
   \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
 
 \item
-  U.S. Centers for Disease Control and Prevention (CDC)\\
-  \url{http://www.cdc.gov/coronavirus/2019-ncov/index.html}
+  U.S. Centers for Disease Control and Prevention (CDC, Mga Sentro sa Pagkontrol
+  at Pag-iwas sa Sakit sa Estados Unidos):\\
+  \url{https://wwwn.cdc.gov/pubs/other-languages?Sort=Lang%3A%3Aasc&Language=Tagalog}
 
 \end{itemize}
 
-If you would like to speak to someone on the phone, please call one of the
-following:
+Kung gusto mong makipag-usap sa isang tao sa telepono, mangyaring tumawag sa isa
+sa mga sumsuunod:
 
 \begin{itemize}
 
 \item
 
-  \textbf{Medical questions related to COVID-19:} Contact the King County Call
-  Center between 8AM and 7PM at \textbf{206-477-3977}
+  \textbf{Mga medikal na tanong na nauugnay sa COVID-19:} Makipag-ugnayan sa King County Call Center
+  (Sentro sa Pagtawag ng King County) sa pagitan ng 8AM at 7PM sa
+  \textbf{206-477-3977}
 
 \item
 
-  \textbf{Non-medical questions about COVID-19, including compliance and
-  business-related issues:} Contact the King County COVID-19 Business and
-  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
-  \textbf{206-296-1608}
+  \textbf{Mga hindi medikal na tanong tungkol sa COVID-19, kasama ang mga isyu
+  na nauugnay sa pagsunod at negosyo:} Makipag-ugnayan sa King County COVID-19
+  Business and Community Information Line (Linya ng Impormasyon sa COVID-19 sa
+  Negosyo at Komunidad ng King County), Lunes – Biyernes sa pagitan ng 8:30AM at
+  4:30PM sa \textbf{206-296-1608}
 
 \item
 
-  \textbf{General questions about COVID-19 in Washington State:} Contact the
-  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
-  \textbf{1-800-525-0127}
+  \textbf{Mga pangkalahatang tanong tungkol sa COVID-19 sa Estado ng
+  Washington:} Makipag-ugnayan sa Washington State Novel Coronavirus Call Center
+  (Sentro sa Pagtawag ukol sa Bagong Coronavirus sa Estado ng Washington) sa
+  pagitan ng 6AM at 10PM sa \textbf{1-800-525-0127}
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Methods and Limitations}}
+\large \underline{\textbf{Mga Paraan at Limitasyon}}
 
-\textbf{Methods}\\
-This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
-assay uses amplification of the virus segments ORf1B and S and also detects a
-human RnaseP amplification control. This test was developed and its performance
-characteristics determined by the University of Washington’s Northwest Genomics
-Center. This laboratory is licensed by the WA Department of Health Medical
-Testing Site as qualified to perform high complexity clinical laboratory
-testing.
+\textbf{Mga Paraan}\\
+Ginawa ang pagsusuring ito para tukuyin ang SARs-CoV-2 gamit ang
+reverse-transcription PCR. Gumagamit ang pagsusuring ito ng pagpaparami ng kopya
+ng mga bahagi ng virus, ang ORf1B at S, at tinutukoy din nito ang kontrol sa
+pagpaparami na human RnaseP. Ang pagsusuring ito ay binuo at tinukoy ang mga
+katangian sa pagganap nito ng Northwest Genomics Center ng University of
+Washington. Ang laboratoryo ay binigyan ng lisensiya ng Site para sa Medikal na
+Pagsusuri ng WA State Department of Health bilang kwalipikadong magsagawa ng
+lubos na kumplikadong pagsusuri sa klinikal na laboratoryo.
 
-\textbf{Limitations}
+\textbf{Mga Limitasyon}
 
 \begin{itemize}
 
 \item
 
-  These results are provided as part of a research study.
+  Ibinibigay ang mga resultang ito bilang bahagi ng isang pananaliksik na
+  pag-aaral.
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a healthcare professional like a nurse or doctor. This may
-  impact your test result, and a healthcare provider may want to test you again.
+  Kinolekta mo ang sample na ito at nilagyan mo (o para sa ibang tao) ito ng
+  label at ibinalik sa lab sa pamamagitan ng serbisyo sa pag-deliver. Hindi ito
+  kinolekta, nilagyan ng label, o ihinatid ng isang propesyonal sa
+  pangangalagang pangkalusugan tulad ng nurse o doktor. Maaaring makaapekto ito
+  sa resulta ng iyong pagsusuri, at maaaring gusto kang muling ipasuri ng isang
+  provider ng pangangalagang pangkalusugan.
 
 \item
 
-  Because this report is based on data from a research study, your results may
-  not be able to diagnose COVID-19, the disease caused by an infection with
-  SARS-CoV-2.
+  Dahil batay ang ulat na ito sa data mula sa isang pananaliksik na pag-aaral,
+  maaaring hindi matukoy ng iyong mga resulta ang COVID-19, ang sakit na dulot
+  ng impeksiyon ng SARS-CoV-2.
 
 \end{itemize}
 
