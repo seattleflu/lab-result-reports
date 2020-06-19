@@ -44,7 +44,7 @@
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
     \small
-    \textbf{Test Performed By}\\
+    \textbf{Baaritaanka waxaa samaynaaya:}\\
     Northwest Genomics Center\\
     University of Washington School of Medicine\\
     Genome Sciences Box 355065\\
@@ -57,13 +57,13 @@
 
 \begin{description}[font=\normalfont,align=left,labelwidth=12em]
 \item [\textbf{\VAR{pat_name|e}}]
-\item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Specimen}] Midnasal, self-collected
-\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
-\item [\textbf{Collection Date}] \VAR{collect_ts|e}
-\item [\textbf{Report Date}]
+\item [\textbf{Taariikhda Dhalashada}] \VAR{birth_date|e}
+\item [\textbf{Unugta}] Dheecaan laga qaaday bartamaha sanka, oo qofku iska qaadaayo
+\item [\textbf{Koodhka saambalka}] \VAR{qrcode|e}
+\item [\textbf{Taariikhda aruurinta}] \VAR{collect_ts|e}
+\item [\textbf{Taariikhda Warbixinta}]
   %- if status_code == "never-tested"
-  Never tested
+  Waligay layma baarin
   %- else
   \VAR{result_ts|e}
   %- endif
@@ -73,67 +73,70 @@
 
 \begin{center}
 \Large
-\textbf{RESEARCH RESULT - You are encouraged to share this result with your
-  health care provider.}
+\textbf{NATIIJADA BAARITAANKA – Waxaa lagugu boorinayaa inaad natiijadaan la
+  wadaagto dhakhtarkaaga}
 \end{center}
 
 \bigskip
 
-\large \underline{\textbf{About This Test:}}
+\large \underline{\textbf{Xogta Ku saabsan Baaritaankaan}}
 
 \begin{itemize}
 \item
 
-  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
-  SARS-CoV-2. This research test looks for the virus in the sample that was
-  collected from your nose to decide if you have COVID-19. The technical term
-  for this kind of test is “reverse-transcription polymerase chain reaction,” or
-  “RT-PCR” for short.
+  COVID-19 waa \textbf{cudur} uu keeno \textbf{fayras} loo yaqaano SARS-CoV-2.
+  Baaritaankaan cilmi baarista ah wuxuu raadinayaa fayraska ku jira saambalka
+  laga qaaday sankaaga si loo go'aansho inaad qabto iyo inkale COVID-19. Erayga
+  farsamo ee baaritaanka noocaan ah waa ``falcelinta isbadalka hide sidayaasha
+  polymerase,'' ama ``RT-PCR'' marka lasoo gaabsho.
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Important Reminders}}
+\large \underline{\textbf{Xasuusino Muhiim ah}}
 
-Before looking at your research test result, you should review the following:
+Kahor intaadan fiirin natiijada baaritaankaaga cilmi baarista, waa inaad akhridaa:
 
 \begin{itemize}
 \item
 
-  The \textbf{type of sample} that you collected and \textbf{the testing in the
-  lab} are part of a \textbf{research study} and this report describes your
-  \textbf{research test result.}
+  \textbf{Nooca sambalka} lagaa qaaday iyo \textbf{baaritaanka shaybaadhka} ayaa
+  qayb ka ah \textbf{darasada cilmi baarista ah} warbixintaan ayaana qeexaysa
+  \textbf{natiijada baaristaada cilmi baarista.}
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a licensed healthcare professional like a nurse or doctor.
-  This may impact your test result, and a healthcare provider may want to test
-  you again.
+  Adigga ayaa iska qaaday soona calaamadeeyay (ama qof kale ayaa calaamadeeyay)
+  waxaadna kusoo celisay shaybaadhka adoo usoo mariyay adeegga agabka geeya. Ma
+  uusan qaadin, mana uusan calaamadayn, ama gaari kuma uusan soo qaadiin
+  shaqaale caafimaad oo xirfad leh sida kalkaaliso ama dhakhtar. Arintaan ayaa
+  samaayn karta natiijada baaritaankaaga, dhakhtar caafimaad ayaana soo jeedin
+  kara in mar kale lagu baaro.
 
 \item
 
-  Being part of this \textbf{research study} does not take the place of your
-  normal medical care. If you are feeling very sick or are concerned about your
-  test result, you should contact a doctor or healthcare provider.
+  Inaad ka qaybgasho \textbf{daraasadaan cimi baarista ah} ma buuxinayso booska
+  daryeelkaaga caafimaad ee caadiga ah. Haddii aad xanuun badan qabto ama aad
+  walaac ka qabto natiijada baaritaankaaga, waa inaad la xariirtaa dhakhtar ama
+  daryeele caafimaad.
 
 \end{itemize}
 
 \bigskip
 \PageLine
 
-\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+\large \underline{\textbf{Natiijada Baaritaankaaga SARS-CoV-2 (COVID-19) ee
+  Cilmi Baarista }}
 
 %- if status_code == "negative"
-Not Detected (Negative)\\
+Lagaama helin (Negative (Ma qabtid))\\
 %- elif status_code == "positive"
-Detected (positive)\\
+Waa lagaa helay (Positive (Waad qabtaa))\\
 %- elif status_code == "inconclusive"
-Inconclusive\\
+Jawaabtu ma cadda\\
 %- elif status_code == "never-tested"
-Unable to be tested\\
+Lama baari karo\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
@@ -141,136 +144,150 @@ Unable to be tested\\
 \PageLine
 \bigskip
 
-\large \underline{\textbf{Understanding Your Result}}
+\large \underline{\textbf{Fahanka Natiijadaada}}
 
-This list gives all of the results that your test may show and describes what
-each of these results means. You can print out or email this \textbf{research
-test result} to share with your doctor or healthcare provider
+Shaxdaan waxay ku siinaysaa dhammaan natiijooyinka uu baaritaankaagu muujinkaro
+wuxuu qeexayaa waxa mid kasta oo natiijooyinkaan kamid ah kadhigan yahay. Waxaad
+daabici kartaa ama iimeel ku diri kartaa \textbf{natiijadaan baaritaanka cilmi}
+baarista ah si aad ula wadaagto dhakhtarkaaga ama daryeelahaaga caafimaadka.
 
-Regardless of your test result, you should stay home and avoid being around
-other people if you are feeling sick. \textbf{If your symptoms continue, you are
-very sick or worried about your illness, or have questions about your research
-test result, you should contact a doctor or healthcare provider.}
+Nooc kasta oo natiijada baaritaankaagu yahayba, waa inaad guriga joogtaa aadna
+ka fogaataa dadka kale haddii aad jiran tahay. \textbf{Haddii astaamaha
+xanuunkaagu sii socdaan, aad xanuun badan dareemayso ama aad ka cabsi qabto
+xanuunkaaga, ama aad qabto su'aalo la xariira natiijadaada baaritaanka cilmi
+baarista ah, waa inaad la xariirtaa dhakhtar ama daryeele caafimaad.}
 
 \begin{itemize}
 
 
 \item
 
-  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
-  virus that causes COVID-19 in the sample that you sent to us. No test is
-  perfect, and there is a small chance that you could have the virus even though
-  your test is negative.
+  \textbf{Haddii baaritaankaagu muujiyo ``Lagaama helin (Negative)''}, waxay ka
+  dhigan tahay shaybaadhkeenu kama helin fayraska keena cudurka COVID-19
+  saambalka aad noosoo dirtay. Ma jiro baaritaan boqolkiiba boqol saxan, waxaana
+  jiro fursad yar oo ah inaad qabi karto fayraska inkastoo baaritaanku muujiyo
+  inaadan qabin.
 
 \item
 
-  \textbf{If your test says ``Detected (Positive)''}, it means our
-  lab found the virus that causes COVID-19 in the sample that you sent us. You
-  should stay home and avoid being around other people, especially if you are
-  feeling sick.
+  \textbf{Haddii baaritaankaagu muujiyo ``Waa lagaa helay (Negative)''}, waxay
+  ka dhigan tahay shaybaadhkeenu wuxuu kaa helay fayraska Keena cudurka COVID-19
+  saambalka aad noosoo dirtay. Waa inaad guriga joogtaa aadna ka fogaataa dadka
+  kale gaar ahaana haddii aad jiran tahay.
 
-  Your result will be shared with the Washington State and local health
-  departments. You do \textbf{not} need to report these results yourself. The
-  health department may call you to ask questions about your illness and people
-  you may have been around while you were sick.
-
-\item
-
-  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
-  of your test result. No test is perfect, and an inconclusive result happens
-  when we find a small amount of SARS-CoV-2 in your sample, but not enough for
-  us to say that you have COVID-19.
+  Natiijooyinkaaga waxaa lala wadaagi doonaa Gobalka Washington iyo waaxaha
+  caafimaadka ee maxaliga ah. \textbf{Uma} baahnid in aad natijooyinkaan
+  baaritaanka adigu u gayso. Waaxda caafimaadka ayaa kusoo wici karta si ay
+  su'aalo kaaga waydiiso xanuunkaaga iyo dadka laga yaabo inay kula joogeen
+  intaad jiranayd.
 
 \item
 
-  \textbf{If your test says ``Unable to be tested''}, it means there was either
-  not enough material on your sample for us to test, or there was an error when
-  we ran the test. Since we are not able to test your sample, we could not find
-  whether or not you have the virus that causes COVID-19.
+  \textbf{Haddii baaritaankaagu muujiyo in ``Aan la hubin''}, waxay ka dhigan
+  tahay Shaybaadhkeenu ma hubo natiijada baaritaankaaga. Ma jiro baaritaan
+  boqolkiiba boqol saxan, natiijo aan kala caddyn ayaana timaada marka aan helno
+  cadad yar oo fayraska SARS-CoV-2 ah oo ku jira saambalkaaga, laakiin naguma
+  filna inaan dhahno waxaad qabtaa COVID-19.
+
+\item
+
+  \textbf{Haddii baaritaankaagu sheego ``Lama awoodo in la baaro''}, waxay ka
+  dhigan tahay midkood inaadan keenin unugyo ku filan oo ku jira saambalkaaga
+  aan baarnay, ama waxaa jiray cilad markaan baaritaanka samaynaynay. Maadaama
+  aanaan awoodin inaan baarno saambalkaaga, ma aanaan awoodin inaan helno inaad
+  qabto iyo in kale fayraska keena cudurka COVID-19.
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Resources}}
+\large \underline{\textbf{Agabyada}}
 
-If you would like more information on COVID-19, please review these resources
-from public health partners:
+Haddii aad doonayso inaad xog dheeraad ah ka hesho COVID-19, fadlan akhri xogta
+kasoo baxda iskaashatada caafimaadka dadwaynaha:
 
 \begin{itemize}
 \item
-  Public Health \textemdash Seattle \& King County\\
-  \url{http://www.kingcounty.gov/covid}
+  Public Health \textemdash Seattle \& King County (Caafimaadka Bulshada
+  \textemdash Seattle iyo King County):\\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/somali.aspx}
 
 \item
 
-  Washington State Department of Health\\
-  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+  Washington State Department of Health (Waaxda Caafimaadka ee Gobalka Washington):\\
+  \url{https://www.doh.wa.gov/Emergencies/NovelCoronavirusOutbreak2020COVID19/somali}
 
 \item
-  U.S. Centers for Disease Control and Prevention (CDC)\\
-  \url{http://www.cdc.gov/coronavirus/2019-ncov/index.html}
+  U.S. Centers for Disease Control and Prevention (CDC, Xarumaha Maraykanka ee
+  Ka hortaga iyo Xakamaynta Cudurka):\\
+  \url{https://wwwn.cdc.gov/pubs/other-languages?Sort=Lang%3A%3Aasc&Language=Somali}
 
 \end{itemize}
 
-If you would like to speak to someone on the phone, please call one of the
-following:
+Haddii aad doonayso inaad qof kula hadasho taleefanka, fadlan wac mid kamid ah
+kuwaan soo socda:
 
 \begin{itemize}
 
 \item
 
-  \textbf{Medical questions related to COVID-19:} Contact the King County Call
-  Center between 8AM and 7PM at \textbf{206-477-3977}
+  \textbf{Su'aalo caafimaad oo la xariira COVID-19:} Kala xariir King County
+  Call Center (Xariirka Wicitaanka King County) inta u dhaxaysa 8AM iyo 7PM oo
+  aad ka wacayso \textbf{206-477-3977}
 
 \item
 
-  \textbf{Non-medical questions about COVID-19, including compliance and
-  business-related issues:} Contact the King County COVID-19 Business and
-  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
-  \textbf{206-296-1608}
+  \textbf{Su'aalaha aan ahayn kuwa caafimaadka ee la xariira COVID-19, ayna ku
+  jiraan ku dhaqanka iyo arimaha la xariira ganacsiga:} La xariir King County
+  COVID-19 Business and Community Information Line (Laynka Xogta Ganacsiga iyo
+  Bulshada ee King County u qaabilsan COVID-19), Isniinta - Jamcada inta u
+  dhaxaysa 8:30AM iyo 4:30PM ood ka wacayso \textbf{206-296-1608}
 
 \item
 
-  \textbf{General questions about COVID-19 in Washington State:} Contact the
-  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
-  \textbf{1-800-525-0127}
+  \textbf{Su'aalo guud oo ku saabsan COVID-19 ee Gobalka Washington:} La xariir
+  Washington State Novel Coronavirus Call Center (Laynka Xarunta cusub ee
+  Gobalka Washington u qaabilsan Korona Fayraska Cusub) inta u dhaxaysa 6AM iyo
+  10PM ood ka wacayso \textbf{1-800-525-0127}
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Methods and Limitations}}
+\large \underline{\textbf{Qaababka iyo Xadiyada}}
 
-\textbf{Methods}\\
-This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
-assay uses amplification of the virus segments ORf1B and S and also detects a
-human RnaseP amplification control. This test was developed and its performance
-characteristics determined by the University of Washington’s Northwest Genomics
-Center. This laboratory is licensed by the WA Department of Health Medical
-Testing Site as qualified to perform high complexity clinical laboratory
-testing.
+\textbf{Qaababka}\\
+Nidaamkaan waxaa loo sameeyay in lagu baaro SARs-CoV-2 ayadoo la adeegsanaayo
+nuqulada hide sidaha ee PCR. Nidaamkaan wuxuu adeegsadaa sharqanta qaybaha
+fayraska ee ORf1B iyo S wuxuuna sidoo kale raadshaa xakamaynta sharqanta RnaseP
+ka dadka. Baaritaankaan waxaa abuurtay oo sifooyinkiisa ay go'aamiso University
+of Washington’s Northwest Genomics Center.Shaybaadhka waxaa ruqsada siisay
+Xarunta Baaritaanka Caafimaadka u qaabilsan WA Department of Health ayadoo u
+aqoonsatay inuu u qalmo fulinta baaritaan caafimaad oo shaybaadh ah kaasoo aad u
+balaaran.
 
-\textbf{Limitations}
+\textbf{Xadiyada}
 
 \begin{itemize}
 
 \item
 
-  These results are provided as part of a research study.
+  Natiijooyinkaan waxaa lagu bixiyaa ayagoo qayb ka ah daraasada cilmi baarista.
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a healthcare professional like a nurse or doctor. This may
-  impact your test result, and a healthcare provider may want to test you again.
+  Adigga ayaa iska qaaday soona calaamadeeyay (ama qof kale ayaa calaamadeeyay)
+  waxaadna kusoo celisay shaybaadhka adoo usoo mariyay adeegga agabka geeya. Ma
+  uusan qaadin, mana uusan calaamadayn, ama gaari kuma uusan soo qaadiin
+  shaqaale caafimaad oo xirfad leh sida kalkaaliso ama dhakhtar. Arintaan ayaa
+  samaayn karta natiijada baaritaankaaga, dhakhtar caafimaad ayaana soo jeedin
+  kara in mar kale lagu baaro.
 
 \item
 
-  Because this report is based on data from a research study, your results may
-  not be able to diagnose COVID-19, the disease caused by an infection with
-  SARS-CoV-2.
+  Sabab la xariirta in warbixintaan lagu saleeyay xog laga helay daraasada cilmi
+  baarista ah, natiijooyinkaaga ayaa laga yaabaa inaysan jawaab rasmi ah ka
+  bixin COVID-19, oo ah cudurka uu keeno caabuqa SARS-CoV-2.
 
 \end{itemize}
 
