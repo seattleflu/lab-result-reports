@@ -1,0 +1,294 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% fonts
+\usepackage{fontspec}
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Ang Pagsusuri ay Isinagawa Ng:}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+
+\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\item [\textbf{\VAR{pat_name|e}}]
+\item [\textbf{Petsa ng Kapanganakan}] \VAR{birth_date|e}
+\item [\textbf{Specimen}] Gitnang Bahagi ng Ilong, sariling kinolekta
+\item [\textbf{Barcode ng Pagkolekta}] \VAR{qrcode|e}
+\item [\textbf{Petsa ng Pagkolekta}] \VAR{collect_ts|e}
+\item [\textbf{Petsa ng Ulat}]
+  %- if status_code == "never-tested"
+  Hindi pa nasubukan
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\PageLine
+
+\begin{center}
+\Large
+\textbf{RESULTA NG PANANALIKSIK – Hinihikayat kang ibahagi ang resultang ito sa
+  iyong provider ng pangangalagang pangkalusugan}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{Tungkol sa Pagsusuri na Ito}}
+
+\begin{itemize}
+\item
+
+  Ang COVID-19 ay isang \textbf{sakit} na dulot ng \textbf{virus} na tinatawag
+  na SARS-CoV-2. Hinahanap ng pagsusuri ng pananaliksik na ito ang virus sa
+  sample na kinolekta mula sa iyong ilong para matukoy kung mayroon kang
+  COVID-19. Ang tekninal na katawagan para sa ganitong uri ng pagsusuri ay
+  ``reverse-transcription polymerase chain reaction,'' o ``RT-PCR'' kung
+  pinaikli.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Mahahalagang Paalala}}
+
+Bago tingnan ang resulta ng iyong pagsusuri ng pananaliksik, dapat mong suriin ang sumusunod:
+
+\begin{itemize}
+\item
+
+  Ang \textbf{uri ng sample} na kinolekta mo at ang \textbf{pagsusuri sa lab} ay
+  bahagi ng \textbf{pananaliksik na pag-aaral (research study)} at inilalarawan
+  ng ulat na ito ang iyong \textbf{resulta ng pagsusuri ng pananaliksik.}
+
+\item
+
+  Kinolekta mo ang sample na ito at nilagyan mo (o para sa ibang tao) ito ng
+  label at ibinalik sa lab sa pamamagitan ng serbisyo sa pag-deliver. Hindi ito
+  kinolekta, nilagyan ng label, o ihinatid ng isang lisensiyadong propesyonal sa
+  kalusugan tulad ng nurse o doktor. Maaaring makaapekto ito sa resulta ng iyong
+  pagsusuri, at maaaring gusto kang muling ipasuri ng isang provider ng
+  pangangalagang pangkalusugan.
+
+\item
+
+  Hindi pamalit sa iyong normal na medikal na pangangalaga ang pagiging bahagi
+  ng \textbf{pananaliksik na pag-aaral} na ito. Kung sobrang masama ang iyong
+  pakiramdam o kaya ay nababahala ka sa resulta ng iyong pagsusuri, dapat kang
+  makipag-ugnayan sa doktor o provider ng pangangalagang pangkalusugan.
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{Ang Resulta ng Pagsusuri ng SARS-CoV-2 (COVID-19)}}
+
+%- if status_code == "negative"
+Walang Natukoy (Negatibo)\\
+%- elif status_code == "positive"
+Natukoy (Positibo)\\
+%- elif status_code == "inconclusive"
+Hindi Tiyak\\
+%- elif status_code == "never-tested"
+Hindi Nasuri\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{Pag-intindi sa Iyong Resulta}}
+
+Ipinapakita ng table na ito ang lahat ng mga resulta na maaaring ipakita ng
+iyong pagsusuri at inilalarawan nito kung ano ang ibig sabihin ng bawat isa sa
+mga resultang ito. Maaari mong i-print o i-email ang \textbf{resulta ng
+pagsusuri ng pananaliksik} na ito para ibahagi sa iyong doktor o provider ng
+pangangalagang pangkalusugan.
+
+Anuman ang resulta ng iyong pagsusuri, dapat kang manatili sa bahay at dapat
+mong iwasang ang ibang tao kung masama ang iyong pakiramdam. \textbf{Kung
+nagpapatuloy ang mga sintomas mo, sobrang masama ang iyong pakiramdam o kaya ay
+nababahala ka sa resulta ng iyong pagsusuri, o mayroon kang mga tanong tungkol
+sa resulta ng pagsusuri ng pananaliksik, dapat kang makipag-ugnayan sa doktor o
+provider ng pangangalagang pangkalusugan.}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
+  virus that causes COVID-19 in the sample that you sent to us. No test is
+  perfect, and there is a small chance that you could have the virus even though
+  your test is negative.
+
+\item
+
+  \textbf{If your test says ``Detected (Positive)''}, it means our
+  lab found the virus that causes COVID-19 in the sample that you sent us. You
+  should stay home and avoid being around other people, especially if you are
+  feeling sick.
+
+  Your result will be shared with the Washington State and local health
+  departments. You do \textbf{not} need to report these results yourself. The
+  health department may call you to ask questions about your illness and people
+  you may have been around while you were sick.
+
+\item
+
+  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
+  of your test result. No test is perfect, and an inconclusive result happens
+  when we find a small amount of SARS-CoV-2 in your sample, but not enough for
+  us to say that you have COVID-19.
+
+\item
+
+  \textbf{If your test says ``Unable to be tested''}, it means there was either
+  not enough material on your sample for us to test, or there was an error when
+  we ran the test. Since we are not able to test your sample, we could not find
+  whether or not you have the virus that causes COVID-19.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Mga Mapagkukunan}}
+
+Kung gusto mo ng higit pang impormasyon tungkol sa COVID-19, mangyaring tingnan
+ang mga mapagkukunang ito mula sa mga partner sa pampublikong kalusugan:
+
+\begin{itemize}
+\item
+  Public Health \textemdash Seattle \& King County (Pampublikong Kalusugan
+  \textemdash Seattle at King County): \\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/filipino.aspx}
+
+\item
+
+  Washington State Department of Health (Departamento ng Kalusugan ng Estado ng
+  Washington): \\
+  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+
+\item
+  U.S. Centers for Disease Control and Prevention (CDC, Mga Sentro sa Pagkontrol
+  at Pag-iwas sa Sakit sa Estados Unidos):\\
+  \url{https://wwwn.cdc.gov/pubs/other-languages?Sort=Lang%3A%3Aasc&Language=Tagalog}
+
+\end{itemize}
+
+Kung gusto mong makipag-usap sa isang tao sa telepono, mangyaring tumawag sa isa
+sa mga sumsuunod:
+
+\begin{itemize}
+
+\item
+
+  \textbf{Mga medikal na tanong na nauugnay sa COVID-19:} Makipag-ugnayan sa King County Call Center
+  (Sentro sa Pagtawag ng King County) sa pagitan ng 8AM at 7PM sa
+  \textbf{206-477-3977}
+
+\item
+
+  \textbf{Mga hindi medikal na tanong tungkol sa COVID-19, kasama ang mga isyu
+  na nauugnay sa pagsunod at negosyo:} Makipag-ugnayan sa King County COVID-19
+  Business and Community Information Line (Linya ng Impormasyon sa COVID-19 sa
+  Negosyo at Komunidad ng King County), Lunes – Biyernes sa pagitan ng 8:30AM at
+  4:30PM sa \textbf{206-296-1608}
+
+\item
+
+  \textbf{Mga pangkalahatang tanong tungkol sa COVID-19 sa Estado ng
+  Washington:} Makipag-ugnayan sa Washington State Novel Coronavirus Call Center
+  (Sentro sa Pagtawag ukol sa Bagong Coronavirus sa Estado ng Washington) sa
+  pagitan ng 6AM at 10PM sa \textbf{1-800-525-0127}
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Mga Paraan at Limitasyon}}
+
+\textbf{Mga Paraan}\\
+Ginawa ang pagsusuring ito para tukuyin ang SARs-CoV-2 gamit ang
+reverse-transcription PCR. Gumagamit ang pagsusuring ito ng pagpaparami ng kopya
+ng mga bahagi ng virus, ang ORf1B at S, at tinutukoy din nito ang kontrol sa
+pagpaparami na human RnaseP. Ang pagsusuring ito ay binuo at tinukoy ang mga
+katangian sa pagganap nito ng Northwest Genomics Center ng University of
+Washington. Ang laboratoryo ay binigyan ng lisensiya ng Site para sa Medikal na
+Pagsusuri ng WA State Department of Health bilang kwalipikadong magsagawa ng
+lubos na kumplikadong pagsusuri sa klinikal na laboratoryo.
+
+\textbf{Mga Limitasyon}
+
+\begin{itemize}
+
+\item
+
+  Ibinibigay ang mga resultang ito bilang bahagi ng isang pananaliksik na
+  pag-aaral.
+
+\item
+
+  Kinolekta mo ang sample na ito at nilagyan mo (o para sa ibang tao) ito ng
+  label at ibinalik sa lab sa pamamagitan ng serbisyo sa pag-deliver. Hindi ito
+  kinolekta, nilagyan ng label, o ihinatid ng isang propesyonal sa
+  pangangalagang pangkalusugan tulad ng nurse o doktor. Maaaring makaapekto ito
+  sa resulta ng iyong pagsusuri, at maaaring gusto kang muling ipasuri ng isang
+  provider ng pangangalagang pangkalusugan.
+
+\item
+
+  Dahil batay ang ulat na ito sa data mula sa isang pananaliksik na pag-aaral,
+  maaaring hindi matukoy ng iyong mga resulta ang COVID-19, ang sakit na dulot
+  ng impeksiyon ng SARS-CoV-2.
+
+\end{itemize}
+
+\end{document}

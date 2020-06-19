@@ -1,0 +1,276 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+% fonts
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{amharic}
+\setotherlanguage{english}
+\newfontfamily\ethiopicfont{AbyssinicaSIL-R.ttf}
+
+
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{ምርመራው የተደረገው በ፡-}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+
+\begin{description}[font=\normalfont,align=left,labelwidth=8em]
+\item [\textbf{\VAR{pat_name|e}}]
+\item [\textbf{የትውልድ ቀን፡-}] \VAR{birth_date|e}
+\item [\textbf{ናሙና፡-}] ከመካከለኛ አፍንጫ ፣ በራስ የተሰበሰበ/የተወሰደ
+\item [\textbf{የስብስብ ባርኮድ፡}] \VAR{qrcode|e}
+\item [\textbf{የስብስብ ቀን፡}] \VAR{collect_ts|e}
+\item [\textbf{የሪፖርት ቀን፡}]
+  %- if status_code == "never-tested"
+  ተመርምሬ አላውቅም
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\PageLine
+
+\begin{center}
+\Large
+\textbf{የምርምር ጥናት ውጤት - ይህንን ውጤት ከጤና እንክብካቤ አቅራቢዎ ጋር እንዲጋሩ ይበረታታሉ}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{ስለዚህ ምርመራ}}
+
+\begin{itemize}
+\item
+
+  COVID-19 ማለት SARS-CoV-2 በሚባለው ቫይረስ የሚከሰት በሽታ ነው። COVID-19 እንዳለብዎት ለመወሰን
+  ይህ የምርምር ጥናት ምርመራ ከአፍንጫዎ በተወሰደው ናሙና ውስጥ ቫይረሱን ይፈልጋል/ይመረምራል። ለዚህ ዓይነቱ
+  ምርመራ የቴክኒክ ቃል ``ተቃራኒ-ግልባጭ የፖሊመሬዝ ሰንሰለት ምላሽ፣'' ወይም በአጭሩ ``RT-PCR'' ነው።
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{አስፈላጊ ማስታወሻዎች}}
+
+የምርምር ጥናቱን የምርመራ ውጤትዎን ከማየትዎ በፊት፣ የሚከተሉትን ማየት አለብዎት፡-
+
+\begin{itemize}
+\item
+
+  የሰበሰቡት \textbf{የናሙናው ዓይነት} እና \textbf{የላብራቶሪው ምርመራ የምርምር ጥናት} አካል እና ይህ
+  ሪፖርት የእርስዎን \textbf{የምርምር ጥናት ምርመራ ውጤት} ይገልጻል።
+
+\item
+
+  ይህንን ናሙና እራስዎ ወስደዋል እና በራስዎ (ወይም ለሌላ ሰው) ሰይመውታል እና ወደ ላብራቶሪው በመላኪያ
+  አገልግሎት መልሰውታል። እንደ ነርስ ወይም ሀኪም ባለ ፈቃድ ባለው የጤና እንክብካቤ ባለሙያ አልተሰበሰበም፣
+  አልተሰየመም ወይም አልተዘዋወረም። ይህ የምርመራ ውጤትዎ ላይ ተጽዕኖ ሊያሳድር ይችላል፣ እናም የጤና እንክብካቤ
+  ባለሙያ እንደገና ሊመረምርዎት ይፈልግ ይሆናል።
+
+\item
+
+  በዚህ \textbf{የምርምር ጥናት} ውስጥ መሳተፍ የህክምና እንክብካቤዎን ቦታ አይወስድም። ጽኑ የህመም ስሜት
+  ከተሰማዎት ወይም ስለምርመራ ውጤትዎ ሃሳብ ከያዞት፣ ሀኪም ወይም የጤና እንክብካቤ አቅራቢ ማግኘት አለብዎት።
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{የ SARS-CoV-2 (COVID-19) የምርምር ጥናት ምርመራ ውጤት}}
+
+%- if status_code == "negative"
+አልተገኘም (አሉታዊ)\\
+%- elif status_code == "positive"
+ተገኝቷል (አዎንታዊ)\\
+%- elif status_code == "inconclusive"
+በቂ ያልሆነ\\
+%- elif status_code == "never-tested"
+ለመመርመር አልተቻለም\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{ውጤትዎን መረዳት}}
+
+ይህ ሠንጠረዥ የእርስዎ ሙከራ ሊያሳየው የሚችለውን ውጤት ሁሉ ይሰጣል እንዲሁም እነዚህ ውጤቶች ምን ማለት
+እንደሆኑ ያብራራል፡፡ ይህንን \textbf{የምርምር ጥናት ምርመራ ውጤት} ማተም ወይም በኢሜል መላክ ወይም
+ለሀኪምዎ ወይም ለጤና እንክብካቤ አቅራቢዎ ማጋራት ይችላሉ።
+
+የፈተናዎ ውጤት ምንም ይሁን ምን ቤትዎ ውስጥ መቆየት እና ህመም የሚሰማዎት ከሆነ ከሌሎች ሰዎች ጋር ከመሆን
+ይቆጠቡ፡፡ \textbf{የበሽታ ምልክቶችዎ ከቀጠሉ ፣ በጣም ህመም ከተሰማዎት ወይም ስለ ህመምዎ ከተጨነቁ ወይም
+ስለምርምር ጥናቱ የምርመራ ውጤትዎ ጥያቄዎች ካሉዎት ሀኪም ወይም የጤና እንክብካቤ አቅራቢን ማነጋገር አለብዎት
+፡፡}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
+  virus that causes COVID-19 in the sample that you sent to us. No test is
+  perfect, and there is a small chance that you could have the virus even though
+  your test is negative.
+
+\item
+
+  \textbf{If your test says ``Detected (Positive)''}, it means our
+  lab found the virus that causes COVID-19 in the sample that you sent us. You
+  should stay home and avoid being around other people, especially if you are
+  feeling sick.
+
+  Your result will be shared with the Washington State and local health
+  departments. You do \textbf{not} need to report these results yourself. The
+  health department may call you to ask questions about your illness and people
+  you may have been around while you were sick.
+
+\item
+
+  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
+  of your test result. No test is perfect, and an inconclusive result happens
+  when we find a small amount of SARS-CoV-2 in your sample, but not enough for
+  us to say that you have COVID-19.
+
+\item
+
+  \textbf{If your test says ``Unable to be tested''}, it means there was either
+  not enough material on your sample for us to test, or there was an error when
+  we ran the test. Since we are not able to test your sample, we could not find
+  whether or not you have the virus that causes COVID-19.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{መርጃዎች}}
+
+ስለ COVID-19 የበለጠ መረጃ ከፈለጉ እባክዎን ከህዝብ ጤና ባልደረባዎችዎ እነዚህን መርጃዎች ይመልከቱ፡
+
+\begin{itemize}
+\item
+  Public Health \textemdash Seattle \& King County (የማህበረሰብ ጤና - ሲያትል እና ኪንግ
+  ካውንቲ)\\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/amharic.aspx}
+
+\item
+
+  Washington State Department of Health (የዋሺንግተን ስቴት የጤና ክፍል)፡-\\
+  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+
+\item
+  U.S. Centers for Disease Control and Prevention (CDC፣ የአሜሪካ የበሽታ ቁጥጥር እና
+  መከላከል ማዕከላት)፡-\\
+  \url{https://wwwn.cdc.gov/pubs/other-languages?Sort=Lang%3A%3Aasc&Language=Amharic}
+
+\end{itemize}
+
+በስልክ ከአንድ ሰው ጋር መነጋገር ከፈለጉ እባክዎን ከሚከተሉት አንዱን ይደውሉ፡-
+
+\begin{itemize}
+
+\item
+
+  ከ COVID-19 ጋር የተዛመዱ የህክምና ጥያቄዎች፡-ከ 8AM እስከ 7PM መካከል ባለው ሰዓት የ King County
+  Call Center (ኪንግ ካውንቲ ጥሪ ማእከልን) በ \textbf{206-477-3977} ያግኙ
+
+\item
+
+  \textbf{ስለ COVID-19 ህክምና-ያልሆኑ ጥያቄዎች፣ ማክበርን እና ከንግድ ጋር የተዛመዱ ጉዳዮችን ጨምሮ፡-} ከ
+  King County COVID-19 Business and Community Information Line (ኪንግ ካውንቲ
+  COVID-19 ንግድ እና ማህበረሰብ መረጃ መስመር) ጋር በ \textbf{206-296-1608፣} ከሰኞ - ዓርብ ከ8:30
+  AM እስከ 4:30 PM ባለው ጊዜ ውስጥ ይገናኙ
+
+\item
+
+  \textbf{በዋሽንግተን ግዛት ውስጥ ስለ COVID-19 አጠቃላይ ጥያቄዎች፡-} የ Washington State Novel
+  Coronavirus Call Center (ዋሽንግተን ግዛት ኖቬል ኮሮና ቫይረስ የጥሪ ማእከል)ን ከ 6 AM እና 10 PM
+  ባሉት ሰዓታተ መካከል በ \textbf{1-800-525-0127} ያግኙ
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{ዘዴዎች እና ገደቦች}}
+
+\textbf{ዘዴዎች}\\
+ይህ ሙከራ የተደረገው በተቃራኒ ግልባጩ PCR ን በመጠቀም SARs-CoV-2 ን ለመለየት ነው፡፡ ይህ ሙከራ የቫይረሱ
+ክፍሎች ORf1B እና S ን ማጉላት የሚጠቀም ሲሆን እንዲሁም የሰው RnaseP ማጉያ መቆጣጠሪያን ፈልጎ ያገኛል።
+ይህ ምርመራ የተሰራው እና የአፈፃፀም ባህሪው በ University of Washington Northwest Genomics
+Center የተወሰነ ነው። ይህ ላቦራቶሪ ከፍተኛ ውስብስብነት ያላቸውን የክሊኒካል ላብራቶሪ ምርመራ ለማከናወን ብቁ
+በመሆኑ በ  WA Department of Health የጤና ክፍል የህክምና ምርመራ ጣቢያ ፈቃድ ተሰጥቶታል።
+
+\textbf{ገደቦች}
+
+\begin{itemize}
+
+\item
+
+  እነዚህ ውጤቶች እንደ የምርምር ጥናት አካል ሆነው ቀርበዋል፡፡
+
+\item
+
+  ይህንን ናሙና እራስዎ ወስደዋል እና በራስዎ (ወይም ለሌላ ሰው) ሰይመውታል እና ወደ ላብራቶሪው በመላኪያ
+  አገልግሎት መልሰውታል። እንደ ነርስ ወይም ሀኪም ባለ ፈቃድ ባለው የጤና እንክብካቤ ባለሙያ አልተሰበሰበም፣
+  አልተሰየመም ወይም አልተዘዋወረም። ይህ የምርመራ ውጤትዎ ላይ ተጽዕኖ ሊያሳድር ይችላል፣ እናም የጤና እንክብካቤ
+  ባለሙያ እንደገና ሊመረምርዎት ይፈልግ ይሆናል።
+
+\item
+
+  ይህ ሪፖርት በምርምር ጥናት ላይ የተመሠረተ ስለሆነ የእርስዎ ውጤቶች በ SARS-CoV-2 ኢንፌክሽን የሚከሰተውን
+  COVID-19 በሽታን፣ ለይቶ ማወቅ አልቻሉም ይሆናል።
+
+\end{itemize}
+
+\end{document}

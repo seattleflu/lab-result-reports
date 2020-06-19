@@ -11,6 +11,7 @@ RUN apt-get update && \
         texlive-fonts-recommended \
         fontconfig \
         fonts-noto-cjk \
+        fonts-sil-abyssinica \
         wget \
         xzdec
 
