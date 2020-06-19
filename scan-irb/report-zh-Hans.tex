@@ -17,6 +17,7 @@
 \usepackage{multirow}
 \usepackage{pbox}
 \usepackage{enumitem}
+\usepackage{xeCJK}
 
 % fonts
 \usepackage{fontspec}
@@ -27,6 +28,11 @@
 \setmonofont{DroidSansMono}[
   Extension   = .ttf,
   UprightFont = * ]
+\setCJKmainfont{NotoSansCJK}[
+  Extension   = .ttc,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  Language    = Chinese Simplified ]
 
 \hypersetup{colorlinks,urlcolor=blue}
 \urlstyle{same}
@@ -44,7 +50,7 @@
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
     \small
-    \textbf{Test Performed By}\\
+    \textbf{检测执行方：}\\
     Northwest Genomics Center\\
     University of Washington School of Medicine\\
     Genome Sciences Box 355065\\
@@ -55,15 +61,15 @@
 
 \begin{document}
 
-\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\begin{description}[font=\normalfont,align=left,labelwidth=6em]
 \item [\textbf{\VAR{pat_name|e}}]
-\item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Specimen}] Midnasal, self-collected
-\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
-\item [\textbf{Collection Date}] \VAR{collect_ts|e}
-\item [\textbf{Report Date}]
+\item [\textbf{出生日期：}] \VAR{birth_date|e}
+\item [\textbf{标本：}] 鼻腔中部，自我采集
+\item [\textbf{采集条形码：}] \VAR{qrcode|e}
+\item [\textbf{采集日期：}] \VAR{collect_ts|e}
+\item [\textbf{报告日期：}]
   %- if status_code == "never-tested"
-  Never tested
+  没有进行检测
   %- else
   \VAR{result_ts|e}
   %- endif
@@ -73,67 +79,60 @@
 
 \begin{center}
 \Large
-\textbf{RESEARCH RESULT - You are encouraged to share this result with your
-  health care provider.}
+\textbf{研究结果 – 鼓励您与您的医疗保健提供者共享此结果}
 \end{center}
 
 \bigskip
 
-\large \underline{\textbf{About This Test:}}
+\large \underline{\textbf{关于本检测}}
 
 \begin{itemize}
 \item
 
-  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
-  SARS-CoV-2. This research test looks for the virus in the sample that was
-  collected from your nose to decide if you have COVID-19. The technical term
-  for this kind of test is “reverse-transcription polymerase chain reaction,” or
-  “RT-PCR” for short.
+  COVID-19 是一种名为 SARS-CoV-2 的\textbf{病毒}引发的\textbf{疾病}。
+  本研究检测在从您的鼻子里采集的样本中寻找这种病毒，以确定您是否患有 COVID-19。
+  这种检测的技术术语叫``逆转录聚合酶链反应''，简称 ``RT-PCR''。
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Important Reminders}}
+\large \underline{\textbf{重要提示}}
 
-Before looking at your research test result, you should review the following:
+查看您的研究检测结果前，您应该查看以下内容：
 
 \begin{itemize}
 \item
 
-  The \textbf{type of sample} that you collected and \textbf{the testing in the
-  lab} are part of a \textbf{research study} and this report describes your
-  \textbf{research test result.}
+  您收集的\textbf{样本类型}和\textbf{实验室检测}是\textbf{研究}的一部分内容，
+  本报告介绍了您的\textbf{研究检测结果。}
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a licensed healthcare professional like a nurse or doctor.
-  This may impact your test result, and a healthcare provider may want to test
-  you again.
+  您自己（或为他人）采集样本并贴上标签后，通过快递将其送回实验室。
+  它不是由护士或医生等有执照的医疗保健专业人员采集、贴标签或运送的。这可能会影响您的检测结果，
+  医疗保健提供者可能希望再次对您进行检测。
 
 \item
 
-  Being part of this \textbf{research study} does not take the place of your
-  normal medical care. If you are feeling very sick or are concerned about your
-  test result, you should contact a doctor or healthcare provider.
+  参与本\textbf{研究}并不能代替常规医疗护理。如果您感觉很不舒服或担心您的检测结果，
+  您应该联系医生或医疗保健提供者。
 
 \end{itemize}
 
 \bigskip
 \PageLine
 
-\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+\large \underline{\textbf{您的 SARS-CoV-2 (COVID-19) 研究检测结果}}
 
 %- if status_code == "negative"
-Not Detected (Negative)\\
+未检出（阴性）\\
 %- elif status_code == "positive"
-Detected (positive)\\
+检出（阳性）\\
 %- elif status_code == "inconclusive"
-Inconclusive\\
+不确定\\
 %- elif status_code == "never-tested"
-Unable to be tested\\
+无法进行检测\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
@@ -141,16 +140,14 @@ Unable to be tested\\
 \PageLine
 \bigskip
 
-\large \underline{\textbf{Understanding Your Result}}
+\large \underline{\textbf{了解您的结果}}
 
-This list gives all of the results that your test may show and describes what
-each of these results means. You can print out or email this \textbf{research
-test result} to share with your doctor or healthcare provider
+此表给出了您的检测可能显示的所有结果，并描述了每个结果的含义。
+您可以打印或通过电子邮件将此\textbf{研究检测结果}与您的医生或医疗保健提供者共享。
 
-Regardless of your test result, you should stay home and avoid being around
-other people if you are feeling sick. \textbf{If your symptoms continue, you are
-very sick or worried about your illness, or have questions about your research
-test result, you should contact a doctor or healthcare provider.}
+不管您的检测结果如何，如果您感觉不舒服，您应该待在家里，避免和其他人在一起。
+\textbf{如果您一直有症状、您病得很重或担心您自己的疾病，或对您的研究检测结果有疑问，
+您应该联系医生或医疗保健提供者。}
 
 \begin{itemize}
 
@@ -192,85 +189,77 @@ test result, you should contact a doctor or healthcare provider.}
 
 \bigskip
 
-\large \underline{\textbf{Resources}}
+\large \underline{\textbf{资源}}
 
-If you would like more information on COVID-19, please review these resources
-from public health partners:
+如果您想了解更多关于 COVID-19 的信息，请查看公共卫生合作伙伴提供的这些资源:
 
 \begin{itemize}
 \item
-  Public Health Seattle and King County\\
-  \url{http://www.kingcounty.gov/covid}
+  Public Health \textemdash Seattle \& King County（西雅图和金县公共卫生）\\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/chinese.aspx}
 
 \item
 
-  Washington State Department of Health\\
-  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+  Washington State Department of Health（华盛顿州卫生部）\\
+  \url{https://www.doh.wa.gov/Emergencies/NovelCoronavirusOutbreak2020COVID19/ChineseSimplified}
 
 \item
-  U.S. Centers for Disease Control and Prevention (CDC)\\
-  \url{http://www.cdc.gov/coronavirus/2019-ncov/index.html}
+  美国 Centers for Disease Control and Prevention（CDC，疾病控制和预防中心）\\
+  \url{https://chinese.cdc.gov/coronavirus/2019-ncov/index.html?CDC\_AA\_refVal=https%3A%2F%2Fwww.cdc.gov%2Fcoronavirus%2F2019-ncov%2Findex-Chinese.html}
 
 \end{itemize}
 
-If you would like to speak to someone on the phone, please call one of the
-following:
+如果您想通过电话咨询，请拨打以下其中一个电话：
 
 \begin{itemize}
 
 \item
 
-  \textbf{Medical questions related to COVID-19:} Contact the King County Call
-  Center between 8AM and 7PM at \textbf{206-477-3977}
+  \textbf{与 COVID-19 有关的医疗问题：} 早上 8 点至晚上 7 点，可拨打
+  \textbf{206-477-3977} 联系 King County Call Center（金县呼叫中心）
 
 \item
 
-  \textbf{Non-medical questions about COVID-19, including compliance and
-  business-related issues:} Contact the King County COVID-19 Business and
-  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
-  \textbf{206-296-1608}
+  \textbf{关于 COVID-19 的非医学问题，包括合规性和企业相关问题:} 周一至周五早上 8:30
+  至下午 4:30，可拨打 \textbf{206-296-1608} 联系 King County COVID-19 Business and
+  Community Information Line（金县 COVID-19 企业和社区信息热线）
 
 \item
 
-  \textbf{General questions about COVID-19 in Washington State:} Contact the
-  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
-  \textbf{1-800-525-0127}
+  \textbf{关于华盛顿州 COVID-19 的一般问题:} 早上 6 点至晚上 10 点，可拨打
+  \textbf{1-800-525-0127} 联系 Washington State Novel Coronavirus Call Center
+  （华盛顿州新型冠状病毒呼叫中心）
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Methods and Limitations}}
+\large \underline{\textbf{方法和局限性}}
 
-\textbf{Methods}\\
-This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
-assay uses amplification of the virus segments ORf1B and S and also detects a
-human RnaseP amplification control. This test was developed and its performance
-characteristics determined by the University of Washington’s Northwest Genomics
-Center. This laboratory is licensed by the WA Department of Health Medical
-Testing Site as qualified to perform high complexity clinical laboratory
-testing.
+\textbf{方法}\\
+本实验使用逆转录 PCR 检测 SARs-CoV-2。该实验使用病毒片段 ORf1B 和 S 的扩增，还检测人类
+RnaseP 扩增对照。该检测由 University of Washington 的 Northwest Genomics Center
+开发并确定其性能特征。该实验室获得 WA Department of Health医学检测站的许可，
+具备进行高复杂性临床实验室检测的资格。
 
-\textbf{Limitations}
+\textbf{局限性}
 
 \begin{itemize}
 
 \item
 
-  These results are provided as part of a research study.
+  这些结果只是研究的一部分内容。
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a healthcare professional like a nurse or doctor. This may
-  impact your test result, and a healthcare provider may want to test you again.
+  您自己（或为他人）采集样本并贴上标签后，通过快递将其送回实验室。
+  它不是由护士或医生等医疗保健专业人员采集、贴标签或运送的。这可能会影响您的检测结果，
+  医疗保健提供者可能希望再次对您进行检测。
 
 \item
 
-  Because this report is based on data from a research study, your results may
-  not be able to diagnose COVID-19, the disease caused by an infection with
-  SARS-CoV-2.
+  由于此报告基于一项研究数据，因此您的结果可能无法诊断为由 SARS-CoV-2 感染引起的 COVID-19
+  疾病。
 
 \end{itemize}
 
