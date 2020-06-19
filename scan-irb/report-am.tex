@@ -18,8 +18,25 @@
 \usepackage{pbox}
 \usepackage{enumitem}
 
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
 % fonts
 \usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{amharic}
+\setotherlanguage{english}
+\newfontfamily\ethiopicfont{AbyssinicaSIL-R.ttf}
+
+
 \setmainfont{DroidSans}[
   Extension   = .ttf,
   UprightFont = *,
@@ -31,20 +48,11 @@
 \hypersetup{colorlinks,urlcolor=blue}
 \urlstyle{same}
 
-% page layout
-\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
-
-% Useful for seeing the layout as you tweak it.
-%\usepackage{showframe}
-
-\setlength{\headheight}{1.1in}
-\pagestyle{fancy}
-\fancyhf{}
 
 \lhead{\includegraphics[height=1in,clip]{logo}}
 \rhead{\pbox[b][1in][c]{\textwidth}{
     \small
-    \textbf{Test Performed By}\\
+    \textbf{ምርመራው የተደረገው በ፡-}\\
     Northwest Genomics Center\\
     University of Washington School of Medicine\\
     Genome Sciences Box 355065\\
@@ -55,15 +63,15 @@
 
 \begin{document}
 
-\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\begin{description}[font=\normalfont,align=left,labelwidth=8em]
 \item [\textbf{\VAR{pat_name|e}}]
-\item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Specimen}] Midnasal, self-collected
-\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
-\item [\textbf{Collection Date}] \VAR{collect_ts|e}
-\item [\textbf{Report Date}]
+\item [\textbf{የትውልድ ቀን፡-}] \VAR{birth_date|e}
+\item [\textbf{ናሙና፡-}] ከመካከለኛ አፍንጫ ፣ በራስ የተሰበሰበ/የተወሰደ
+\item [\textbf{የስብስብ ባርኮድ፡}] \VAR{qrcode|e}
+\item [\textbf{የስብስብ ቀን፡}] \VAR{collect_ts|e}
+\item [\textbf{የሪፖርት ቀን፡}]
   %- if status_code == "never-tested"
-  Never tested
+  ተመርምሬ አላውቅም
   %- else
   \VAR{result_ts|e}
   %- endif
@@ -73,67 +81,61 @@
 
 \begin{center}
 \Large
-\textbf{RESEARCH RESULT - You are encouraged to share this result with your
-  health care provider.}
+\textbf{የምርምር ጥናት ውጤት - ይህንን ውጤት ከጤና እንክብካቤ አቅራቢዎ ጋር እንዲጋሩ ይበረታታሉ}
 \end{center}
 
 \bigskip
 
-\large \underline{\textbf{About This Test:}}
+\large \underline{\textbf{ስለዚህ ምርመራ}}
 
 \begin{itemize}
 \item
 
-  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
-  SARS-CoV-2. This research test looks for the virus in the sample that was
-  collected from your nose to decide if you have COVID-19. The technical term
-  for this kind of test is “reverse-transcription polymerase chain reaction,” or
-  “RT-PCR” for short.
+  COVID-19 ማለት SARS-CoV-2 በሚባለው ቫይረስ የሚከሰት በሽታ ነው። COVID-19 እንዳለብዎት ለመወሰን
+  ይህ የምርምር ጥናት ምርመራ ከአፍንጫዎ በተወሰደው ናሙና ውስጥ ቫይረሱን ይፈልጋል/ይመረምራል። ለዚህ ዓይነቱ
+  ምርመራ የቴክኒክ ቃል ``ተቃራኒ-ግልባጭ የፖሊመሬዝ ሰንሰለት ምላሽ፣'' ወይም በአጭሩ ``RT-PCR'' ነው።
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Important Reminders}}
+\large \underline{\textbf{አስፈላጊ ማስታወሻዎች}}
 
-Before looking at your research test result, you should review the following:
+የምርምር ጥናቱን የምርመራ ውጤትዎን ከማየትዎ በፊት፣ የሚከተሉትን ማየት አለብዎት፡-
 
 \begin{itemize}
 \item
 
-  The \textbf{type of sample} that you collected and \textbf{the testing in the
-  lab} are part of a \textbf{research study} and this report describes your
-  \textbf{research test result.}
+  የሰበሰቡት \textbf{የናሙናው ዓይነት} እና \textbf{የላብራቶሪው ምርመራ የምርምር ጥናት} አካል እና ይህ
+  ሪፖርት የእርስዎን \textbf{የምርምር ጥናት ምርመራ ውጤት} ይገልጻል።
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a licensed healthcare professional like a nurse or doctor.
-  This may impact your test result, and a healthcare provider may want to test
-  you again.
+  ይህንን ናሙና እራስዎ ወስደዋል እና በራስዎ (ወይም ለሌላ ሰው) ሰይመውታል እና ወደ ላብራቶሪው በመላኪያ
+  አገልግሎት መልሰውታል። እንደ ነርስ ወይም ሀኪም ባለ ፈቃድ ባለው የጤና እንክብካቤ ባለሙያ አልተሰበሰበም፣
+  አልተሰየመም ወይም አልተዘዋወረም። ይህ የምርመራ ውጤትዎ ላይ ተጽዕኖ ሊያሳድር ይችላል፣ እናም የጤና እንክብካቤ
+  ባለሙያ እንደገና ሊመረምርዎት ይፈልግ ይሆናል።
 
 \item
 
-  Being part of this \textbf{research study} does not take the place of your
-  normal medical care. If you are feeling very sick or are concerned about your
-  test result, you should contact a doctor or healthcare provider.
+  በዚህ \textbf{የምርምር ጥናት} ውስጥ መሳተፍ የህክምና እንክብካቤዎን ቦታ አይወስድም። ጽኑ የህመም ስሜት
+  ከተሰማዎት ወይም ስለምርመራ ውጤትዎ ሃሳብ ከያዞት፣ ሀኪም ወይም የጤና እንክብካቤ አቅራቢ ማግኘት አለብዎት።
 
 \end{itemize}
 
 \bigskip
 \PageLine
 
-\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+\large \underline{\textbf{የ SARS-CoV-2 (COVID-19) የምርምር ጥናት ምርመራ ውጤት}}
 
 %- if status_code == "negative"
-Not Detected (Negative)\\
+አልተገኘም (አሉታዊ)\\
 %- elif status_code == "positive"
-Detected (positive)\\
+ተገኝቷል (አዎንታዊ)\\
 %- elif status_code == "inconclusive"
-Inconclusive\\
+በቂ ያልሆነ\\
 %- elif status_code == "never-tested"
-Unable to be tested\\
+ለመመርመር አልተቻለም\\
 %- else
 \VAR{0/0} %# poor man's raise
 %- endif
@@ -141,16 +143,16 @@ Unable to be tested\\
 \PageLine
 \bigskip
 
-\large \underline{\textbf{Understanding Your Result}}
+\large \underline{\textbf{ውጤትዎን መረዳት}}
 
-This list gives all of the results that your test may show and describes what
-each of these results means. You can print out or email this \textbf{research
-test result} to share with your doctor or healthcare provider
+ይህ ሠንጠረዥ የእርስዎ ሙከራ ሊያሳየው የሚችለውን ውጤት ሁሉ ይሰጣል እንዲሁም እነዚህ ውጤቶች ምን ማለት
+እንደሆኑ ያብራራል፡፡ ይህንን \textbf{የምርምር ጥናት ምርመራ ውጤት} ማተም ወይም በኢሜል መላክ ወይም
+ለሀኪምዎ ወይም ለጤና እንክብካቤ አቅራቢዎ ማጋራት ይችላሉ።
 
-Regardless of your test result, you should stay home and avoid being around
-other people if you are feeling sick. \textbf{If your symptoms continue, you are
-very sick or worried about your illness, or have questions about your research
-test result, you should contact a doctor or healthcare provider.}
+የፈተናዎ ውጤት ምንም ይሁን ምን ቤትዎ ውስጥ መቆየት እና ህመም የሚሰማዎት ከሆነ ከሌሎች ሰዎች ጋር ከመሆን
+ይቆጠቡ፡፡ \textbf{የበሽታ ምልክቶችዎ ከቀጠሉ ፣ በጣም ህመም ከተሰማዎት ወይም ስለ ህመምዎ ከተጨነቁ ወይም
+ስለምርምር ጥናቱ የምርመራ ውጤትዎ ጥያቄዎች ካሉዎት ሀኪም ወይም የጤና እንክብካቤ አቅራቢን ማነጋገር አለብዎት
+፡፡}
 
 \begin{itemize}
 
@@ -192,85 +194,82 @@ test result, you should contact a doctor or healthcare provider.}
 
 \bigskip
 
-\large \underline{\textbf{Resources}}
+\large \underline{\textbf{መርጃዎች}}
 
-If you would like more information on COVID-19, please review these resources
-from public health partners:
+ስለ COVID-19 የበለጠ መረጃ ከፈለጉ እባክዎን ከህዝብ ጤና ባልደረባዎችዎ እነዚህን መርጃዎች ይመልከቱ፡
 
 \begin{itemize}
 \item
-  Public Health Seattle and King County\\
-  \url{http://www.kingcounty.gov/covid}
+  Public Health \textemdash Seattle \& King County (የማህበረሰብ ጤና - ሲያትል እና ኪንግ
+  ካውንቲ)\\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/amharic.aspx}
 
 \item
 
-  Washington State Department of Health\\
+  Washington State Department of Health (የዋሺንግተን ስቴት የጤና ክፍል)፡-\\
   \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
 
 \item
-  U.S. Centers for Disease Control and Prevention (CDC)\\
-  \url{http://www.cdc.gov/coronavirus/2019-ncov/index.html}
+  U.S. Centers for Disease Control and Prevention (CDC፣ የአሜሪካ የበሽታ ቁጥጥር እና
+  መከላከል ማዕከላት)፡-\\
+  \url{https://wwwn.cdc.gov/pubs/other-languages?Sort=Lang%3A%3Aasc&Language=Amharic}
 
 \end{itemize}
 
-If you would like to speak to someone on the phone, please call one of the
-following:
+በስልክ ከአንድ ሰው ጋር መነጋገር ከፈለጉ እባክዎን ከሚከተሉት አንዱን ይደውሉ፡-
 
 \begin{itemize}
 
 \item
 
-  \textbf{Medical questions related to COVID-19:} Contact the King County Call
-  Center between 8AM and 7PM at \textbf{206-477-3977}
+  ከ COVID-19 ጋር የተዛመዱ የህክምና ጥያቄዎች፡-ከ 8AM እስከ 7PM መካከል ባለው ሰዓት የ King County
+  Call Center (ኪንግ ካውንቲ ጥሪ ማእከልን) በ \textbf{206-477-3977} ያግኙ
 
 \item
 
-  \textbf{Non-medical questions about COVID-19, including compliance and
-  business-related issues:} Contact the King County COVID-19 Business and
-  Community Information Line, Monday – Friday between 8:30AM and 4:30PM at
-  \textbf{206-296-1608}
+  \textbf{ስለ COVID-19 ህክምና-ያልሆኑ ጥያቄዎች፣ ማክበርን እና ከንግድ ጋር የተዛመዱ ጉዳዮችን ጨምሮ፡-} ከ
+  King County COVID-19 Business and Community Information Line (ኪንግ ካውንቲ
+  COVID-19 ንግድ እና ማህበረሰብ መረጃ መስመር) ጋር በ \textbf{206-296-1608፣} ከሰኞ - ዓርብ ከ8:30
+  AM እስከ 4:30 PM ባለው ጊዜ ውስጥ ይገናኙ
 
 \item
 
-  \textbf{General questions about COVID-19 in Washington State:} Contact the
-  Washington State Novel Coronavirus Call Center between 6AM and 10PM at
-  \textbf{1-800-525-0127}
+  \textbf{በዋሽንግተን ግዛት ውስጥ ስለ COVID-19 አጠቃላይ ጥያቄዎች፡-} የ Washington State Novel
+  Coronavirus Call Center (ዋሽንግተን ግዛት ኖቬል ኮሮና ቫይረስ የጥሪ ማእከል)ን ከ 6 AM እና 10 PM
+  ባሉት ሰዓታተ መካከል በ \textbf{1-800-525-0127} ያግኙ
 
 \end{itemize}
 
 \bigskip
 
-\large \underline{\textbf{Methods and Limitations}}
+\large \underline{\textbf{ዘዴዎች እና ገደቦች}}
 
-\textbf{Methods}\\
-This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
-assay uses amplification of the virus segments ORf1B and S and also detects a
-human RnaseP amplification control. This test was developed and its performance
-characteristics determined by the University of Washington’s Northwest Genomics
-Center. This laboratory is licensed by the WA Department of Health Medical
-Testing Site as qualified to perform high complexity clinical laboratory
-testing.
+\textbf{ዘዴዎች}\\
+ይህ ሙከራ የተደረገው በተቃራኒ ግልባጩ PCR ን በመጠቀም SARs-CoV-2 ን ለመለየት ነው፡፡ ይህ ሙከራ የቫይረሱ
+ክፍሎች ORf1B እና S ን ማጉላት የሚጠቀም ሲሆን እንዲሁም የሰው RnaseP ማጉያ መቆጣጠሪያን ፈልጎ ያገኛል።
+ይህ ምርመራ የተሰራው እና የአፈፃፀም ባህሪው በ University of Washington Northwest Genomics
+Center የተወሰነ ነው። ይህ ላቦራቶሪ ከፍተኛ ውስብስብነት ያላቸውን የክሊኒካል ላብራቶሪ ምርመራ ለማከናወን ብቁ
+በመሆኑ በ  WA Department of Health የጤና ክፍል የህክምና ምርመራ ጣቢያ ፈቃድ ተሰጥቶታል።
 
-\textbf{Limitations}
+\textbf{ገደቦች}
 
 \begin{itemize}
 
 \item
 
-  These results are provided as part of a research study.
+  እነዚህ ውጤቶች እንደ የምርምር ጥናት አካል ሆነው ቀርበዋል፡፡
 
 \item
 
-  You collected this sample and labeled it by yourself (or for someone else) and
-  returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a healthcare professional like a nurse or doctor. This may
-  impact your test result, and a healthcare provider may want to test you again.
+  ይህንን ናሙና እራስዎ ወስደዋል እና በራስዎ (ወይም ለሌላ ሰው) ሰይመውታል እና ወደ ላብራቶሪው በመላኪያ
+  አገልግሎት መልሰውታል። እንደ ነርስ ወይም ሀኪም ባለ ፈቃድ ባለው የጤና እንክብካቤ ባለሙያ አልተሰበሰበም፣
+  አልተሰየመም ወይም አልተዘዋወረም። ይህ የምርመራ ውጤትዎ ላይ ተጽዕኖ ሊያሳድር ይችላል፣ እናም የጤና እንክብካቤ
+  ባለሙያ እንደገና ሊመረምርዎት ይፈልግ ይሆናል።
 
 \item
 
-  Because this report is based on data from a research study, your results may
-  not be able to diagnose COVID-19, the disease caused by an infection with
-  SARS-CoV-2.
+  ይህ ሪፖርት በምርምር ጥናት ላይ የተመሠረተ ስለሆነ የእርስዎ ውጤቶች በ SARS-CoV-2 ኢንፌክሽን የሚከሰተውን
+  COVID-19 በሽታን፣ ለይቶ ማወቅ አልቻሉም ይሆናል።
 
 \end{itemize}
 
