@@ -1,0 +1,293 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% fonts
+\usepackage{fontspec}
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Prueba realizada por}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+\sloppy % prevent overfilled lines which occur with long URLs
+
+\begin{description}[font=\normalfont,align=left,labelwidth=18em]
+\item [\textbf{\VAR{pat_name|e}}]
+\item [\textbf{Fecha de nacimiento}] \VAR{birth_date|e}
+\item [\textbf{Muestra}] hisopado nasal del cornete medio, extraída por el paciente
+\item [\textbf{Código de barras de la extracción}] \VAR{qrcode|e}
+\item [\textbf{Fecha de la extracción}] \VAR{collect_ts|e}
+\item [\textbf{Fecha del informe}]
+  %- if status_code == "never-tested"
+  Nunca probado
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\PageLine
+
+\begin{center}
+\Large
+\textbf{RESULTADO DE LA INVESTIGACIÓN: le recomendamos que informe este
+  resultado al proveedor de atención médica.}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{Acerca de esta prueba}}
+
+\begin{itemize}
+\item
+
+  COVID-19 es una \textbf{enfermedad} provocada por un \textbf{virus} denominado
+  SARS-CoV-2. Esta prueba de investigación detecta el virus en la muestra que se
+  extrajo de la nariz para determinar si tiene COVID-19. El término técnico para
+  este tipo de prueba es ``reacción en cadena de la polimerasa con transcripción
+  inversa'', o ``RT-PCR'' para abreviar.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Recordatorios importantes}}
+
+Antes de consultar el resultado de la prueba de investigación, debe considerar
+lo siguiente:
+
+\begin{itemize}
+\item
+
+  El \textbf{tipo de muestra} que extrajo y \textbf{las pruebas en el
+  laboratorio} forman parte de un \textbf{estudio de investigación} y este
+  informe describe el resultado de la \textbf{prueba de investigación}.
+
+\item
+
+  Extrajo esta muestra y la etiquetó usted mismo (o para otra persona) y la
+  devolvió al laboratorio mediante un servicio de entrega. No la extrajo,
+  etiquetó o transportó un profesional de la salud con licencia, como un
+  enfermero o médico. Esto podrá afectar el resultado de la prueba, y es posible
+  que un proveedor de atención médica desee volver a realizarla.
+
+\item
+
+  Participar en el estudio de investigación no reemplaza la atención médica
+  habitual. Si se siente muy mal o está preocupado por el resultado de la
+  prueba, se debe comunicar con el médico o proveedor de atención médica.
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{Resultado de la prueba de investigación del SARS-CoV-2
+  (COVID-19)}}
+
+%- if status_code == "negative"
+No se detectó (negativo)\\
+%- elif status_code == "positive"
+Se detectó (positivo)\\
+%- elif status_code == "inconclusive"
+No concluyente\\
+%- elif status_code == "never-tested"
+No se pudo analizar\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{Entender el resultado}}
+
+Esta tabla proporciona todos los resultados que la prueba puede revelar y
+describe lo que significa cada uno de ellos. Puede imprimir o enviar por correo
+electrónico el resultado de esta \textbf{prueba de investigación} para
+informárselo al médico o proveedor de atención médica.
+
+Sin importar el resultado de la prueba, debe quedarse en su casa y evitar estar
+cerca de otras personas si se siente mal. \textbf{Si sus síntomas continúan, se
+siente muy mal, está preocupado por la enfermedad o tiene preguntas sobre el
+resultado de la prueba de investigación, debe comunicarse con el médico o
+proveedor de atención médica.}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{Si la prueba indica ``No se detectó (negativo)''}, significa que nuestro
+  laboratorio no encontró el virus que provoca la COVID-19 en la muestra que nos
+  envió. Las pruebas no son perfectas, y existe una pequeña posibilidad de que
+  tenga el virus a pesar de que el resultado de la prueba haya sido negativo.
+
+
+\item
+
+  \textbf{Si la prueba indica ``Se detectó (positivo)''}, significa que nuestro
+  laboratorio encontró el virus que provoca la COVID-19 en la muestra que nos
+  envió. Debe quedarse en su casa y evitar estar cerca de otras personas, sobre
+  todo si se siente mal.
+
+  El resultado se compartirá con el Estado de Washington y los departamentos de
+  salud locales. \textbf{No} es necesario que usted informe estos resultados. El
+  departamento de salud puede llamarlo para hacerle preguntas sobre la
+  enfermedad y las personas con las que pudo haber estado mientras estuvo
+  enfermo.
+
+
+\item
+
+  \textbf{Si la prueba indica ``No concluyente''}, significa que nuestro
+  laboratorio no está seguro del resultado de la prueba. Las pruebas no son
+  perfectas, y el resultado no concluyente ocurre cuando encontramos una pequeña
+  cantidad de SARS-CoV-2 en la muestra, pero no lo suficiente como para que
+  podamos afirmar que tiene COVID-19.
+
+
+\item
+
+  \textbf{Si la prueba indica ``No se pudo analizar''}, significa que no había
+  suficiente contenido en la muestra como para que la pudiéramos examinar, o se
+  produjo un error cuando realizamos la prueba. Como no logramos analizar la
+  muestra, no pudimos determinar si tiene o no el virus que provoca la COVID-19.
+
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Recursos}}
+
+Si desea obtener más información sobre la COVID-19, consulte estos recursos de
+los organismos de salud pública:
+
+\begin{itemize}
+\item
+  Public Health \textemdash Seattle \& King County (Salud Pública \textemdash Seattle y el Condado de King)\\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/spanish.aspx}
+
+\item
+
+  Washington State Department of Health (Departamento de Salud del Estado de Washington)\\
+  \url{https://www.doh.wa.gov/Emergencies/NovelCoronavirusOutbreak2020COVID19/CoronavirusSpanish}
+
+\item
+  U.S. Centers for Disease Control and Prevention (CDC, Centros para el Control
+  y la Prevención de Enfermedades de los Estados Unidos)\\
+  \url{https://espanol.cdc.gov/coronavirus/2019-ncov/index.html}
+
+\end{itemize}
+
+Si desea hablar con alguien, llame a uno de los siguientes números:
+
+\begin{itemize}
+
+\item
+
+  \textbf{Para realizar consultas médicas sobre la COVID-19:} comuníquese con el
+  King County Call Center (Centro de Atención del Condado de King), entre las
+  8:00 a. m. y las 7:00 p. m., llamando al \textbf{206-477-3977}
+
+\item
+
+  \textbf{Para realizar consultas no médicas sobre la COVID-19, lo que incluye
+  asuntos relacionados con el cumplimiento y los negocios:} comuníquese con la
+  King County COVID-19 Business and Community Information Line (línea de
+  información comunitaria y comercial sobre la COVID-19 del Condado de King), de
+  lunes a viernes entre las 8:30 a. m. y las 4:30 p. m., llamando al
+  \textbf{206-296-1608}
+
+\item
+
+  \textbf{Para realizar consultas generales sobre la COVID-19 en el Estado de
+  Washington:} comuníquese con el Washington State Novel Coronavirus Call Center
+  (Centro de Atención del Estado de Washington para el Nuevo Coronavirus), entre
+  las 6:00 a. m. y las 10:00 p. m., llamando al \textbf{1-800-525-0127}
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Métodos y limitaciones}}
+
+\textbf{Métodos}\\
+Este ensayo se realiza para detectar SARs-CoV-2 utilizando la técnica PCR con
+transcripción inversa. Este ensayo utiliza la amplificación de los segmentos de
+virus ORf1B y S, y también detecta el control de amplificación de la RnaseP
+humana. El University of Washington’s Northwest Genomics Center desarrolló esta
+prueba y determinó sus características de rendimiento. Este laboratorio está
+autorizado por el WA Department of Health como centro de pruebas médicas para
+realizar pruebas de laboratorio clínico de alta complejidad.
+
+\textbf{Limitaciones}
+
+\begin{itemize}
+
+\item
+
+  Se brindan estos resultados como parte de un estudio de investigación.
+
+\item
+
+  Extrajo esta muestra y la etiquetó usted mismo (o para otra persona) y la
+  devolvió al laboratorio mediante un servicio de entrega. No la extrajo,
+  etiquetó o transportó un profesional de la salud, como un enfermero o médico.
+  Esto podrá afectar el resultado de la prueba, y es posible que un proveedor de
+  atención médica desee volver a realizarla.
+
+\item
+
+  Como este informe se basa en datos de un estudio de investigación, es posible
+  que los resultados no puedan diagnosticar COVID-19, la enfermedad provocada
+  por la infección con el virus SARS-CoV-2.
+
+\end{itemize}
+
+\end{document}
