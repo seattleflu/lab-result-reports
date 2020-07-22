@@ -129,6 +129,9 @@ Before looking at your research test result, you should review the following:
   professional. It was not collected or transported by a licensed healthcare
   professional like a nurse or doctor.
 
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
   %- endif
 
   This may impact your test result, and a healthcare provider may want to test
@@ -291,6 +294,9 @@ testing.
   and returned to the lab via a courier or other type of non-healthcare
   professional. It was not collected or transported by a licensed healthcare
   professional like a nurse or doctor.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
 
   %- endif
 
