@@ -59,7 +59,17 @@
 \begin{description}[font=\normalfont,align=left,labelwidth=18em]
 \item [\textbf{\VAR{pat_name|e}}]
 \item [\textbf{Fecha de nacimiento}] \VAR{birth_date|e}
-\item [\textbf{Muestra}] hisopado nasal del cornete medio, extraída por el paciente
+\item [\textbf{Muestra}]
+  %- if swab_type == "ans"
+  Hisopo nasal anterior,
+  %- elif swab_type == "mtb"
+  Hisopado nasal del cornete medio,
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"}
+  %- endif
+
+  extraída por el paciente
+
 \item [\textbf{Código de barras de la extracción}] \VAR{qrcode|e}
 \item [\textbf{Fecha de la extracción}] \VAR{collect_ts|e}
 \item [\textbf{Fecha del informe}]
@@ -108,12 +118,26 @@ lo siguiente:
   informe describe el resultado de la \textbf{prueba de investigación}.
 
 \item
-
+  %- if staff_observed == "f"
   Extrajo esta muestra y la etiquetó usted mismo (o para otra persona) y la
   devolvió al laboratorio mediante un servicio de entrega. No la extrajo,
   etiquetó o transportó un profesional de la salud con licencia, como un
-  enfermero o médico. Esto podrá afectar el resultado de la prueba, y es posible
-  que un proveedor de atención médica desee volver a realizarla.
+  enfermero o médico.
+
+  %- elif staff_observed == "t"
+  Usted recogió esta muestra por su cuenta (o para otra persona) y fue etiquetada
+  y devuelta al laboratorio a través de un servicio de mensajería o de otro
+  tipo de profesional que no se dedica a la atención médica.  No la extrajo o
+  transportó un profesional de la salud con licencia, como un enfermero o
+  médico.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  Esto podrá afectar el resultado de la prueba, y es posible que un proveedor de
+  atención médica desee volver a realizarla.
 
 \item
 
@@ -276,9 +300,23 @@ realizar pruebas de laboratorio clínico de alta complejidad.
 
 \item
 
+  %- if staff_observed == "f"
   Extrajo esta muestra y la etiquetó usted mismo (o para otra persona) y la
   devolvió al laboratorio mediante un servicio de entrega. No la extrajo,
   etiquetó o transportó un profesional de la salud, como un enfermero o médico.
+
+  %- elif staff_observed == "t"
+  Usted recogió esta muestra por su cuenta (o para otra persona) y fue etiquetada
+  y devuelta al laboratorio a través de un servicio de mensajería o de otro
+  tipo de profesional que no se dedica a la atención médica.  No la extrajo o
+  transportó un profesional de la salud con licencia, como un enfermero o
+  médico.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
   Esto podrá afectar el resultado de la prueba, y es posible que un proveedor de
   atención médica desee volver a realizarla.
 
