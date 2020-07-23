@@ -1,7 +1,7 @@
 qrcode,pat_name,birth_date,collect_ts,result_ts,status_code,swab_type,staff_observed
-AAAAAAAA,Not-received Ned,2020-01-01,,,not-received,mtb,true
-BBBBBBBB,Pending Patrick,2020-01-01,2020-06-10,,pending,ans,false
-CCCCCCCC,Never-tested Nellie,2020-01-01,2020-06-10,,never-tested,np,true
-DDDDDDDD,Negative Nancy,2020-01-01,2020-06-10,2020-06-12,negative,mtb,false
-EEEEEEEE,Inconclusive Ian,2020-01-01,2020-06-10,2020-06-12,inconclusive,ans,true
-FFFFFFFF,Positive Pat,2020-01-01,2020-06-10,2020-06-12,positive,np,false
+AAAAAAAA,Not-received Ned,2020-01-01,,,not-received,mtb,t
+BBBBBBBB,Pending Patrick,2020-01-01,2020-06-10,,pending,ans,f
+CCCCCCCC,Never-tested Nellie,2020-01-01,2020-06-10,,never-tested,np,t
+DDDDDDDD,Negative Nancy,2020-01-01,2020-06-10,2020-06-12,negative,mtb,f
+EEEEEEEE,Inconclusive Ian,2020-01-01,2020-06-10,2020-06-12,inconclusive,ans,t
+FFFFFFFF,Positive Pat,2020-01-01,2020-06-10,2020-06-12,positive,np,f
