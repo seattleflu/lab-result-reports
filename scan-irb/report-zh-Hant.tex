@@ -65,7 +65,17 @@
 \begin{description}[font=\normalfont,align=left,labelwidth=6em]
 \item [\textbf{\VAR{pat_name|e}}]
 \item [\textbf{出生日期：}] \VAR{birth_date|e}
-\item [\textbf{標本：}] 鼻腔中部，自我採集
+\item [\textbf{標本：}]
+  %- if swab_type == "ans"
+  鼻腔拭子,
+  %- elif swab_type == "mtb"
+  鼻腔中部，
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"
+  %- endif
+
+  自我採集
+
 \item [\textbf{採集條碼：}] \VAR{qrcode|e}
 \item [\textbf{採集日期：}] \VAR{collect_ts|e}
 \item [\textbf{報告日期：}]
@@ -109,10 +119,20 @@
   本報告介紹了您的\textbf{研究檢測結果。}
 
 \item
-
+  %- if staff_observed == "f"
   您自己（或為他人）採集樣本並貼上標籤後，透過快遞將其送回實驗室。
-  它不是由護士或醫生等有執照的醫療保健專業人員採集、貼標籤或運送的。這可能會影響您的檢測結果，
-  醫療保健提供者可能希望再次對您進行檢測。
+  它不是由護士或醫生等有執照的醫療保健專業人員採集、貼標籤或運送的
+
+  %- elif staff_observed == "t"
+  您自行（或為他人）採集樣本，由快遞員或其他類型的非醫療保健專業人員貼上標籤並將其送回實驗室。
+  它不是由護士或醫生等有執照的醫療保健專業人員採集或運送的。
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  這可能會影響您的檢測結果，醫療保健提供者可能希望再次對您進行檢測。
 
 \item
 
@@ -247,10 +267,19 @@ RnaseP 擴增對照。該檢測由 University of Washington 的 Northwest Genomi
   這些結果只是研究的一部分內容。
 
 \item
-
+  %- if staff_observed == "f"
   您自己（或為他人）採集樣本並貼上標籤後，透過快遞將其送回實驗室。
-  它不是由護士或醫生等醫療保健專業人員採集、貼標籤或運送的。這可能會影響您的檢測結果，
-  醫療保健提供者可能希望再次對您進行檢測。
+  它不是由護士或醫生等醫療保健專業人員採集、貼標籤或運送的。
+
+  %- elif staff_observed == "t"
+  您自行（或為他人）採集樣本，由快遞員或其他類型的非醫療保健專業人員貼上標籤並將其送回實驗室。
+  它不是由護士或醫生等有執照的醫療保健專業人員採集或運送的。
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+  這可能會影響您的檢測結果，醫療保健提供者可能希望再次對您進行檢測。
 
 \item
 
