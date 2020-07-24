@@ -58,7 +58,17 @@
 \begin{description}[font=\normalfont,align=left,labelwidth=12em]
 \item [\textbf{\VAR{pat_name|e}}]
 \item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Specimen}] Midnasal, self-collected
+\item [\textbf{Specimen}]
+  %- if swab_type == "ans"
+  Anterior Nasal,
+  %- elif swab_type == "mtb"
+  Midnasal,
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"}
+  %- endif
+
+  self-collected
+
 \item [\textbf{Collection Barcode}] \VAR{qrcode|e}
 \item [\textbf{Collection Date}] \VAR{collect_ts|e}
 \item [\textbf{Report Date}]
@@ -106,10 +116,22 @@ Before looking at your research test result, you should review the following:
   \textbf{research test result.}
 
 \item
-
+%- if staff_observed == "f"
   You collected this sample and labeled it by yourself (or for someone else) and
   returned it to the lab via a delivery service. It was not collected, labeled,
   or transported by a licensed healthcare professional like a nurse or doctor.
+
+  %- elif staff_observed == "t"
+  You collected this sample by yourself (or for someone else) and it was labeled
+  and returned to the lab via a courier or other type of non-healthcare
+  professional. It was not collected or transported by a licensed healthcare
+  professional like a nurse or doctor.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
   This may impact your test result, and a healthcare provider may want to test
   you again.
 
@@ -260,11 +282,24 @@ testing.
   These results are provided as part of a research study.
 
 \item
-
+  %- if staff_observed == "f"
   You collected this sample and labeled it by yourself (or for someone else) and
   returned it to the lab via a delivery service. It was not collected, labeled,
-  or transported by a healthcare professional like a nurse or doctor. This may
-  impact your test result, and a healthcare provider may want to test you again.
+  or transported by a healthcare professional like a nurse or doctor.
+
+  %- elif staff_observed == "t"
+  You collected this sample by yourself (or for someone else) and it was labeled
+  and returned to the lab via a courier or other type of non-healthcare
+  professional. It was not collected or transported by a licensed healthcare
+  professional like a nurse or doctor.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  This may impact your test result, and a healthcare provider may want to test
+  you again.
 
 \item
 
