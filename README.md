@@ -4,51 +4,26 @@ tests performed by Northwest Genomics Center.
 
 ## Usage
 
-Example:
-
-    fill-template \
-        --template scan/report-en.tex \
-        --params scan/example-params.csv \
-        --filter 'status_code not in ["not-received", "pending"]' \
-        --output "{qrcode}.pdf"
-
-Requirements:
-
-  * XeLaTeX
-  * TeX Live
-  * Droid package from TeX Live, if you don't have the full distribution
-  * Python 3.6+ and various packages
-
-### via Pipenv
-
-You can install the Python dependencies with Pipenv:
-
-    pipenv sync
-
-XeLaTeX and TeX Live must be installed separately, usually from your platform's
-package manager.  Alternatively, see how to run with Docker below.
-
-Then use Pipenv to run `fill-template` as above:
-
-    pipenv run ./fill-template …
-
-### via Docker
-
-Since TeX Live has a somewhat onerous installation process, a Docker image
-exists containing all the dependencies required to run the report generation.
+Since TeX Live has a somewhat onerous installation process and sourcing local
+font files within LaTeX is not very straight forward, a Docker image exists
+containing all the dependencies required to run the report generation.
 
     docker image pull seattleflu/lab-result-reports
 
 To use it to run `fill-template`, for example:
 
-    docker run --rm seattleflu/lab-result-reports fill-template …
+    docker run --rm seattleflu/lab-result-reports fill-template \
+        --template scan/report-en.tex \
+        --params scan/example-params.csv \
+        --filter 'status_code not in ["not-received", "pending"]' \
+        --output "{qrcode}.pdf"
+
 
 Note that the image is entirely self-contained and includes a copy of this
 repository; the `fill-template` and `scan/report-en.tex` above refer to those
 "baked into" image.
 
-If you're using the image during development of the templates or code, be sure
-to rebuild the image locally (see below) after every change you make.
+Be sure to rebuild the image locally (see below) after every change you make.
 Alternatively, you can overlay your local, active source dir into the container
 at `/src`:
 
@@ -73,3 +48,12 @@ build tag.  The Docker images are tagged both `latest` and `build-N`.
 
 To see an example of the image and `fill-template` in use, see
 <https://github.com/seattleflu/backoffice/tree/master/bin/scan-return-of-results/generate-pdfs>.
+
+## Requirements
+
+  * Docker
+
+## Attributions
+
+The Ethiopic WashRa fonts (SIL Open Font License) are downloaded from
+[Senamirmir](http://senamirmir.org/projects/typography/washra.html).
