@@ -1,0 +1,335 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+% fonts
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\newfontfamily\cyrillicfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Место проведения тестирования:}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+\sloppy % prevent overfilled lines
+
+\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\item [\textbf{\VAR{pat_name|e}}]
+\item [\textbf{Дата рождения:}] \VAR{birth_date|e}
+\item [\textbf{Образец:}]
+  %- if swab_type == "ans"
+  Мазок из передный носа,
+  %- elif swab_type == "mtb"
+  из носа,
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"}
+  %- endif
+
+  Самостоятельно взят
+
+\item [\textbf{Штрихкод образца:}] \VAR{qrcode|e}
+\item [\textbf{Дата забора образца:}] \VAR{collect_ts|e}
+\item [\textbf{Дата отчета:}]
+  %- if status_code == "never-tested"
+  Обследование не проводилось
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\PageLine
+
+\begin{center}
+\Large
+\textbf{РЕЗУЛЬТАТ ИССЛЕДОВАНИЯ. Этим результатом стоит поделиться с врачом}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{Об этом тесте}}
+
+\begin{itemize}
+\item
+
+  COVID-19 — это \textbf{заболевание}, вызываемое \textbf{вирусом} SARS-CoV-2.
+  Такой метод тестирования направлен на поиск вируса в образце, взятом из вашего
+  носа, чтобы определить, есть ли у вас COVID-19. Научное название этого вида
+  теста — «полимеразная цепная реакция с обратной транскрипцией» (сокращенно —
+  «ОТ-ПЦР»).
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Важно помнить}}
+
+Прежде чем узнавать результат своего теста, вам следует учесть следующие моменты:
+
+\begin{itemize}
+\item
+
+  \textbf{Тип образца}, который вы взяли, и \textbf{выполнение теста в
+  лаборатории} являются частью \textbf{исследования}, и в этом отчете описан
+  \textbf{результат вашего тестирования.}
+
+\item
+%- if staff_observed == "f"
+  Вы самостоятельно взяли и подписали этот образец (за себя или за кого-то
+  другого), а служба доставки передала его в лабораторию. Он не был взят,
+  подписан или доставлен медицинским работником (медсестрой или врачом).
+
+  %- elif staff_observed == "t"
+  Вы самостоятельно взяли этот образец у себя (или у кого-то другого), а затем
+  подписали его и вернули в лабораторию, воспользовавшись услугами курьера или
+  другого человека, не являющегося медицинским работником. Он не был взят или
+  доставлен медицинским работником (медсестрой или врачом). 
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  Это может повлиять на результат вашего теста, и в медицинском учреждении вам
+  могут предложить повторное тестирование.
+
+\item
+
+  Участие в этом \textbf{исследовании} не заменяет надлежащее медицинское
+  обслуживание. Если вы чувствуете себя очень плохо или беспокоитесь о
+  результате теста, вам следует обратиться к врачу или в медицинское учреждение.
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{Результат вашего теста на наличие SARS-CoV-2 (COVID-19)}}
+
+%- if status_code == "negative"
+Не обнаружен (отрицательный)\\
+%- elif status_code == "positive"
+Обнаружен (положительный)\\
+%- elif status_code == "inconclusive"
+Неопределенный\\
+%- elif status_code == "never-tested"
+Образец для теста забракован\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{Что означает результат вашего теста}}
+
+В таблице указаны все варианты результатов, которые может показать тестирование,
+и описано, что каждый из них означает. Вы можете распечатать или отправить по
+электронной почте \textbf{результат своего теста}, чтобы поделиться с вашим
+врачом или медицинским учреждением.
+
+Независимо от результата вашего теста, если вы чувствуете себя плохо, необходимо
+оставаться дома и избегать контактов с людьми. \textbf{Если у вас продолжают
+проявляться симптомы, вы чувствуете себя очень плохо, обеспокоены по поводу
+своего заболевания или у вас есть вопросы о результате вашего теста, следует
+обратиться к врачу или в медицинское учреждение.}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{Если в результате Вашего теста указано «Не обнаружен
+  (отрицательный)»}, это означает, что наша лаборатория не нашла вирус, который
+  вызывает COVID-19, в отправленном Вами образце. Ни один тест не является
+  идеальным. Существует небольшая вероятность, что Вы могли заразиться вирусом,
+  даже если Ваш тест отрицательный.
+
+\item
+
+  \textbf{Если в результате Вашего теста указано «Обнаружен (положительный)»},
+  это означает, что наша лаборатория нашла вирус, который вызывает COVID-19, в
+  отправленном Вами образце. Вам следует оставаться дома и избегать контактов
+  с людьми, особенно если Вы плохо себя чувствуете.
+
+  Результаты вашего теста будут переданы в Washington State Department of Health
+  (Департамент здравоохранения штата Вашингтон) и местный департамент
+  здравоохранения. Вам \textbf{не нужно} сообщать о своем результате
+  самостоятельно. Департамент здравоохранения может связаться с вами, чтобы
+  задать вопросы о вашей болезни и о людях, с которыми вы, возможно,
+  контактировали, когда были уже больны.
+
+\item
+
+  \textbf{Если в результате Вашего теста указано «Неопределенный»}, это
+  означает, что наша лаборатория не уверена в результате Вашего теста. Ни один
+  тест не является идеальным. Неопределенный результат получается, когда мы
+  обнаруживаем SARS-CoV-2 в Вашем образце, но в недостаточном количестве, чтобы
+  утверждать, что у Вас есть COVID-19.
+
+\item
+
+  \textbf{Если в результате Вашего теста указано «Образец для теста
+  забракован»}, это означает, что либо в Вашем образце недостаточно материала
+  для тестирования, либо произошла ошибка при выполнении теста. Поскольку Ваш
+  образец невозможно протестировать, мы не смогли определить, есть ли у Вас
+  вирус, вызывающий COVID-19.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Ресурсы}}
+
+Если вам нужна дополнительная информация о COVID-19, просмотрите перечисленные
+ниже ресурсы от партнеров общественного здравоохранения.
+
+\begin{itemize}
+\item
+  Public Health \textemdash Seattle \& King County (Государственный отдел
+  здравоохранения \textemdash Сиэтл и округ Кинг): \\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/russian.aspx}
+
+\item
+
+  Washington State Department of Health (Департамент здравоохранения штата Вашингтон):\\
+  \url{https://www.doh.wa.gov/Emergencies/Coronavirus/Russian}
+
+\item
+  U.S. Centers for Disease Control and Prevention (CDC, Центры по контролю и
+  профилактике заболеваний в США):\\
+  \url{https://wwwn.cdc.gov/pubs/other-languages?Sort=Lang%3A%3Aasc&Language=Russian}
+
+\end{itemize}
+
+Если вы хотите задать кому-то вопросы по телефону, звоните в одну из
+перечисленных ниже служб.
+
+\begin{itemize}
+
+\item
+
+  \textbf{Медицинские вопросы, связанные с COVID-19:} обращайтесь в King County
+  Call Center (кол-центр округа Кинг) с 08:00 до 19:00 по номеру
+  \textbf{206-477-3977}
+
+\item
+
+  \textbf{Прочие вопросы о COVID-19, в том числе связанные с бизнесом и
+  выполнением определенных требований:} обращайтесь в King County COVID-19
+  Business and Community Information Line (Информационный центр округа Кинг по
+  связанным с COVID-19 вопросам в сферах предпринимательской и общественной
+  деятельности) с понедельника по пятницу, с 08:30 до 16:30 по номеру
+  \textbf{206-296-1608}
+
+\item
+
+  \textbf{Общие вопросы о COVID-19 в штате Вашингтон:} обращайтесь в Washington
+  State Novel Coronavirus Call Center (кол-центр штата Вашингтон по вопросам
+  нового коронавируса) с 06:00 до 22:00 по номеру \textbf{1-800-525-0127}
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Методы и ограничения}}
+
+\textbf{Методы}\\
+Этот анализ выполняется для обнаружения SARs-CoV-2 с использованием метода ПЦР с
+обратной транскрипцией. Такой анализ использует амплификацию (процесс
+многократного копирования) вирусных сегментов ORf1B и S, а также выявляет
+контроль над амплификацией РНКазы P человека. Разработкой теста и определением
+его рабочих характеристик занимался научно-исследовательский центр Northwest
+Genomics Center университета University of Washington. Эта лаборатория
+лицензирована Медицинский испытательный центр WA Department of Health как
+подходящая для проведения клинических лабораторных исследований повышенной
+сложности.
+
+\textbf{Ограничения}
+
+\begin{itemize}
+
+\item
+
+  Результаты предоставляются как часть исследования.
+
+\item
+%- if staff_observed == "f"
+  Вы самостоятельно взяли и подписали этот образец (за себя или за кого-то
+  другого), а служба доставки передала его в лабораторию. Он не был взят,
+  подписан или доставлен медицинским работником (медсестрой или врачом).
+
+  %- elif staff_observed == "t"
+  Вы самостоятельно взяли этот образец у себя (или у кого-то другого), а затем
+  подписали его и вернули в лабораторию, воспользовавшись услугами курьера или
+  другого человека, не являющегося медицинским работником. Он не был взят или
+  доставлен медицинским работником (медсестрой или врачом). 
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  Это может повлиять на результат вашего теста, и в медицинском учреждении вам
+  могут предложить повторное тестирование.
+
+\item
+
+  Поскольку этот отчет основан на данных научного исследования, ваши результаты
+  могут оказаться неточными для диагностирования COVID-19, заболевания,
+  вызываемого вирусом SARS-CoV-2.
+
+\end{itemize}
+
+\end{document}
