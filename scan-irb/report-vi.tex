@@ -63,7 +63,17 @@
 \begin{description}[font=\normalfont,align=left,labelwidth=10em]
 \item [\textbf{\VAR{pat_name|e}}]
 \item [\textbf{Ngày Sinh:}] \VAR{birth_date|e}
-\item [\textbf{Mẫu Bệnh Phẩm:}] Giữa mũi, tự lấy
+\item [\textbf{Mẫu Bệnh Phẩm:}]
+  %- if swab_type == "ans"
+  Mũi trước,
+  %- elif swab_type == "mtb"
+  Giữa mũi,
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"}
+  %- endif
+
+  tự lấy
+
 \item [\textbf{Mã Vạch Lấy Mẫu:}] \VAR{qrcode|e}
 \item [\textbf{Ngày Lấy Mẫu:}] \VAR{collect_ts|e}
 \item [\textbf{Ngày Báo Cáo:}]
@@ -112,13 +122,24 @@ xét những thông tin sau:
   \textbf{kết quả xét nghiệm mang tính nghiên cứu} của quý vị.
 
 \item
-
+  %- if staff_observed == "f"
   Quý vị đã tự lấy mẫu và dán nhãn cho bản thân mình (hoặc làm cho ai đó), sau
   đó gửi lại cho phòng thí nghiệm qua dịch vụ giao hàng. Mẫu không được thu
   thập, dán nhãn hoặc giao nhận bởi một chuyên gia chăm sóc sức khỏe được cấp
-  phép như y tá hoặc bác sĩ. Điều này có thể ảnh hưởng đến kết quả xét nghiệm
-  của quý vị và một nhà cung cấp dịch vụ chăm sóc sức khỏe có thể muốn xét
-  nghiệm lại cho quý vị.
+  phép như y tá hoặc bác sĩ.
+
+  %- elif staff_observed == "t"
+  Quý vị đã tự lấy mẫu (hoặc lấy mẫu cho người khác) và mẫu này đã được dán nhãn
+  và gửi lại cho phòng thí nghiệm qua nhân viên đưa thư hoặc loại chuyên gia
+  không liên quan đến chăm sóc sức khỏe khác.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  Điều này có thể ảnh hưởng đến kết quả xét nghiệm của quý vị và một nhà cung
+  cấp dịch vụ chăm sóc sức khỏe có thể muốn xét nghiệm lại cho quý vị.
 
 \item
 
@@ -278,13 +299,24 @@ phép là đủ tiêu chuẩn để thực hiện các xét nghiệm lâm sàng 
   Các kết quả này được cung cấp như một phần trong nghiên cứu.
 
 \item
-
+  %- if staff_observed == "f"
   Quý vị đã tự lấy mẫu và dán nhãn cho bản thân mình (hoặc làm cho ai đó), sau
   đó gửi lại cho phòng thí nghiệm qua dịch vụ giao hàng. Mẫu không được thu
-  thập, dán nhãn hoặc giao nhận bởi một chuyên gia chăm sóc sức khỏe như y tá
-  hoặc bác sĩ. Điều này có thể ảnh hưởng đến kết quả xét nghiệm của quý vị và
-  một nhà cung cấp dịch vụ chăm sóc sức khỏe có thể muốn xét nghiệm lại cho quý
-  vị.
+  thập, dán nhãn hoặc giao nhận bởi một chuyên gia chăm sóc sức khỏe được cấp
+  phép như y tá hoặc bác sĩ.
+
+  %- elif staff_observed == "t"
+  Quý vị đã tự lấy mẫu (hoặc lấy mẫu cho người khác) và mẫu này đã được dán nhãn
+  và gửi lại cho phòng thí nghiệm qua nhân viên đưa thư hoặc loại chuyên gia
+  không liên quan đến chăm sóc sức khỏe khác.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  Điều này có thể ảnh hưởng đến kết quả xét nghiệm của quý vị và một nhà cung
+  cấp dịch vụ chăm sóc sức khỏe có thể muốn xét nghiệm lại cho quý vị.
 
 \item
 
