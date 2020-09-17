@@ -8,7 +8,7 @@ Example:
     fill-template \
         --template templates/resume.tex \
         --params templates/example-params.csv \
-        --output "{qrcode}.pdf"
+        --output "reports/resume.pdf"
 
 Requirements:
 
