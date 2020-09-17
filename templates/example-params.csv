@@ -1,7 +1,2 @@
-qrcode,pat_name,birth_date,collect_ts,result_ts,status_code,swab_type,staff_observed
-AAAAAAAA,Not-received Ned,2020-01-01,,,not-received,mtb,t
-BBBBBBBB,Pending Patrick,2020-01-01,2020-06-10,,pending,ans,f
-CCCCCCCC,Never-tested Nellie,2020-01-01,2020-06-10,,never-tested,ans,t
-DDDDDDDD,Negative Nancy,2020-01-01,2020-06-10,2020-06-12,negative,mtb,f
-EEEEEEEE,Inconclusive Ian,2020-01-01,2020-06-10,2020-06-12,inconclusive,mtb,t
-FFFFFFFF,Positive Pat,2020-01-01,2020-06-10,2020-06-12,positive,ans,f
+name,location,title,email,portfolio,linkedin,objective,skill_1,skill_2,skill_3,skill_4,skill_5,job_1_title,job_1_duration,job_1_company_name,job_1_location,school_1_name,school_1_duration,school_1_degree,school_1_location
+Kairsten Fay,"Seattle, WA",Full Stack Software Developer,kairsten.fay@gmail.com,http://kairstenfay.github.io,https://linkedin.com/in/kairsten-fay,"I'm a full stack software developer...",python,JavaScript,PostgreSQL,git,React.js,Full stack software developer,Apr 2019 - present, Fred Hutch,"Seattle, WA",NC State University,2011 - 2015,B.S. Biological Sciences,"Raleigh, NC"
