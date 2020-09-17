@@ -1,0 +1,328 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+% fonts
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{vietnamese}
+\setotherlanguage{english}
+
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{Xét Nghiệm Được Thực Hiện Bởi:}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+\rhead{\includegraphics[height=0.75in,trim=0 -25 0 0]{logo}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+
+\begin{description}[font=\normalfont,align=left,labelwidth=10em]
+\item [\textbf{\VAR{pat_name|e}}]
+\item [\textbf{Ngày Sinh:}] \VAR{birth_date|e}
+\item [\textbf{Mẫu Bệnh Phẩm:}]
+  %- if swab_type == "ans"
+  Tâm bông quệt mũi trước,
+  %- elif swab_type == "mtb"
+  Tâm bông quệt giữa mũi,
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"}
+  %- endif
+
+  tự lấy
+
+\item [\textbf{Mã Vạch Lấy Mẫu:}] \VAR{qrcode|e}
+\item [\textbf{Ngày Lấy Mẫu:}] \VAR{collect_ts|e}
+\item [\textbf{Ngày Báo Cáo:}]
+  %- if status_code == "never-tested"
+  không bao giờ xét nghiệm
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\PageLine
+
+\begin{center}
+\Large
+\textbf{KẾT QUẢ NGHIÊN CỨU - Khuyến khích quý vị chia sẻ thông tin này với nhà
+  cung cấp dịch vụ chăm sóc sức khỏe của mình}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{Giới Thiệu về Xét Nghiệm}}
+
+\begin{itemize}
+\item
+
+  COVID-19 là \textbf{căn bệnh} do \textbf{vi-rút} SARS-CoV-2 gây ra. Xét nghiệm
+  mang tính nghiên cứu này tìm vi-rút trong mẫu bệnh phẩm được thu thập từ mũi
+  của quý vị để xác định liệu quý vị có mắc COVID-19 hay không. Thuật ngữ kỹ
+  thuật cho loại xét nghiệm này là ``phản ứng tổng hợp chuỗi phiên mã ngược''
+  hay ngắn gọn là ``RT-PCR''.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Nhắc Nhở Quan Trọng}}
+
+Trước khi xem kết quả xét nghiệm mang tính nghiên cứu của quý vị, quý vị nên xem
+xét những thông tin sau:
+
+\begin{itemize}
+\item
+
+  \textbf{Loại mẫu} mà quý vị thu thập và \textbf{xét nghiệm trong phòng thí
+  nghiệm này} là một phần trong \textbf{nghiên cứu} và báo cáo này mô tả
+  \textbf{kết quả xét nghiệm mang tính nghiên cứu} của quý vị.
+
+\item
+  %- if staff_observed == "f"
+  Quý vị đã tự lấy mẫu và dán nhãn cho bản thân mình (hoặc làm cho ai đó), sau
+  đó gửi lại cho phòng thí nghiệm qua dịch vụ giao hàng. Mẫu không được thu
+  thập, dán nhãn hoặc giao nhận bởi một chuyên gia chăm sóc sức khỏe được cấp
+  phép như y tá hoặc bác sĩ.
+
+  %- elif staff_observed == "t"
+  Quý vị đã tự lấy mẫu (hoặc lấy mẫu cho người khác) và mẫu này đã được dán nhãn
+  và gửi lại cho phòng thí nghiệm qua nhân viên đưa thư hoặc loại chuyên gia
+  không liên quan đến chăm sóc sức khỏe khác.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  Điều này có thể ảnh hưởng đến kết quả xét nghiệm của quý vị và một nhà cung
+  cấp dịch vụ chăm sóc sức khỏe có thể muốn xét nghiệm lại cho quý vị.
+
+\item
+
+  Việc trở thành một phần trong \textbf{nghiên cứu} này không thay thế cho các
+  chăm sóc y tế thông thường của quý vị. Nếu quý vị cảm thấy ốm nặng hoặc lo
+  ngại về kết quả xét nghiệm của mình, quý vị nên liên hệ với một bác sĩ hoặc
+  nhà cung cấp dịch vụ chăm sóc sức khỏe.
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{Kết Quả Xét Nghiệm Mang Tính Nghiên Cứu SARS-CoV-2
+  (COVID-19) Của Quý Vị}}
+
+%- if status_code == "negative"
+Không Phát Hiện Thấy Vi-rút (Âm Tính)\\
+%- elif status_code == "positive"
+Phát Hiện Thấy Vi-rút (Dương Tính)\\
+%- elif status_code == "inconclusive"
+Không Xác Định\\
+%- elif status_code == "never-tested"
+Không Thể Xét Nghiệm\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{Hiểu Kết Quả Của Quý Vị}}
+
+Bảng này cho biết tất cả các kết quả mà xét nghiệm của quý vị có thể cho thấy và
+mô tả ý nghĩa của từng loại kết quả. Quý vị có thể in hoặc gửi email
+\textbf{kết quả xét nghiệm mang tính nghiên cứu này} cho bác sĩ hoặc nhà cung
+cấp dịch vụ chăm sóc sức khỏe của quý vị.
+
+Bất kể kết quả của quý vị ra sao, quý vị nên ở nhà và tránh xa những người khác
+nếu quý vị cảm thấy ốm. \textbf{Nếu các triệu chứng của quý vị tiếp tục, quý vị
+cảm thấy ốm nặng hoặc lo lắng về bệnh tình của mình hay có câu hỏi về kết quả
+xét nghiệm mang tính nghiên cứu của quý vị, thì quý vị nên liên hệ với một bác
+sĩ hoặc nhà cung cấp dịch vụ chăm sóc sức khỏe.}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{Nếu xét nghiệm của quý vị là ``Không Phát Hiện Thấy (Âm Tính)''}, điều
+  đó có nghĩa là phòng thí nghiệm của chúng tôi không tìm thấy vi-rút gây ra
+  COVID-19 trong mẫu mà quý vị gửi cho chúng tôi. Không có xét nghiệm nào hoàn
+  hảo và vẫn có khả năng nhỏ là quý vị có thể nhiễm vi-rút này mặc dù kết quả
+  xét nghiệm của quý vị là âm tính.
+
+\item
+
+  \textbf{Nếu xét nghiệm của quý vị là ``Phát Hiện Thấy (Dương Tính)''}, điều đó
+  có nghĩa là phòng thí nghiệm của chúng tôi tìm thấy vi-rút COVID-19 trong mẫu
+  mà quý vị gửi cho chúng tôi. Quý vị nên ở nhà và tránh xa những người khác,
+  đặc biệt nếu quý vị cảm thấy ốm.
+
+  Xét nghiệm của quý vị sẽ được chia sẻ với Tiểu Bang Washington và các cơ quan
+  y tế địa phương. Quý vị \textbf{không} cần tự báo cáo những kết quả đó. Cơ
+  quan y tế có thể gọi cho quý vị để hỏi về bệnh tình của quý vị và những người
+  ở gần quý vị trong thời gian quý vị bị ốm.
+
+\item
+
+  \textbf{Nếu xét nghiệm của quý vị là ``Không Xác Định''}, điều đó có nghĩa là
+  phòng thí nghiệm của chúng tôi không chắc chắn về kết quả xét nghiệm của quý
+  vị. Không có xét nghiệm nào hoàn hảo và kết quả không xác định xảy ra khi
+  chúng tôi tìm thấy một số lượng nhỏ SARS-CoV-2 trong mẫu của quý vị, nhưng
+  không đủ để chúng tôi kết luận rằng quý vị nhiễm COVID-19.
+
+\item
+
+  \textbf{Nếu xét nghiệm của quý vị cho biết ``Không Thể Xét Nghiệm''}, điều đó
+  có nghĩa là không đủ vật liệu trong mẫu của quý vị để chúng tôi xét nghiệm
+  hoặc đã xảy ra lỗi khi chúng tôi thực hiện xét nghiệm. Do chúng tôi không thể
+  xét nghiệm mẫu của quý vị, chúng tôi không thể biết quý vị nhiễm hay không
+  nhiễm vi-rút gây ra COVID-19.
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Các Nguồn Lực}}
+
+Nếu quý vị muốn biết thêm thông tin về COVID-19, vui lòng xem các nguồn lực sau
+từ các đối tác y tế công cộng:
+
+\begin{itemize}
+\item
+  Public Health \textemdash Seattle \& King County (Cơ Quan Y Tế Cộng Đồng \textemdash Seattle \& Quận King): \\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/vietnamese.aspx}
+
+\item
+
+  Washington State Department of Health (Sở Y Tế Tiểu Bang Washington):\\
+  \url{https://www.doh.wa.gov/Emergencies/NovelCoronavirusOutbreak2020COVID19/vietnamese}
+
+\item
+  U.S. Centers for Disease Control and Prevention (CDC, Trung Tâm Kiểm Soát và
+  Phòng Ngừa Dịch Bệnh Hoa Kỳ):\\
+  \url{https://vietnamese.cdc.gov/coronavirus/2019-ncov/index.html}
+
+\end{itemize}
+
+Nếu quý vị muốn trao đổi với ai đó qua điện thoại, vui lòng gọi đến một trong
+những số sau:
+
+\begin{itemize}
+
+\item
+
+  \textbf{Các câu hỏi y tế liên quan đến COVID-19:} Hãy liên hệ với King County
+  Call Center (Tổng Đài Quận King) từ 8 giờ sáng đến 7 giờ tối theo số
+  \textbf{206-477-3977}
+
+\item
+
+  \textbf{Các câu hỏi không liên quan đến y tế về COVID-19, bao gồm các vấn đề
+  về tuân thủ và liên quan đến doanh nghiệp:} Hãy liên hệ với King County
+  COVID-19 Business and Community Information Line (Đường Dây Thông Tin Doanh
+  Nghiệp và Cộng Đồng trong COVID-19 của Quận King), từ 8 giờ 30 phút sáng đến 4
+  giờ 30 phút chiều, Thứ Hai - Thứ Sáu theo số \textbf{206-296-1608}
+
+\item
+
+  \textbf{Các câu hỏi chung về COVID-19 tại Tiểu Bang Washington:} Hãy liên hệ
+  với Washington State Novel Coronavirus Call Center (Tổng Đài Vi-rút Corona
+  Chủng Mới của Tiểu Bang Washington) từ 6 giờ sáng đến 10 giờ tối theo số
+  \textbf{1-800-525-0127}
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{Các Biện Pháp và Hạn Chế}}
+
+\textbf{Biện Pháp}\\
+Xét nghiệm này được thực hiện để phát hiện SAR-CoV-2 bằng cách sử dụng PCR phiên
+mã ngược. Xét nghiệm này sử dụng kỹ thuật khuếch đại các phân đoạn vi-rút ORf1B
+và S cũng như phát hiện kiểm soát khuếch đại RnaseP ở người. Northwest Genomics
+Center của University of Washington đã phát triển và xác định các đặc tính hiệu
+suất của loại xét nghiệm này. Phòng thí nghiệm này được WA Department of Health
+Medical Testing Site (Sở Phụ Trách Cơ Sở Xét Nghiệm Y Tế Sức Khỏe) của WA cấp
+phép là đủ tiêu chuẩn để thực hiện các xét nghiệm lâm sàng có độ phức tạp cao.
+
+\textbf{Hạn Chế}
+
+\begin{itemize}
+
+\item
+
+  Các kết quả này được cung cấp như một phần trong nghiên cứu.
+
+\item
+  %- if staff_observed == "f"
+  Quý vị đã tự lấy mẫu và dán nhãn cho bản thân mình (hoặc làm cho ai đó), sau
+  đó gửi lại cho phòng thí nghiệm qua dịch vụ giao hàng. Mẫu không được thu
+  thập, dán nhãn hoặc giao nhận bởi một chuyên gia chăm sóc sức khỏe được cấp
+  phép như y tá hoặc bác sĩ.
+
+  %- elif staff_observed == "t"
+  Quý vị đã tự lấy mẫu (hoặc lấy mẫu cho người khác) và mẫu này đã được dán nhãn
+  và gửi lại cho phòng thí nghiệm qua nhân viên đưa thư hoặc loại chuyên gia
+  không liên quan đến chăm sóc sức khỏe khác.
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  Điều này có thể ảnh hưởng đến kết quả xét nghiệm của quý vị và một nhà cung
+  cấp dịch vụ chăm sóc sức khỏe có thể muốn xét nghiệm lại cho quý vị.
+
+\item
+
+  Vì báo cáo này dựa trên dữ liệu từ một nghiên cứu, kết quả của quý vị có thể
+  không chẩn đoán COVID-19, căn bệnh gây ra do nhiễm vi-rút SARS-CoV-2.
+
+\end{itemize}
+
+\end{document}
