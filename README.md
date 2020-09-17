@@ -1,6 +1,5 @@
 This repository contains document templates and supporting code for generating
-individualized official lab result reports for SARS-CoV-2 / hCoV-19 / COVID-19
-tests performed by Northwest Genomics Center.
+a resume in PDF format.
 
 ## Usage
 
@@ -37,11 +36,11 @@ Then use Pipenv to run `fill-template` as above:
 Since TeX Live has a somewhat onerous installation process, a Docker image
 exists containing all the dependencies required to run the report generation.
 
-    docker image pull seattleflu/lab-result-reports
+    docker image pull kafay/latex-resume
 
 To use it to run `fill-template`, for example:
 
-    docker run --rm seattleflu/lab-result-reports fill-template …
+    docker run --rm kafay/latex-resume fill-template …
 
 Note that the image is entirely self-contained and includes a copy of this
 repository; the `fill-template` and `scan/report-en.tex` above refer to those
@@ -52,7 +51,7 @@ to rebuild the image locally (see below) after every change you make.
 Alternatively, you can overlay your local, active source dir into the container
 at `/src`:
 
-    docker run --rm -v $PWD:/src seattleflu/lab-result-reports fill-template …
+    docker run --rm -v $PWD:/src kafay/latex-resume fill-template …
 
 The included `./devel/docker-run` takes care of this and a few other niceties:
 
@@ -70,6 +69,3 @@ This ensures the local image is up-to-date and your local git repository is
 clean before pushing the image and tagging the current commit (`HEAD`) in git
 with `build-N`.  _N_ is _M_ + 1, where _M_ is the number of the previous git
 build tag.  The Docker images are tagged both `latest` and `build-N`.
-
-To see an example of the image and `fill-template` in use, see
-<https://github.com/seattleflu/backoffice/tree/master/bin/scan-return-of-results/generate-pdfs>.

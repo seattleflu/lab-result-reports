@@ -1,6 +1,6 @@
 SHELL := bash -euo pipefail
 
-IMAGE := seattleflu/lab-result-reports
+IMAGE := kafay/latex-resume
 BUILD := $(shell ./devel/next-build-number)
 
 image:
