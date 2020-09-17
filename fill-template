@@ -91,10 +91,6 @@ assert xelatex.is_available(), "xelatex is not available"
            "syntax to produce a unique path for each input row.",
     required = True)
 
-@click.option("--filter", "filter_query",
-    metavar = "<condition>",
-    help = "A Pandas DataFrame query string for filtering the parameter table")
-
 @click.option("--workers", "worker_count",
     metavar = "<n>",
     help = "Number of parallel worker processes to start for PDF rendering",
@@ -105,7 +101,7 @@ assert xelatex.is_available(), "xelatex is not available"
 
 @click.pass_context
 
-def __main__(ctx, *, template_path, params_path, output_path, filter_query, worker_count):
+def __main__(ctx, *, template_path, params_path, output_path, worker_count):
     if params_path == "-":
         params_path = "/dev/stdin"
 
@@ -113,7 +109,7 @@ def __main__(ctx, *, template_path, params_path, output_path, filter_query, work
         log.debug(f"Started pool of n={worker_count:,} workers")
 
         with fsspec.open(params_path) as file:
-            param_table = read_params(file, filter_query)
+            param_table = read_params(file)
 
         results = workers.starmap(
             render, zip(
@@ -166,17 +162,11 @@ def pdf_renderer(template_path):
     return render_pdf
 
 
-def read_params(file, filter_query):
+def read_params(file):
     params = pandas.read_csv(file, sep = None, dtype = "string", engine = "python")
 
     row_count = len(params)
     log.info(f"Loaded {row_count:,} parameter rows")
-
-    if filter_query:
-        params.query(filter_query, inplace = True)
-
-        filtered_row_count = row_count - len(params)
-        log.info(f"Filtered out {filtered_row_count:,} parameter rows where {filter_query}")
 
     return params.to_dict("records")
 

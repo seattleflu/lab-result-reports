@@ -8,7 +8,6 @@ Example:
     fill-template \
         --template templates/resume.tex \
         --params templates/example-params.csv \
-        --filter 'status_code not in ["not-received", "pending"]' \
         --output "{qrcode}.pdf"
 
 Requirements:
