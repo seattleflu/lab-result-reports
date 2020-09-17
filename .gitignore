@@ -4,4 +4,4 @@
 *.out
 
 # Specific PDF outputs to exclude which might also appear.
-/scan/report-*.pdf
+/templates/resume*.pdf

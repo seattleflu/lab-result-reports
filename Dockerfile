@@ -10,7 +10,6 @@ RUN apt-get update && \
         texlive-xetex \
         texlive-fonts-recommended \
         fontconfig \
-        fonts-noto-cjk \
         wget \
         xzdec
 

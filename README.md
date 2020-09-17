@@ -6,8 +6,8 @@ a resume in PDF format.
 Example:
 
     fill-template \
-        --template scan/report-en.tex \
-        --params scan/example-params.csv \
+        --template templates/resume.tex \
+        --params templates/example-params.csv \
         --filter 'status_code not in ["not-received", "pending"]' \
         --output "{qrcode}.pdf"
 
@@ -43,7 +43,7 @@ To use it to run `fill-template`, for example:
     docker run --rm kafay/latex-resume fill-template …
 
 Note that the image is entirely self-contained and includes a copy of this
-repository; the `fill-template` and `scan/report-en.tex` above refer to those
+repository; the `fill-template` and `templates/resume.tex` above refer to those
 "baked into" image.
 
 If you're using the image during development of the templates or code, be sure

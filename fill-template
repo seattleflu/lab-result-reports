@@ -22,7 +22,7 @@ running:
 
 \b
     fill-template \\
-        --template scan/report-en.tex \\
+        --template templates/report-en.tex \\
         --params sesame-results.tsv \\
         --output '{barcode}-{birth_date}-en.pdf'
 
