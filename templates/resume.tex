@@ -63,7 +63,7 @@
 
 \bigskip
 
-\Large \textbf{SKILLS} \rule{\textwidth - 45pt}{0.25mm}
+\Large \textbf{SKILLS} \rule{\textwidth - \widthofpbox{SKILLS}}{0.25mm}
 \large
 \begin{description}[font=\normalfont,align=left]
   \item \VAR{skill_1|e}, \VAR{skill_2|e}, \VAR{skill_3|e}, \VAR{skill_4|e},
@@ -74,7 +74,7 @@
 \bigskip
 
 
-\Large \textbf{WORK EXPERIENCE} \rule{\textwidth - 130pt}{0.25mm}
+\Large \textbf{WORK EXPERIENCE} \rule{\textwidth - \widthofpbox{WORK EXPERIENCE}}{0.25mm}
 \large
 \begin{description}[font=\normalfont,align=left]
   \item [\Large\textbf{\VAR{job_1_company_name|e}}, \VAR{job_1_location|e}]
@@ -130,10 +130,10 @@
 \bigskip
 
 
-\Large \textbf{EDUCATION}\rule{\textwidth - 81pt}{0.25mm}
+\Large \textbf{EDUCATION}\rule{\textwidth - \widthofpbox{EDUCATION}}{0.25mm}
 \large
-\begin{description}[font=\normalfont,align=left,labelwidth=31em]
-\item [\textbf{\VAR{school_1_name|e}} | \VAR{school_1_degree|e}] \VAR{school_1_location|e}, \VAR{school_1_duration|e}
+\begin{description}[font=\normalfont,align=left,labelwidth=\textwidth - \widthofpbox{\VAR{school_1_location|e} | \VAR{school_1_duration|e}}]
+\item [\textbf{\VAR{school_1_name|e}} | \VAR{school_1_degree|e}] \VAR{school_1_location|e} | \VAR{school_1_duration|e}
 \end{description}
 
 
