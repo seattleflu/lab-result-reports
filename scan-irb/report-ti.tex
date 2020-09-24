@@ -1,0 +1,315 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{1.1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+% fonts
+\usepackage{fontspec}
+
+\usepackage{polyglossia}
+\setmainlanguage{amharic}
+\setotherlanguage{english}
+\newfontfamily\ethiopicfont[
+  Path        = /src/fonts/,
+  Extension   = .ttf,
+  UprightFont = jiret,
+  BoldFont    = washrab ]{}
+
+
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+\lhead{\includegraphics[height=1in,clip]{logo}}
+\rhead{\pbox[b][1in][c]{\textwidth}{
+    \small
+    \textbf{መርመራ ዘካየደ ላባራቶሪ እዚ ዝስዕብ’ዩ:}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+
+\begin{description}[font=\normalfont,align=left,labelwidth=10em]
+\item [\textbf{\VAR{pat_name|e}}]
+\item [\textbf{ዕለተ ልደት:}] \VAR{birth_date|e}
+\item [\textbf{መርኣያ:}]
+  %- if swab_type == "ans"
+  XXXXXXXX TODO
+  %- elif swab_type == "mtb"
+  ፍርቀ-ኣፍንጫ፡
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"}
+  %- endif
+
+  self-collected
+
+\item [\textbf{ናይ ምውሳድ ባርኮድ:}] \VAR{qrcode|e}
+\item [\textbf{ናይ ምውሳድ ዕለት:}] \VAR{collect_ts|e}
+\item [\textbf{ናይ ምሕባር ዕለት:}]
+  %- if status_code == "never-tested"
+  ተመርሚረ ኣይፈልጥን
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\PageLine
+
+\begin{center}
+\Large
+\textbf{ውጽኢት ምርምር – ነዚ ውጽኢት'ዚ ንወሃቢ ሕክምናዊ ኣገልግሎትኩም ክተካፍልዎ ትተባብዑ።}
+\end{center}
+
+\bigskip
+
+\large \underline{\textbf{ብዛዕባ እዚ መርመራ'ዚ}}
+
+\begin{itemize}
+\item
+
+  ኮቪድ-19 SARS-CoV-2 \textbf{ተባሂሉ ብዝጽዋዕ} ቫይረስ ዝስዕብ \textbf{ሕማም} እዩ። እዚ ናይ
+  መጽናዕቲ መርመራ'ዚ ነቲ ቫይረስ ኣብቲ ካብ ኣፍንጫ ዝተወስደ መርኣያ ኮቪድ-19 እንተልይኩም ዝምርምር እዩ።
+  እቲ ተክኒካዊ ስያመ ነዚ ዓይነት መርመራ'ዚ “reverse-transcription polymerase chain reaction
+  (ግልባጥ-ቅዳሕ ፖሊመረይስ ናይ ሰንሰለታዊ መልሰ-ትግባር)”ወይ ብሓጺር “RT-PCR” እዩ።
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{ኣገደስቲ መዘኻኸሪታት}}
+
+ቅድሚ ንውጽኢት ናይ መጽናዕቲ መርመራኹም ምርኣይኩም፡ ነዚ ዝስዕብ ክትርእይዎ ኣለኩም:
+
+\begin{itemize}
+\item
+
+  እቲ \textbf{ዝወሰድክሞ ዓይነት} መርኣያ ከምኡ ድማ እቲ \textbf{ናይ መርመራ ላባራቶሪ} ኣካል
+  \textbf{መጽናዕቲ መርመራ እዮም} እዚ ጸብጻብ'ዚ ከኣ ንውጽኢት ናይ መጽናዕቲ
+  \textbf{መርመራኹም ዝገልጽ'ዩ።}
+
+\item
+  %- if staff_observed == "f"
+  ነዚ መርኣያ'ዚ ወሲድኩምን ብገዛእ ርእስኹም (ወይ ንኻልእ ሰብ) ምልክት ገይርክምሉን ከምኡ ድማ ናብቲ ላባራቶሪ
+  ብመገዲ ናይ ምብጽጻሕ ኣገልግሎት መሊስክሞ። ብበዓል ሞያ ጥዕና ከም ነርስ ወይ ዶክተር ዝተወስደ፡ ምልክት
+  ዝተገብረሉ፡ ወይ ዝተገዓዓዘ ኣይኮነን።
+
+  %- elif staff_observed == "t"
+  ነዚ መርኣያ'ዚ ባዕልኻ (ወይ ንኻልእ ሰብ) ወሲድካዮ ምልክት ተገይርሉን ናብቲ ላባራቶሪ ከኣ ብመገዲ መልእኽተኛ
+  ወይ ካልእ ዓይነት በዓል ሞያ ጥዕና ዘይኮነ ሰብ ተመሊሱን። ብከም ዶክተር ወይ ነርስ ዝኣመሰለ ወረቐት ስራሕ ዘለዎ
+  በዓል ሞያ ኣይተወስደን ወይ ኣይተገዓዓዘን። 
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  እዚ ንውጽኢት መርመራኹም ክጸሉ ይኽእል፡ ወሃቢ ሕክምናዊ ኣገልግሎት ደጊሙ ክምርምረኩም ክደሊ ከኣ ይኽእል።
+
+
+\item
+
+  ኣካል ናይዚ ናይ መጽናዕቲ \textbf{መርመራ'ዚ ምዃን} ንንቡር ሕክምናዊ ክንክንኩም ዝትክእ ኣይኮነን። እንተድኣ
+  ኣዚኹም ሓሚምኩም ኣለኹም ወይ ብዛዕባ ውጽኢት መርመራኹም ስክፍታ እንተልይኩም፡ ንዶክተር ወይ ወሃቢ
+  ሕክምናዊ ኣገልግሎት ክትረኽብዎ ኣለኩም።
+
+\end{itemize}
+
+\bigskip
+\PageLine
+
+\large \underline{\textbf{ናይ SARS-CoV-2 (COVID-19) ናይ መጽናዕቲ ውጽኢት መርመራኹም}}
+
+%- if status_code == "negative"
+ሕማም ኣይተረኽበን (ኣሉታዊ)\\
+%- elif status_code == "positive"
+ሕማም ተረኺቡ (ኣወንታዊ)\\
+%- elif status_code == "inconclusive"
+ናብ መደምደምታ ክብጻሕ ኣይተኻእለን\\
+%- elif status_code == "never-tested"
+ክምርመር ኣይተኻእለን\\
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{ምርዳእ ውጽኢትኩም}}
+
+እዚ ሰሌዳ'ዚ ንኽሎም መርመራኹም ከርእዮም ዝኽእል ውጽኢታት ይህብ ነፍስ ወከፍ እዞም ውጽኢታት እዚኦም እንታይ
+ማለት ምዃኖም ከኣ ይገልጽ። ነዚ ናይ መጽናዕቲ ውጽኢት መርመራ'ዚ \textbf{ንዶክተርኩም ወይ ወሃቢ ሕክምናዊ
+ኣገልግሎትኩም} ንምርኣይ ክተሕትምዎ ወይ ኢመይል ክትገብርዎ ትኽእሉ።
+
+ናይ መርመራኹም ውጽኢት ብዘየገድስ፡ እንተድኣ ሕማም ይስምዓኩም ኣሎ ኾይኑ ኣብ ገዛ ክትኮኑን ኣብ ጥቓ ካልኦት
+ሰባት ምዃን ክተወግዱን ኣለኩም። \textbf{እንተድኣ ምልክታት ሕማምኩም ቀጺሎም፡ ኣዚኹም ሓሚምኩም
+እንተሊኹም ወይ ብዛዕባ ውጽኢት መርመራኹም ስክፍታ እንተልይኩም፡ ንዶክተር ወይ ወሃቢ ሕክምናዊ ኣገልግሎት
+ክትረኽብዎ ኣለኩም።}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{እንተድኣ መርመራኹም “ኣይተረኽበን (ኣሉታዊ)”} ዝብል ኮይኑ፡ እዚ ማለት ላባራቶሪና
+  ነቲ ኮቪድ-19 ዘስዕብ ቫይረስ ኣብቲ ዝሰደድኩምልና መርኣያ ኣይረከበን ማለት’ዩ። ፍጹም ዝብሃል መርመራ የለን፡
+  ዋላ’ውን መርመራኹም ኣሉታዊ ክንሱ እቲ ቫይረስ ክህልወኩም ንእሽቶ ተኽእሎ ኣሎ።
+
+\item
+
+  \textbf{እንተድኣ መርመራኹም “ተረኺቡ (ኣወንታዊ)”} ዝብል ኮይኑ፡ እዚ ማለት ላባራቶሪና
+  ነቲ ኮቪድ-19 ዘስዕብ ቫይረስ ኣብቲ ዝሰደድኩምልና መርኣያ ረኺቡ ማለት’ዩ። ኣብ ገዛኹም ክትኮኑን ኣብ ጥቓ
+  ካልኦት ሰባት ምዃን ክተወግዱን ኣለኩም፡ ብፍላይ እንተድኣ ሕማም ይስምዓኩም ኣሎ ኾይኑ።
+
+  ውጽኢትኩም ነቲ ክፍለ-ግዝኣት ዋሽንግተን ከምኡ ድማ ንከባብያዊ ክፍልታት ጥዕና ክካፈል እዩ። ነዞም ውጽኢታት
+  እዚኦም ባዕልኹም ምሕባር  \textbf{ኣየድልየኩምን} እዩ። እቲ ክፍሊ ጥዕና ብዛዕባ ሕማምኩምን ኣብ
+  ሓሚምክምሉ ዝነበርኩም እዋን ኣብ ጥቓኹም ብዛዕባ ዝነበሩ ሰባትን ሕቶታት ንምሕታት ክድውለልኩም ይኽእል።
+
+\item
+
+  \textbf{እንተድኣ እቲ መርመራ “ናብ መደምደምታ ክብጻሕ ኣይተኻእለን”} ዝብል ኮይኑ፡ እዚ ማለት
+  ላባራቶሪና ብዛዕባ ውጽኢት መርመራኹም ርግጸኛ ኣይኮነን ማለት’ዩ። ፍጹም ዝብሃል መርመራ የለን፡ ናብ መደብደምታ
+  ክብጻሕ ዘይተኻእለ ውጽኢት ዘጋጥም ከኣ ንእሽቶ መጠን ናይ SARS-CoV-2 ኣብ ንረኽበሉ፡ ግን ከኣ ኮቪድ-19
+  ኣለኩም ከብለና ዘይክእል መጠን ኣብ ንረኽበሉ እዋን እዩ።
+
+\item
+
+  \textbf{እንተድኣ መርመራኹም “ክምርመር ኣይተኻእለን”} ዝብል ኮይኑ፡ እዚ ማለት ኣብ መርኣያኹም
+  ንሕና ክንምርምሮ እንኽእል እኹል ነገር ኣይነበረን፡ ወይ ነቲ መርመራ ኣብ ዘካየድናሉ እዋን ጌጋ ነይሩ ማለት’ዩ።
+  ንመርኣያኹም ክንምርምሮ ስለዘይክኣልና፡ እቲ ኮቪድ-19 ዘስዕብ ቫይረስ ኣለኩም ድዩ የብልኩምን ክንረክብ ኣይክኣልናን።
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{ምንጭታት}}
+
+እንተድኣ ብዛዕባ ኮቪድ-19 ተወሳኺ ሓበሬታ ደሊኹም፡ ብኽብረትኩም ነዞም ካብ መሻርኽቲ ጥዕና ሕብረተሰብ ዝመጹ
+ምንጭታት ርኣይዎም:
+
+\begin{itemize}
+\item
+  Public Health \textemdash Seattle \& King County (ህዝባዊ ሓለዋ ጥዕና ሲያትልን ኪንግ
+  ካውንትን):\\
+  \url{https://www.kingcounty.gov/depts/health/covid-19/languages/tigrinya.aspx}
+
+\item
+
+  Washington State Department of Health (ናይ ክፍለ-ግዝኣት ዋሽንግተን ክፍሊ ጥዕና):\\
+  \url{http://www.doh.wa.gov/Emergencies/Coronavirus}
+
+\item
+  U.S. Centers for Disease Control and Prevention (CDC, ማእከላት ቊጽጽርን ምግታእን ጥዕና
+  መንግስቲ ኣመሪካ):\\
+  \url{https://wwwn.cdc.gov/pubs/other-languages/?Sort=Lang%3A%3Aasc&Language=Tigrinya}
+
+\end{itemize}
+
+እንተድኣ ኣብ ተሌፎን ትዛረብዎ ሰብ ደሊኹም፡ ብኽብረትኩም ናብ ሓደ ካብዞም ዝስዕቡ ደውሉ:
+
+\begin{itemize}
+
+\item
+
+  \textbf{ምስ ኮቪድ-19 ዝዛመዱ ሕክምናዊ ሕቶታት:} ነቲ King County Call Center (ማእከል
+  ጻውዒት ተሌፎን ኪንግ ካውንቲ) ኣብ መንጎ ሰዓት 8 AM ከምኡ ድማ 7 PM በዚ ዝስዕብ ቁጽሪ ርኸብዎም
+  \textbf{206-477-3977}
+
+\item
+
+  \textbf{ዘይሕክምናዊ ሕቶታት ብዛዕባ ኮቪድ-19፡ ንምስ ትካል-ዝዛመዱ ጒዳያት ዘጠቓለለ:} ነቲ King
+  County COVID-19 Business and Community Information Line (ናይ ኪንግ ካውንቲ ናይ ትካላትን
+  ማሕበረሰብን ናይ ሓበሬታ መስመር ተሌፎን)፡ ሰኑይ – ዓርቢ ኣብ መንጎ 8:30 AM ከምኡ ድማ 4:30 PM በዚ
+  ዝስዕብ ቁጽሪ ርኸብዎ \textbf{206-296-1608}
+
+\item
+
+  \textbf{ሓፈሻዊ ሕቶታት ብዛዕባ ኮቪድ-19 ኣብ ክፍለ-ግዝኣት ዋሽንግተን:} ነቲ Washington State
+  Novel Coronavirus Call Center (ማእከል ጻውዒት ተሌፎን ሓድሽ ኮረናቫይረስ ናይ ክፍለ-ግዝኣት
+  ዋሽንግተን) ኣብ መንጎ 6 AM ከምኡ ድማ 10 PM በዚ ዝስዕብ ቁጽሪ ርኸብዎ \textbf{1-800-525-0127}
+
+\end{itemize}
+
+\bigskip
+
+\large \underline{\textbf{ኣገባባትን ድሩትነታትን}}
+
+\textbf{ኣገባባት}\\
+እዚ መርመራ'ዚ ን SARs-CoV-2 ነቲ ግልባጥ-ቅዳሕ polymerase chain reaction (PCR, ፖሊመረይስ ናይ
+ሰንሰለታዊ መልሰ-ተግባር) ተጠቒምካ ንምልላይ ዝተዳለወ እዩ። እዚ መርመራ'ዚ ምጒላሕ ናይቲ ቫይረስ ክፋላት ORf1B
+ከምኡ ድማ S ይጥቀም ከምኡ'ውን ናይ ሰብ ቊጽጽር ምጒላሕ RnaseP ይጥቀም። ነቲ መርመራ ዘማዕበለን ናይ
+ኣሰራርሕኡ ጠባያት ዝውስንን እቲ University of Washington’s Northwest Genomics Center እዩ።
+እቲ ላባራቶሪ ብ WA Department of Health Medical Testing Site (ናይ ክፍሊ ጥዕና ዋሽንግተን
+ማእከል ሕክምናዊ መርመራ) ልዑል ሕልኽላኽ ዘለዎ ክሊኒካዊ መርመራ ላባራቶሪ ንኸካይድ ፍቓድ ስራሕ ዝተዋህቦ እዩ።
+
+\textbf{ድሩትነታት}
+
+\begin{itemize}
+
+\item
+
+  እዞም ውጽኢታት እዚኦም ከም ኣካል ናይ ምርምር መጽናዕቲ ዝቐርቡ እዮም።
+
+\item
+  %- if staff_observed == "f"
+  ነዚ መርኣያ'ዚ ወሲድኩምን ብገዛእ ርእስኹም (ወይ ንኻልእ ሰብ) ምልክት ገይርክምሉን ከምኡ ድማ ናብቲ ላባራቶሪ
+  ብመገዲ ናይ ምብጽጻሕ ኣገልግሎት መሊስክሞ። ብበዓል ሞያ ጥዕና ከም ነርስ ወይ ዶክተር ዝተወስደ፡ ምልክት
+  ዝተገብረሉ፡ ወይ ዝተገዓዓዘ ኣይኮነን።
+
+  %- elif staff_observed == "t"
+  ነዚ መርኣያ'ዚ ባዕልኻ (ወይ ንኻልእ ሰብ) ወሲድካዮ ምልክት ተገይርሉን ናብቲ ላባራቶሪ ከኣ ብመገዲ መልእኽተኛ
+  ወይ ካልእ ዓይነት በዓል ሞያ ጥዕና ዘይኮነ ሰብ ተመሊሱን። ብከም ዶክተር ወይ ነርስ ዝኣመሰለ ወረቐት ስራሕ ዘለዎ
+  በዓል ሞያ ኣይተወስደን ወይ ኣይተገዓዓዘን። 
+
+  %- else
+  \errmessage{Unknown value: staff_observed = "\VAR{staff_observed}"}
+
+  %- endif
+
+  እዚ ንውጽኢት መርመራኹም ክጸሉ ይኽእል፡ ወሃቢ ሕክምናዊ ኣገልግሎት ደጊሙ ክምርምረኩም ክደሊ ከኣ ይኽእል።
+
+\item
+
+  እዚ ጸብጻብ'ዚ ካብ ምርምር መጽናዕቲ ኣብ ዝተረኽበ ዳታ ዝምርኮስ ስለዝኾነ፡ ውጽኢታትኩም ህላውነት ኮቪድ-19
+  ዘነጽሩ ዘይክኾኑ ይኽእሉ፡ እቲ ብረኽሲ ናይ SARS-CoV-2 ዝስዕብ ሕማም።
+
+\end{itemize}
+
+\end{document}
