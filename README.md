@@ -73,3 +73,19 @@ build tag.  The Docker images are tagged both `latest` and `build-N`.
 
 To see an example of the image and `fill-template` in use, see
 <https://github.com/seattleflu/backoffice/tree/master/bin/scan-return-of-results/generate-pdfs>.
+
+
+## Translations
+
+Translations of the English report template into several other languages exist within the `scan` and `scan-irb` directories.
+These languages are noted by their ISO 639-1 language codes.
+Currently, the way translations are handled are a bit of a mess.
+They require copy-pasting from Microsoft Word or Google Sheet documents prepared by a team of external translators.
+Those documents can be found on Google Drive by following the link in [this Slack message](https://seattle-flu-study.slack.com/archives/C0173B4S1LY/p1595531766289400).
+
+The process for creating new language templates is unfortunately tedious and highly error-prone.
+Luckily, the translations for languages we've seen so far follow English sentence-for-sentence.
+So, periods (`.`) are one of the primary indicators for "where" we are in a document when copy-pasting from the Word Document into the LaTeX template.
+
+There is a lot of room for improvement here.
+One idea that comes to mind is creating a configuration file similar to [pybabel](http://babel.pocoo.org/en/latest/) that translates from English to various languages, sentence-for-sentence or word-for-ford.
