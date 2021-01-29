@@ -2,6 +2,6 @@ qrcode,pat_name,birth_date,collect_ts,result_ts,status_code,swab_type,staff_obse
 AAAAAAAA,Not-received Ned,2020-01-01,,,not-received,mtb,t,IRB,
 BBBBBBBB,Pending Patrick,2020-01-01,2020-06-10,,pending,ans,f,IRB,
 CCCCCCCC,Never-tested Nellie,2020-01-01,2020-06-10,,never-tested,ans,t,IRB,
-DDDDDDDD,Negative Nancy,2020-01-01,2020-06-10,2020-06-12,negative,mtb,f,clinical,"Julie Dombrowski MD MPH"
-EEEEEEEE,Inconclusive Ian,2020-01-01,2020-06-10,2020-06-12,inconclusive,mtb,t,clinical,"Alison C. Roxby MD MSc"
+DDDDDDDD,Negative Nancy,2020-01-01,2020-06-10,2020-06-12,negative,mtb,f,clinical,
+EEEEEEEE,Inconclusive Ian,2020-01-01,2020-06-10,2020-06-12,inconclusive,mtb,t,clinical,
 FFFFFFFF,Positive Pat,2020-01-01,2020-06-10,2020-06-12,positive,ans,f,IRB,

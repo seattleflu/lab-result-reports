@@ -1,0 +1,214 @@
+\documentclass[10pt]{article}
+
+% graphicx package, useful for including eps, pdf, and raster graphics
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.png,.jpg,.pdf}
+
+% basic packages
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{enumitem}
+
+% fonts
+\usepackage{fontspec}
+\setmainfont{DroidSans}[
+  Extension   = .ttf,
+  UprightFont = *,
+  BoldFont    = *-Bold ]
+\setmonofont{DroidSansMono}[
+  Extension   = .ttf,
+  UprightFont = * ]
+
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{same}
+
+% page layout
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, includefoot, heightrounded]{geometry}
+
+% Useful for seeing the layout as you tweak it.
+%\usepackage{showframe}
+
+\setlength{\headheight}{92pt}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\pbox[b][1.2in][c]{\textwidth}{
+    \small
+    \textbf{Test Performed By}\\
+    Northwest Genomics Center\\
+    University of Washington School of Medicine\\
+    Clinical Lab Director: Christina M. Lockwood, PhD, DABCC, DABMGG\\
+    Genome Sciences Box 355065\\
+    3720 15th Ave NE\\
+    Seattle, WA 98195-5065\\
+    \href{tel:+1-206-616-5859}{206-616-5859}}}
+\rhead{\includegraphics[height=0.75in,trim=0 -25 0 0]{logo}}
+
+\newcommand{\PageLine}{\rule{\textwidth}{0.25mm}}
+
+\begin{document}
+
+\begin{description}[font=\normalfont,align=left,labelwidth=12em]
+\item [\textbf{Patient Name}] \VAR{pat_name|e}
+\item [\textbf{Date of Birth}] \VAR{birth_date|e}
+\item [\textbf{Ordering Physician}] \VAR{ordering_provider|e}
+\item [\textbf{Specimen}]
+  %- if swab_type == "ans"
+  Anterior Nasal,
+  %- elif swab_type == "mtb"
+  Midnasal,
+  %- else
+  \errmessage{Invalid swab_type "\VAR{swab_type}"}
+  %- endif
+
+  self-collected
+
+\item [\textbf{Collection Barcode}] \VAR{qrcode|e}
+\item [\textbf{Collection Date}] \VAR{collect_ts|e}
+\item [\textbf{Report Date}]
+  %- if status_code == "never-tested"
+  Never tested
+  %- else
+  \VAR{result_ts|e}
+  %- endif
+\end{description}
+
+\bigskip
+
+\large \underline{\textbf{About This Test:}}
+
+\begin{itemize}
+\item
+
+  COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
+  SARS-CoV-2. This research test looks for the virus in the sample that was
+  collected from your nose to decide if you have COVID-19. The technical term
+  for this kind of test is “reverse-transcription polymerase chain reaction,” or
+  “RT-PCR” for short.
+
+\end{itemize}
+
+\bigskip
+
+\PageLine
+
+\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+
+%- if status_code == "negative"
+Not Detected (Negative)
+%- elif status_code == "positive"
+Detected (positive)
+%- elif status_code == "inconclusive"
+Inconclusive
+%- elif status_code == "never-tested"
+Unable to be tested
+%- else
+\VAR{0/0} %# poor man's raise
+%- endif
+
+\bigskip
+
+\textbf{Methods}\\
+This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
+assay uses amplification of the virus segments ORf1B and S and also detects a
+human RnaseP amplification control. This test was developed and its performance
+characteristics determined by the University of Washington’s Northwest Genomics
+Center. This laboratory is licensed by the WA Department of Health Medical
+Testing Site as qualified to perform high complexity clinical laboratory
+testing.
+
+\PageLine
+\bigskip
+
+\large \underline{\textbf{Understanding Your Result}}
+
+This list gives all of the results that your test may show and describes what
+each of these results means. You can print out or email this \textbf{research
+test result} to share with your doctor or healthcare provider
+
+Regardless of your test result, you should stay home and avoid being around
+other people if you are feeling sick. \textbf{If your symptoms continue or you are
+very sick or worried about your illness, or have questions about your research
+test result, you should contact a doctor or healthcare provider.}
+
+\begin{itemize}
+
+
+\item
+
+  \textbf{If your test says ``Not Detected (Negative)''}, it means our lab did not find the
+  virus that causes COVID-19 in your sample.
+
+  \begin{itemize}
+    \item
+      If you have symptoms or have been exposed to a known positive, STAY HOME.
+    \item
+      Review Public Health – Seattle \& King County’s latest guidance (link below) on how long you need to stay home in quarantine.
+    \item
+      You may still have COVID-19 even with a negative test. The test cannot detect the virus if it is too soon after exposure.
+      Wait 5-7 days after date exposed to get tested unless you develop symptoms.
+    \item
+      If you have no symptoms and no known exposure, you likely do not have COVID-19.
+    \item
+      Continue to practice mask wearing, social distancing, and monitor for symptoms.
+  \end{itemize}
+
+\item
+
+  \textbf{If your test says ``Detected (Positive)''}, it means our
+  lab found the virus that causes COVID-19 in your sample.
+
+  \begin{itemize}
+    \item STAY HOME for 10 days starting from the date symptoms first appeared AND 24 hours with no fever AND until symptoms resolve. Tell anyone you’ve been physically close with to get tested right away.
+    \item If no symptoms, then stay home 10 days from date of test. You can still spread COVID-19 even if you don’t have symptoms.
+    \item You do NOT need to avoid the people in your house who have already been diagnosed with COVID-19.
+    \item You do NOT need to test again after completing the 10-day isolation period.
+  \end{itemize}
+
+  Your result will be shared with the Washington State and local health
+  departments. You do \textbf{not} need to report these results yourself. The
+  health department may call you to ask questions about your illness and people
+  you may have been around while you were sick.
+
+\item
+
+  \textbf{If your test says ``Inconclusive''}, it means our lab is not certain
+  of your test result. No test is perfect, and an inconclusive result happens
+  when a small amount of SARS-CoV-2 is found in your sample, but not enough for
+  us to say that you have COVID-19.
+
+  Current public health guidelines suggest that you get an additional test, but
+  you should treat this result as a positive and stay home, away from others,
+  even if you don’t have symptoms of COVID-19. \textbf{Do not go to work or
+  school.}
+
+\item
+
+  \textbf{If your test says ``Unable to be tested''}, it means there was either
+  not enough material on your sample for us to test, or there was an error when
+  we ran the test. Since we are not able to test your sample, we could not find
+  whether or not you have the virus that causes COVID-19.
+
+\end{itemize}
+
+\bigskip
+
+Visit the King County Public Health website to learn more about how and when to isolate and quarantine:\\\\
+\includegraphics[height=0.75in,trim=0 0 0 0]{king_county_covid19_qr}
+\qquad
+\href{https://www.kingcounty.gov/depts/health/covid-19/checkin.aspx}{ https://www.kingcounty.gov/depts/health/covid-19/checkin.aspx}
+
+For medical questions related to COVID-19:
+Call the King County COVID-19 call center between 8AM to 7PM PST at \href{tel:+1-206-477-3977}{206-477-3977}.
+Interpretation available.
+
+\end{document}
