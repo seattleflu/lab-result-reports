@@ -17,6 +17,7 @@
 \usepackage{multirow}
 \usepackage{pbox}
 \usepackage{enumitem}
+\usepackage{wrapfig}
 
 % fonts
 \usepackage{fontspec}
@@ -60,7 +61,7 @@
 \begin{description}[font=\normalfont,align=left,labelwidth=12em]
 \item [\textbf{Patient Name}] \VAR{pat_name|e}
 \item [\textbf{Date of Birth}] \VAR{birth_date|e}
-\item [\textbf{Ordering Physician}] \VAR{ordering_provider|e}
+\item [\textbf{Ordering Provider}] \VAR{ordering_provider|e}
 \item [\textbf{Specimen}]
   %- if swab_type == "ans"
   Anterior Nasal,
@@ -69,8 +70,6 @@
   %- else
   \errmessage{Invalid swab_type "\VAR{swab_type}"}
   %- endif
-
-  self-collected
 
 \item [\textbf{Collection Barcode}] \VAR{qrcode|e}
 \item [\textbf{Collection Date}] \VAR{collect_ts|e}
@@ -90,7 +89,7 @@
 \item
 
   COVID-19 is a \textbf{disease} that is caused by a \textbf{virus} called
-  SARS-CoV-2. This research test looks for the virus in the sample that was
+  SARS-CoV-2. This test looks for the virus in the sample that was
   collected from your nose to decide if you have COVID-19. The technical term
   for this kind of test is “reverse-transcription polymerase chain reaction,” or
   “RT-PCR” for short.
@@ -101,7 +100,7 @@
 
 \PageLine
 
-\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Research Test Result}}
+\large \underline{\textbf{Your SARS-CoV-2 (COVID-19) Test Result}}
 
 %- if status_code == "negative"
 Not Detected (Negative)
@@ -120,7 +119,7 @@ Unable to be tested
 \textbf{Methods}\\
 This assay is made to detect SARs-CoV-2 using reverse-transcription PCR. This
 assay uses amplification of the virus segments ORf1B and S and also detects a
-human RnaseP amplification control. This test was developed and its performance
+human Rnase P amplification control. This test was developed and its performance
 characteristics determined by the University of Washington’s Northwest Genomics
 Center. This laboratory is licensed by the WA Department of Health Medical
 Testing Site as qualified to perform high complexity clinical laboratory
@@ -132,12 +131,12 @@ testing.
 \large \underline{\textbf{Understanding Your Result}}
 
 This list gives all of the results that your test may show and describes what
-each of these results means. You can print out or email this \textbf{research
-test result} to share with your doctor or healthcare provider
+each of these results means. You can print out or email this \textbf{
+test result} to share with your doctor or healthcare provider.
 
 Regardless of your test result, you should stay home and avoid being around
 other people if you are feeling sick. \textbf{If your symptoms continue or you are
-very sick or worried about your illness, or have questions about your research
+very sick or worried about your illness, or have questions about your
 test result, you should contact a doctor or healthcare provider.}
 
 \begin{itemize}
@@ -150,7 +149,7 @@ test result, you should contact a doctor or healthcare provider.}
 
   \begin{itemize}
     \item
-      If you have symptoms or have been exposed to a known positive, STAY HOME.
+      If you have \textbf{symptoms or have been exposed} to a known positive, \textbf{STAY HOME}.
     \item
       Review Public Health – Seattle \& King County’s latest guidance (link below) on how long you need to stay home in quarantine.
     \item
@@ -168,7 +167,7 @@ test result, you should contact a doctor or healthcare provider.}
   lab found the virus that causes COVID-19 in your sample.
 
   \begin{itemize}
-    \item STAY HOME for 10 days starting from the date symptoms first appeared AND 24 hours with no fever AND until symptoms resolve. Tell anyone you’ve been physically close with to get tested right away.
+    \item \textbf{STAY HOME} for 10 days starting from the date symptoms first appeared \textbf{AND} 24 hours with no fever \textbf{AND} until symptoms resolve. Tell anyone you’ve been physically close with to get tested.
     \item If no symptoms, then stay home 10 days from date of test. You can still spread COVID-19 even if you don’t have symptoms.
     \item You do NOT need to avoid the people in your house who have already been diagnosed with COVID-19.
     \item You do NOT need to test again after completing the 10-day isolation period.
@@ -188,8 +187,7 @@ test result, you should contact a doctor or healthcare provider.}
 
   Current public health guidelines suggest that you get an additional test, but
   you should treat this result as a positive and stay home, away from others,
-  even if you don’t have symptoms of COVID-19. \textbf{Do not go to work or
-  school.}
+  even if you don’t have symptoms of COVID-19.
 
 \item
 
@@ -202,13 +200,16 @@ test result, you should contact a doctor or healthcare provider.}
 
 \bigskip
 
-Visit the King County Public Health website to learn more about how and when to isolate and quarantine:\\\\
-\includegraphics[height=0.75in,trim=0 0 0 0]{king_county_covid19_qr}
-\qquad
+\begin{wrapfigure}{R}{0.15\textwidth}
+    \begin{flushright}\includegraphics[height=0.75in,trim=0 0 0 0]{king_county_covid19_qr}
+    \end{flushright}
+\end{wrapfigure}
+
+\textbf{Visit the King County Public Health website to learn more about how and when to isolate and quarantine:\\}
 \href{https://www.kingcounty.gov/depts/health/covid-19/checkin.aspx}{ https://www.kingcounty.gov/depts/health/covid-19/checkin.aspx}
 
-For medical questions related to COVID-19:
-Call the King County COVID-19 call center between 8AM to 7PM PST at \href{tel:+1-206-477-3977}{206-477-3977}.
+\textbf{For medical questions related to COVID-19:}
+Call the King County COVID-19 call center between 8AM to 7PM PST at \textbf{\href{tel:+1-206-477-3977}{206-477-3977}}.
 Interpretation available.
 
 \end{document}
