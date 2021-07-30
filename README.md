@@ -58,7 +58,8 @@ at `/src`:
 
     docker run --rm -v $PWD:/src seattleflu/lab-result-reports fill-template …
 
-The included `./devel/docker-run` takes care of this and a few other niceties:
+The included `./devel/docker-run` takes care of this and a few other niceties (requires
+`realpath` which can be installed on MacOS with `brew install coreutils`):
 
     ./devel/docker-run fill-template …
 
