@@ -9,13 +9,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         texlive-xetex \
         texlive-fonts-recommended \
+        texlive-fonts-extra \
         fontconfig \
         fonts-noto-cjk \
         wget \
         xzdec
 
-RUN tlmgr init-usertree --usertree $(kpsewhich -var-value TEXMFLOCAL)
-RUN tlmgr install --usertree $(kpsewhich -var-value TEXMFLOCAL) droid
 
 WORKDIR /src
 
