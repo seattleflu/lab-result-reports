@@ -41,7 +41,11 @@ exists containing all the dependencies required to run the report generation.
 
 To use it to run `fill-template`, for example:
 
-    docker run --rm seattleflu/lab-result-reports fill-template …
+    docker run --rm \
+        --user "$(id -u):$(id -g)" \
+        --mount type=bind,src="<absolute path to lab-result-reports root dir>",dst=/src \
+        seattleflu/lab-result-reports \
+        fill-template …
 
 Note that the image is entirely self-contained and includes a copy of this
 repository; the `fill-template` and `scan/report-en.tex` above refer to those
